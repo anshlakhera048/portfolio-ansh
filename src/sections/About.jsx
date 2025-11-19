@@ -7,7 +7,10 @@ import { Frameworks } from "../components/Frameworks";
 const About = () => {
   const grid2Container = useRef();
   return (
-    <section className="c-space section-spacing overflow-x-hidden w-full" id="about">
+    <section
+      className="c-space section-spacing overflow-x-hidden w-full"
+      id="about"
+    >
       <h2 className="text-heading">About Me</h2>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-12">
         {/* Grid 1 */}
@@ -18,10 +21,13 @@ const About = () => {
             alt="Coding perspective"
           />
           <div className="z-10 w-full p-4 sm:p-6">
-            <p className="headtext text-lg sm:text-xl">Hi, I&apos;m Ansh Lakhera</p>
+            <p className="headtext text-lg sm:text-xl">
+              Hi, I&apos;m Ansh Lakhera
+            </p>
             <p className="subtext text-sm sm:text-base">
-              Over the last few years, I developed my frontend and backend dev
-              skills to deliver dynamic and software and web applications.
+              A full-stack developer who loves building scalable backend
+              systems, clean interfaces, and practical AI-powered solutions. I
+              enjoy turning ideas into reliable, production-ready applications
             </p>
           </div>
           <div className="absolute inset-x-0 pointer-events-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-indigo" />
@@ -80,9 +86,10 @@ const About = () => {
         {/* Grid 3 */}
         <div className="grid-black-color grid-3 relative overflow-hidden">
           <div className="z-10 w-full sm:w-[60%] md:w-[50%] p-4 sm:p-6">
-            <p className="headtext text-lg sm:text-xl">Time Zone</p>
+            <p className="headtext text-lg sm:text-xl">Based In</p>
             <p className="subtext text-sm sm:text-base">
-              I&apos;m from in Kota, Rajasthan, and open to remote work worldwide
+              I&apos;m from in Kota, Rajasthan, and open to remote work
+              worldwide
             </p>
           </div>
           <figure className="absolute left-[50%] top-[40%] -translate-x-1/2 sm:left-[35%] sm:top-[15%] sm:-translate-x-0 md:left-[50%] md:top-[2.5%] w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] md:w-[250px] md:h-[250px] lg:w-[270px] lg:h-[270px] z-0">
@@ -103,8 +110,8 @@ const About = () => {
           <div className="z-10 w-40 sm:w-[60%] md:w-[50%] lg:w-[45%] p-4 sm:p-6">
             <p className="headtext text-lg sm:text-xl">Tech Stack</p>
             <p className="subtext text-sm sm:text-base">
-              I specialize in a variety of languages, frameworks, and tools that
-              allow me to build robust and scalable applications
+              I'm equipped with a strong, well-rounded tech stack that allows me
+              to deliver scalable and maintainable applications with ease
             </p>
           </div>
           <div className="absolute inset-y-0 right-0 w-[0%] sm:w-[45%] md:w-[0%] h-full flex items-center justify-center md:scale-110 lg:scale-125 z-0">
