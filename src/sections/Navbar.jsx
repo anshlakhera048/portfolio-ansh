@@ -1,40 +1,64 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-function Navigation() {
+
+function Navigation({ onLinkClick }) {
+  const handleClick = (e) => {
+    e.preventDefault();
+    const href = e.currentTarget.getAttribute("href");
+    if (!href) return;
+    
+    const targetId = href.substring(1);
+    const element = document.getElementById(targetId);
+    if (element) {
+      const offset = 80; // Navbar height offset
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+    if (onLinkClick) {
+      onLinkClick();
+    }
+  };
+
   return (
     <ul className="nav-ul">
       <li className="nav-li">
-        <a className="nav-link" href="#home">
+        <a className="nav-link" href="#home" onClick={handleClick}>
           Home
         </a>
       </li>
       <li className="nav-li">
-        <a className="nav-link" href="#about">
+        <a className="nav-link" href="#about" onClick={handleClick}>
           About
         </a>
       </li>
       <li className="nav-li">
-        <a className="nav-link" href="#work">
+        <a className="nav-link" href="#work" onClick={handleClick}>
           Work
         </a>
       </li>
       <li className="nav-li">
-        <a className="nav-link" href="#contact">
+        <a className="nav-link" href="#contact" onClick={handleClick}>
           Contact
         </a>
       </li>
     </ul>
   );
 }
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="fixed inset-x-0 z-20 w-full backdrop-blur-lg bg-primary/40">
+    <div className="fixed inset-x-0 z-50 w-full backdrop-blur-lg bg-primary/40">
       <div className="mx-auto c-space max-w-7xl">
         <div className="flex items-center justify-between py-2 sm:py-0">
           <a
             href="/"
-            className="text-xl font-bold transition-colors text-neutral-400 hover:text-white"
+            className="text-lg sm:text-xl font-bold transition-colors text-neutral-400 hover:text-white"
           >
             Ansh
           </a>
@@ -62,7 +86,7 @@ const Navbar = () => {
           transition={{ duration: 1 }}
         >
           <nav className="pb-5">
-            <Navigation />
+            <Navigation onLinkClick={() => setIsOpen(false)} />
           </nav>
         </motion.div>
       )}

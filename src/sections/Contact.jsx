@@ -65,7 +65,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="relative flex items-center c-space section-spacing">
+    <section className="relative flex items-center c-space section-spacing" id="contact">
       <Particles
         className="absolute inset-0 -z-50"
         quantity={100}
@@ -76,12 +76,12 @@ const Contact = () => {
 
       {showAlert && <Alert type={alertType} text={alertMessage} />}
 
-      <div className="flex flex-col items-center justify-center max-w-md p-5 mx-auto border border-white/10 rounded-2xl bg-primary">
-        <div className="flex flex-col items-start w-full gap-5 mb-10">
-          <h2 className="text-heading">Let's Talk</h2>
-          <p className="font-normal text-neutral-400">
+      <div className="flex flex-col items-center justify-center w-full max-w-md p-4 sm:p-6 mx-auto border border-white/10 rounded-2xl bg-primary">
+        <div className="flex flex-col items-start w-full gap-4 sm:gap-5 mb-6 sm:mb-10">
+          <h2 className="text-heading text-2xl sm:text-3xl md:text-4xl">Let's Talk</h2>
+          <p className="font-normal text-neutral-400 text-sm sm:text-base">
             Whether you're looking to build a new website, improve your existing
-            platform, or bring a unique project to life — I'm here to help.
+            platform, or bring a unique project to life — I&apos;m here to help.
           </p>
         </div>
 
@@ -136,7 +136,7 @@ const Contact = () => {
 
           <button
             type="submit"
-            className="w-full px-1 py-3 text-lg text-center rounded-md cursor-pointer bg-radial from-lavender to-royal hover-animation"
+            className="w-full px-4 py-3 text-base sm:text-lg text-center rounded-md cursor-pointer bg-gradient-to-r from-lavender to-royal hover-animation transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={isLoading}
           >
             {!isLoading ? "Send" : "Sending..."}

@@ -9,12 +9,15 @@ const ParallaxBackground = () => {
   const mountain1Y = useTransform(x, [0, 0.5], ["0%", "0%"]);
 
   return (
-    <section className="absolute inset-0 bg-black/40">
-      <div className="relative h-screen overflow-y-hidden">
+    <section className="absolute inset-0 bg-black/40 w-full max-w-[100vw] left-0 right-0 overflow-hidden">
+      <div className="relative h-screen overflow-hidden w-full max-w-[100vw]">
         {/* Background Sky */}
         <div
-          className="absolute inset-0 w-full h-screen -z-50"
+          className="absolute inset-0 -z-50 left-1/2 -translate-x-1/2"
           style={{
+            width: "100vw",
+            maxWidth: "100vw",
+            height: "100vh",
             backgroundImage: "url(/assets/sky.jpg)",
             backgroundPosition: "bottom",
             backgroundSize: "cover",
@@ -22,8 +25,11 @@ const ParallaxBackground = () => {
         />
         {/* Mountain Layer 3 */}
         <motion.div
-          className="absolute inset-0 -z-40"
+          className="absolute inset-0 -z-40 left-1/2 -translate-x-1/2"
           style={{
+            width: "100vw",
+            maxWidth: "100vw",
+            height: "100vh",
             backgroundImage: "url(/assets/mountain-3.png)",
             backgroundPosition: "bottom",
             backgroundSize: "cover",
@@ -32,8 +38,11 @@ const ParallaxBackground = () => {
         />
         {/* Planets */}
         <motion.div
-          className="absolute inset-0 -z-30"
+          className="absolute inset-0 -z-30 left-1/2 -translate-x-1/2"
           style={{
+            width: "100vw",
+            maxWidth: "100vw",
+            height: "100vh",
             backgroundImage: "url(/assets/planets.png)",
             backgroundPosition: "bottom",
             backgroundSize: "cover",
@@ -42,8 +51,11 @@ const ParallaxBackground = () => {
         />
         {/* Mountain Layer 2 */}
         <motion.div
-          className="absolute inset-0 -z-20"
+          className="absolute inset-0 -z-20 left-1/2 -translate-x-1/2"
           style={{
+            width: "100vw",
+            maxWidth: "100vw",
+            height: "100vh",
             backgroundImage: "url(/assets/mountain-2.png)",
             backgroundPosition: "bottom",
             backgroundSize: "cover",
@@ -52,8 +64,11 @@ const ParallaxBackground = () => {
         />
         {/* Mountaine Layer 1 */}
         <motion.div
-          className="absolute inset-0 -z-10"
+          className="absolute inset-0 -z-10 left-1/2 -translate-x-1/2"
           style={{
+            width: "100vw",
+            maxWidth: "100vw",
+            height: "100vh",
             backgroundImage: "url(/assets/mountain-1.png)",
             backgroundPosition: "bottom",
             backgroundSize: "cover",

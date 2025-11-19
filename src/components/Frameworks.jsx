@@ -20,13 +20,13 @@ export function Frameworks() {
     "wordpress",
   ];
   return (
-    <div className="relative flex h-[15rem] w-full flex-col items-center justify-center">
-      <OrbitingCircles iconSize={40}>
+    <div className="relative flex h-[12rem] sm:h-[15rem] w-full flex-col items-center justify-center">
+      <OrbitingCircles iconSize={30} radius={80}>
         {skills.map((skill, index) => (
           <Icon key={index} src={`assets/logos/${skill}.svg`} />
         ))}
       </OrbitingCircles>
-      <OrbitingCircles iconSize={25} radius={100} reverse speed={2}>
+      <OrbitingCircles iconSize={20} radius={50} reverse speed={2}>
         {skills.reverse().map((skill, index) => (
           <Icon key={index} src={`assets/logos/${skill}.svg`} />
         ))}

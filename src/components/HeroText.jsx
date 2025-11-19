@@ -8,9 +8,9 @@ const HeroText = () => {
     visible: { opacity: 1, x: 0 },
   };
   return (
-    <div className="z-10 mt-20 text-center md:mt-40 md:text-left rounded-3xl bg-clip-text">
+    <div className="relative z-10 pt-20 sm:pt-24 md:pt-28 text-center md:text-left rounded-3xl bg-clip-text md:max-w-2xl lg:max-w-3xl">
       {/* Desktop View */}
-      <div className="flex-col hidden md:flex c-space">
+      <div className="flex-col hidden md:flex c-space relative z-10">
         <motion.h1
           className="text-4xl font-medium"
           variants={variants}
@@ -18,7 +18,7 @@ const HeroText = () => {
           animate="visible"
           transition={{ delay: 1 }}
         >
-          Hi I'm Ansh
+          Hi I&apos;m Ansh
         </motion.h1>
         <div className="flex flex-col items-start">
           <motion.p
@@ -53,19 +53,19 @@ const HeroText = () => {
         </div>
       </div>
       {/* Mobile View */}
-      <div className="flex- flex-col space-y-6 md:hidden">
+      <div className="flex flex-col space-y-4 px-5 md:hidden pt-4">
         <motion.p
-          className="text-4xl font-medium"
+          className="text-3xl font-medium"
           variants={variants}
           initial="hidden"
           animate="visible"
           transition={{ delay: 1 }}
         >
-          Hi,I'm Ansh
+          Hi, I&apos;m Ansh
         </motion.p>
         <div>
           <motion.p
-            className="text-5xl font-black text-neutral-300"
+            className="text-4xl font-black text-neutral-300"
             variants={variants}
             initial="hidden"
             animate="visible"
@@ -81,11 +81,11 @@ const HeroText = () => {
           >
             <FlipWords
               words={words}
-              className="font-bold text-white text-7xl"
+              className="font-bold text-white text-5xl sm:text-6xl"
             />
           </motion.div>
           <motion.p
-            className="text-4xl font-black text-neutral300"
+            className="text-3xl font-black text-neutral-300"
             variants={variants}
             initial="hidden"
             animate="visible"

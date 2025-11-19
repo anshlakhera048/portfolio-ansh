@@ -10,20 +10,24 @@ import Loader from "../components/Loader";
 
 const Hero = () => {
   const isMobile = useMediaQuery({ maxWidth: 853 });
+  const isTablet = useMediaQuery({ minWidth: 854, maxWidth: 1024 });
   return (
-    <section className="flex items-start justify-center min-h-screen overflow-hidden md:items-start md:justify-start c-space">
+    <section className="relative flex items-start justify-center min-h-screen overflow-hidden w-full max-w-[100vw] md:items-start md:justify-start c-space pt-16 sm:pt-20" id="home">
       <HeroText />
       <ParallaxBackground />
       <figure
-        className="absolute inset-0"
-        style={{ width: "100vw", height: "100vh" }}
+        className="absolute inset-0 pointer-events-none md:pointer-events-auto md:left-auto md:right-0 md:w-1/2 lg:w-2/5 w-full"
+        style={{ height: "100vh", width: "100vw", maxWidth: "100vw" }}
       >
-        <Canvas camera={{ position: [0, 1, 3] }}>
+        <Canvas 
+          camera={{ position: [0, 1, 3] }}
+          className="w-full h-full"
+        >
           <Suspense fallback={<Loader />}>
             <Float>
               <Astronaut
-                scale={isMobile && 0.23}
-                position={isMobile && [0, -1.5, 0]}
+                scale={isMobile ? 0.23 : isTablet ? 0.25 : 0.35}
+                position={isMobile ? [0, -1.5, 0] : isTablet ? [1.5, -0.5, 0] : [0, 5, -0.5]}
               />
             </Float>
             <Rig />
