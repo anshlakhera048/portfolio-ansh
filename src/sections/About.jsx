@@ -32,7 +32,7 @@ const About = () => {
             ref={grid2Container}
             className="flex items-center justify-center w-full h-full relative overflow-hidden"
           >
-            <p className="flex items-end text-2xl sm:text-3xl md:text-5xl text-gray-500 z-10">
+            <p className="flex items-end text-2xl sm:text-3xl md:text-5xl text-gray-400 z-0">
               CODE IS CRAFT
             </p>
             <Card
