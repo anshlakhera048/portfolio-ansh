@@ -10,7 +10,7 @@ export const myProjects = [
       "Integrated Firebase, REST APIs, and Gemini AI for real-time data processing and itinerary generation.",
       "Optimized distributed interactions for smooth performance and high scalability.",
     ],
-    href: "",
+    href: "https://wander-ai-ten.vercel.app/",
     logo: "",
     image: "/assets/x.svg",
     tags: [
@@ -40,7 +40,7 @@ export const myProjects = [
       "Built a responsive frontend with React.js and Tailwind CSS for seamless login, signup, and course interactions.",
       "Resolved Docker networking, JWT expiration, and MongoDB connectivity issues to ensure platform stability.",
     ],
-    href: "",
+    href: "https://github.com/anshlakhera048/EduWave",
     logo: "",
     image: "/assets/d.svg",
     tags: [
@@ -83,7 +83,7 @@ export const myProjects = [
       "Developed Power BI dashboard showcasing churn patterns across contract types, tenure, and charges.",
       "Showcased predictive analytics, cloud modernization, and data visualization aligned with business impact.",
     ],
-    href: "",
+    href: "https://github.com/anshlakhera048/customer-churn-prediction",
     logo: "",
     image: "/assets/c.svg",
     tags: [
@@ -115,7 +115,7 @@ export const myProjects = [
       "Implemented clean, modular HTML structure and reusable CSS styles for maintainability.",
       "Achieved 95% device compatibility through adaptive UI and robust scaling.",
     ],
-    href: "",
+    href: "https://anon-e-com.vercel.app/",
     logo: "",
     image: "/assets/b.svg",
     tags: [
@@ -147,7 +147,7 @@ export const myProjects = [
       "Ensured high maintainability with modular code structure and organized dependencies.",
       "Delivered a reliable tool demonstrating algorithmic problem-solving and Python proficiency.",
     ],
-    href: "",
+    href: "https://github.com/anshlakhera048/Sudoku-Solver",
     logo: "",
     image: "/assets/a.svg",
     tags: [
@@ -199,9 +199,9 @@ export const myProjects = [
 
 export const mySocials = [
   {
-    name: "WhatsApp",
-    href: "",
-    icon: "/assets/socials/whatsApp.svg",
+    name: "Github",
+    href: "https://github.com/anshlakhera048",
+    icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KCTxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0yMCAxMC4yNXEwIDMuMzUxLTEuOTA4IDYuMDI3dC00LjkyOCAzLjcwM3EtLjM1Mi4wNjgtLjUxNC0uMDkzYS41NC41NCAwIDAgMS0uMTYzLS40VjE2LjY3cTAtMS4yOTUtLjY3Ny0xLjg5NWE5IDkgMCAwIDAgMS4zMzUtLjI0cS41OTEtLjE2IDEuMjIzLS41MmEzLjcgMy43IDAgMCAwIDEuMDU1LS44ODhxLjQyMy0uNTI4LjY5LTEuNDAydC4yNjctMi4wMDhxMC0xLjYxNi0xLjAyOC0yLjc1cS40OC0xLjIxNC0uMTA1LTIuNzIzcS0uMzY0LS4xMi0xLjA1NC4xNDdhNyA3IDAgMCAwLTEuMTk4LjU4N2wtLjQ5NS4zMmE5IDkgMCAwIDAtMi41LS4zNDZhOSA5IDAgMCAwLTIuNS4zNDdhMTIgMTIgMCAwIDAtLjU1My0uMzZxLS4zNDUtLjIxNC0xLjA4OC0uNTE0cS0uNzQxLS4zLTEuMTItLjE4cS0uNTcyIDEuNTA3LS4wOSAyLjcyMnEtMS4wMyAxLjEzNC0xLjAzIDIuNzVxMCAxLjEzNC4yNjggMi4wMDJxLjI2Ny44NjcuNjgzIDEuNDAxYTMuNSAzLjUgMCAwIDAgMS4wNDguODk0cS42MzIuMzYgMS4yMjQuNTJxLjU5My4xNjIgMS4zMzUuMjQxcS0uNTIuNDgtLjYzOCAxLjM3NWEyLjUgMi41IDAgMCAxLS41ODYuMmEzLjYgMy42IDAgMCAxLS43NDIuMDY3cS0uNDMgMC0uODUzLS4yODdxLS40MjMtLjI4OC0uNzIzLS44MzRhMi4xIDIuMSAwIDAgMC0uNjMxLS42OTRxLS4zODQtLjI2Ny0uNjQ1LS4zMmwtLjI2LS4wNHEtLjI3MyAwLS4zNzguMDZ0LS4wNjUuMTUzYS43LjcgMCAwIDAgLjExNy4xODdhMSAxIDAgMCAwIC4xNy4xNmwuMDkuMDY2cS4yODcuMTM1LjU2Ny41MDhxLjI4LjM3NC40MS42OGwuMTMuMzA3cS4xNy41MDcuNTc0LjgyMXEuNDA0LjMxNS44NzIuNHEuNDY4LjA4Ny45MDUuMDk0cS40MzYuMDA2LjcyMy0uMDQ3bC4yOTktLjA1M3EwIC41MDcuMDA3IDEuMTg4bC4wMDYuNzJxMCAuMjQtLjE3LjRxLS4xNjguMTYyLS41Mi4wOTRxLTMuMDIxLTEuMDI4LTQuOTI4LTMuNzAzUTAgMTMuNiAwIDEwLjI1cTAtMi43OSAxLjM0MS01LjE0NWExMC4xIDEwLjEgMCAwIDEgMy42NC0zLjczQTkuNiA5LjYgMCAwIDEgMTAgMGE5LjYgOS42IDAgMCAxIDUuMDIgMS4zNzVhMTAuMSAxMC4xIDAgMCAxIDMuNjM5IDMuNzNRMjAgNy40NjEgMjAgMTAuMjUiIHN0cm9rZS13aWR0aD0iMC4zIiBzdHJva2U9IiNmZmYiIC8+Cjwvc3ZnPg==",
   },
   {
     name: "Linkedin",
