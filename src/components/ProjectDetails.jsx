@@ -1,4 +1,12 @@
 import { motion } from "framer-motion";
+import { useTheme } from "../context/ThemeContext";
+
+const ArrowUpIcon = ({ theme }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="w-4 h-4">
+    <path fill="none" stroke={theme === "light" ? "#222" : "#fff"} strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.5 10.5L21 3m-5 0h5v5m0 6v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/>
+  </svg>
+);
+
 const ProjectDetails = ({
   title,
   description,
@@ -8,6 +16,7 @@ const ProjectDetails = ({
   href,
   closeModal,
 }) => {
+  const { theme } = useTheme ? useTheme() : { theme: 'light' };
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center w-full h-full overflow-y-auto backdrop-blur-sm p-4 sm:p-6">
       <motion.div
@@ -54,7 +63,7 @@ const ProjectDetails = ({
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-lavender to-purple-400 text-white font-semibold shadow hover:scale-105 hover:shadow-2xl transition-all duration-200"
             >
               View Project
-              <img src="assets/arrow-up.svg" className="w-4 h-4" alt="External link" />
+              <ArrowUpIcon theme={theme} />
             </a>
           </div>
         </div>

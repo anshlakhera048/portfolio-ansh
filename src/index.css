@@ -1,3 +1,15 @@
+html.light .sm\:hidden button,
+html.light .sm\:hidden img,
+html.light .sm\:hidden svg {
+  color: #222 !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+html.light .bg-gray-100,
+html.light .text-gray-100 {
+  background: none !important;
+  box-shadow: none !important;
+}
 @import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap");
 @import "tailwindcss";
 @theme {
@@ -155,9 +167,18 @@ html.light .grid-special-color {
 }
 
 html.light .bg-gradient-to-tl,
+
 html.light .grid-black-color {
   background: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
+  border: none !important;
+}
+
+/* Remove border and background from globe container and canvas in light mode */
+html.light .grid-black-color figure,
+html.light .grid-black-color canvas {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 html.light .bg-gradient-to-r {
@@ -198,7 +219,7 @@ html.light .nav-link {
 }
 html.light .nav-link.text-white,
 html.light .nav-link.active {
-  color: #fff !important;
+  color: #222 !important;
   background: none !important;
   box-shadow: none !important;
   outline: none !important;
@@ -215,9 +236,13 @@ html.light .nav-li:hover {
 }
 html.light .navbar,
 html.light .fixed.inset-x-0.z-50.w-full.backdrop-blur-lg {
-  background: rgba(3,4,18,0.85) !important;
-  border-bottom: 1px solid #23263a !important;
-  box-shadow: 0 2px 8px 0 rgba(3,4,18,0.10);
+  background: #fff !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  box-shadow: 0 2px 8px 0 rgba(3,4,18,0.10) !important;
+}
+html.light .navbar,
+html.light .fixed.inset-x-0.z-50.w-full.backdrop-blur-lg {
+  box-shadow: none !important;
 }
 
 /* Cards and containers */
@@ -413,7 +438,7 @@ html.light nav,
 html.light .fixed.top-0 {
   background: rgba(255, 255, 255, 0.95) !important;
   border-bottom: 1px solid #e2e8f0 !important;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
+  box-shadow: none !important;
 }
 
 /* Card hover effects */

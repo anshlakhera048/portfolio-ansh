@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const Projects = () => {
   return (
-    <section className="relative c-space section-spacing" id="work" aria-label="Projects">
+    <section className="relative c-space section-spacing mt-28" id="work" aria-label="Projects">
       <motion.h2
         className="text-heading mb-2"
         initial={{ opacity: 0, y: 30 }}
@@ -12,9 +12,9 @@ const Projects = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.7, ease: "easeOut" }}
       >
-        My Selected Projects
+        Projects Section
       </motion.h2>
-      <div className="flex flex-col gap-4 md:gap-6 mt-12">
+      <div className="flex flex-col gap-4 md:gap-4 mt-12">
         {myProjects.map((project, idx) => (
           <motion.div
             key={project.id}
@@ -22,8 +22,11 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: idx * 0.1, ease: "easeOut" }}
+            className="w-full"
           >
-            <Project {...project} />
+            <div className="w-full">
+              <Project {...project} />
+            </div>
           </motion.div>
         ))}
       </div>

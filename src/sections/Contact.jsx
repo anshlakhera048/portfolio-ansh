@@ -126,7 +126,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="relative c-space section-spacing w-full min-h-screen" id="contact" aria-label="Contact section">
+    <section className="relative c-space section-spacing w-full min-h-screen mt-28" id="contact" aria-label="Contact section">
       <Particles
         className="absolute inset-0 -z-50"
         quantity={120}
@@ -152,7 +152,7 @@ const Contact = () => {
         Contact
       </motion.h2>
 
-      <div className="relative flex flex-col items-center justify-center w-full max-w-lg p-4 sm:p-10 mx-auto rounded-3xl bg-white/10 dark:bg-midnight/80 shadow-2xl border border-white/20 backdrop-blur-xl overflow-hidden animate-fade-in focus-within:ring-2 focus-within:ring-lavender mt-12" tabIndex={0} aria-label="Contact form">
+      <div className="relative flex flex-col items-center justify-center w-full max-w-lg px-2 py-4 sm:p-6 md:p-10 mx-auto rounded-3xl bg-white/10 dark:bg-midnight/80 shadow-2xl border border-white/20 backdrop-blur-xl overflow-hidden animate-fade-in focus-within:ring-2 focus-within:ring-lavender mt-12" tabIndex={0} aria-label="Contact form">
         <motion.p
           className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-8 drop-shadow-lg text-fuchsia-700 dark:bg-gradient-to-r dark:from-lavender dark:to-fuchsia-400 dark:bg-clip-text dark:text-transparent"
           initial={{ opacity: 0, y: 20 }}
@@ -167,7 +167,7 @@ const Contact = () => {
         <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-tr from-fuchsia-400 via-lavender to-purple-400 opacity-30 rounded-full blur-2xl animate-pulse z-0" />
 
         <form onSubmit={handleSubmit} className="w-full z-10">
-          <div className="mb-6 relative">
+          <div className="mb-3 sm:mb-6 relative">
             <input
               id="name"
               name="name"
@@ -194,7 +194,7 @@ const Contact = () => {
           </div>
 
 
-          <div className="mb-6 relative">
+          <div className="mb-3 sm:mb-6 relative">
             <input
               id="email"
               name="email"
@@ -243,7 +243,7 @@ const Contact = () => {
 
 
 
-          <div className="mb-8 relative">
+          <div className="mb-4 sm:mb-8 relative">
             <textarea
               id="message"
               name="message"
@@ -262,23 +262,25 @@ const Contact = () => {
             )}
           </div>
 
-          <button
-            type="submit"
-            className="w-full px-4 py-3 text-lg text-center rounded-xl font-bold bg-gradient-to-r from-lavender via-fuchsia-400 to-purple-500 shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed tracking-wide"
-            disabled={isLoading}
-          >
-            {!isLoading ? (
-              <span className="flex items-center justify-center gap-2">
-                <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954 8.955c.44.439 1.152.439 1.591 0L22.75 12M12 3v17" /></svg>
-                Send Message
-              </span>
-            ) : (
-              <span className="flex items-center justify-center gap-2">
-                <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path d="M4 12a8 8 0 018-8" stroke="currentColor" strokeWidth="4" strokeLinecap="round" /></svg>
-                Sending...
-              </span>
-            )}
-          </button>
+          <div className="flex justify-center w-full">
+            <button
+              type="submit"
+              className="w-9/12 sm:w-1/2 px-2 py-2 text-sm sm:text-base text-center rounded-lg font-semibold bg-gradient-to-r from-lavender via-fuchsia-400 to-purple-500 shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed tracking-wide"
+              disabled={isLoading}
+            >
+              {!isLoading ? (
+                <span className="flex items-center justify-center gap-1">
+                  <svg className="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954 8.955c.44.439 1.152.439 1.591 0L22.75 12M12 3v17" /></svg>
+                  Send
+                </span>
+              ) : (
+                <span className="flex items-center justify-center gap-1">
+                  <svg className="w-4 h-4 animate-spin" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path d="M4 12a8 8 0 018-8" stroke="currentColor" strokeWidth="4" strokeLinecap="round" /></svg>
+                  Sending...
+                </span>
+              )}
+            </button>
+          </div>
         </form>
       </div>
     </section>

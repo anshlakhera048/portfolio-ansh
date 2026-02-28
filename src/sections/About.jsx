@@ -13,7 +13,7 @@ const About = () => {
       aria-label="About section"
     >
       <h2 className="text-heading mb-2">About Me</h2>
-      <div className="grid grid-cols-1 gap-6 md:gap-8 md:grid-cols-6 md:auto-rows-[18rem] mt-12 px-4 sm:px-0">
+      <div className="grid grid-cols-1 gap-8 md:gap-8 md:grid-cols-6 md:auto-rows-[18rem] mt-12 px-4 sm:px-0">
         {/* Grid 1 */}
         <div className="flex items-end grid-default-color grid-1 relative rounded-2xl shadow-lg focus-within:ring-2 focus-within:ring-indigo-400" tabIndex={0} aria-label="About intro">
           <img
@@ -22,10 +22,10 @@ const About = () => {
             alt="Coding perspective"
           />
           <div className="z-10 w-full p-4 sm:p-6">
-            <p className="headtext text-lg sm:text-xl">
+            <p className="headtext text-2xl sm:text-3xl md:text-4xl font-bold">
               Hi, I&apos;m Ansh Lakhera
             </p>
-            <p className="subtext text-sm sm:text-base">
+            <p className="subtext text-neutral-400 text-base md:text-lg">
               A full-stack developer who loves building scalable backend
               systems, clean interfaces, and practical AI-powered solutions. I
               enjoy turning ideas into reliable, production-ready applications
@@ -39,7 +39,7 @@ const About = () => {
             ref={grid2Container}
             className="flex items-center justify-center w-full h-full relative overflow-hidden"
           >
-            <p className="flex items-end text-2xl sm:text-3xl md:text-5xl text-gray-400 z-0">
+            <p className="flex items-end text-2xl sm:text-3xl md:text-5xl text-gray-400 font-black z-0">
               CODE IS CRAFT
             </p>
             <Card

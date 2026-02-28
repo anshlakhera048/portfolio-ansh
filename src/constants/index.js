@@ -222,11 +222,11 @@ export const experiences = [
     date: "Jan 2026 - Present",
     logo: "/assets/tripfactory.png",
     contents: [
-      "Integrated BPoint REST v5 gateway and implemented payment APIs tested via Postman; stabilized transaction flows.",
-      "Built scalable refund flow with search, excess checks, multi-gateway states, and reduced manual processing delays.",
-      "Developed reusable HTTP layer with secure POST/PUT and safe amount scaling; eliminated cross-service inconsistencies.",
-      "Fixed production bugs in transaction ID mapping, scaling, and session refresh; strengthened state consistency and reduced payment failures.",
-      "Contributed in Agile sprints, optimized state reconciliation, and stabilized cross-gateway payment states across distributed services."
+      "Integrated BPoint REST v5 and built payment APIs; stabilized transaction flows.",
+      "Designed scalable refund flow with search, excess checks, and multi-gateway states.",
+      "Built reusable secure HTTP layer (POST/PUT) with safe amount scaling.",
+      "Resolved production issues in ID mapping, scaling, and session handling; reduced failures.",
+      "Optimized reconciliation and cross-gateway state consistency in distributed services."
     ],
   },
   {
@@ -235,10 +235,10 @@ export const experiences = [
     date: "May 2025 - July 2025",
     logo: "/assets/bluestocks.webp",
     contents: [
-      "Built a scalable full-stack IPO application using React.js, Node.js, and Tailwind CSS, delivering real-time IPO insights through a clean, responsive UI.",
-      "Collaborated in an Agile team, leading standups, sprint planning, and Git-flow processes for smooth, on-time delivery.",
-      "Enhanced frontend performance by modularizing reusable React components and optimizing Tailwind utilities.",
-      "Proposed and drafted scalable architectural upgrades, including WebSocket-based alerts and Dockerized environments, improving future system efficiency."
+      "Developed full-stack IPO platform (React, Node, Tailwind) with real-time insights.",
+      "Worked in Agile team managing sprints and Git workflows.",
+      "Improved frontend performance via modular React components.",
+      "Proposed scalable upgrades: WebSockets and Dockerized environments."
     ],
   },
   {
@@ -247,9 +247,9 @@ export const experiences = [
     date: "April 2024 - May 2024",
     logo: "/assets/warbleSolutions.png",
     contents: [
-      "Designed structured SAP training modules that reduced onboarding time by 50% across 100+ employees.",
-      "Created multimedia tutorial workflows adopted by enterprise clients (e.g., Reliance Industries), boosting training efficiency by 40%.",
-      "Improved documentation clarity and process flow, enabling faster knowledge transfer for new team members."
+      "Designed SAP training modules; reduced onboarding time by 50%.",
+      "Built multimedia tutorials adopted by enterprise clients; improved efficiency 40%.",
+      "Streamlined documentation and process workflows for faster knowledge transfer."
     ],
   },
   {
@@ -258,9 +258,9 @@ export const experiences = [
     date: "2023 - Present",
     logo: "/assets/AvtarKala_Logo.png",
     contents: [
-      "Built custom full-stack web apps, dashboards, and automation tools for individual and startup clients.",
-      "Delivered optimized, production-ready solutions with clean UI/UX, API integrations, and cloud deployment.",
-      "Collaborated directly with clients to define requirements, scope features, and ship high-impact solutions on time."
+      "Built full-stack apps, dashboards, and automation tools for startups.",
+      "Delivered production-ready solutions with APIs and cloud deployment.",
+      "Led client discussions, scoped features, and shipped on time."
     ],
   },
 ];

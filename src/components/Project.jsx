@@ -1,9 +1,20 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useTheme } from "../context/ThemeContext";
 import { motion } from "framer-motion";
 import ProjectDetails from "./ProjectDetails";
 
+const ArrowRightIcon = ({ theme }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" className="w-4 h-4">
+    <path fill={theme === "light" ? "#222" : "#fff"} fillRule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8" clipRule="evenodd"/>
+  </svg>
+);
+
+const ArrowUpIcon = ({ theme }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="w-4 h-4">
+    <path fill="none" stroke={theme === "light" ? "#222" : "#fff"} strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.5 10.5L21 3m-5 0h5v5m0 6v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/>
+  </svg>
+);
 
 const Project = ({
   title,
@@ -50,6 +61,7 @@ const Project = ({
                 <span
                   key={tag.id}
                   className="flex items-center gap-1 px-3 py-1 rounded-full bg-primary/10 text-primary dark:text-lavender text-xs md:text-sm font-semibold shadow-sm border border-black-300"
+                  style={{ minWidth: 0 }}
                 >
                   {tag.path && (tag.path.startsWith("/assets/") || tag.path.startsWith("data:image/svg+xml")) ? (
                     <img
@@ -64,22 +76,28 @@ const Project = ({
             </div>
           </div>
           <div className="flex items-center gap-4 mt-6">
-            <button
-              onClick={() => setShowDetails(true)}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-purple-500 to-fuchsia-500 text-white font-semibold shadow hover:scale-105 hover:shadow-2xl transition-all duration-200"
-            >
-              Read More
-              <img src="assets/arrow-right.svg" className="w-4 h-4" alt="Arrow right" />
-            </button>
-            <a
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-lavender to-purple-400 text-white font-semibold shadow hover:scale-105 hover:shadow-2xl transition-all duration-200"
-            >
-              Visit Site
-              <img src="assets/arrow-up.svg" className="w-4 h-4" alt="External link" />
-            </a>
+            <div className="flex flex-col sm:flex-row gap-3 w-full">
+              <div className="flex flex-row gap-3 w-full max-[400px]:flex-col">
+                <div className="flex flex-row gap-3 w-full flex-nowrap">
+                  <button
+                    onClick={() => setShowDetails(true)}
+                    className="inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-purple-500 to-fuchsia-500 text-white font-semibold shadow hover:scale-105 hover:shadow-2xl transition-all duration-200 w-auto text-sm sm:text-base"
+                  >
+                    Read More
+                    <ArrowRightIcon theme={theme} />
+                  </button>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-lavender to-purple-400 text-white font-semibold shadow hover:scale-105 hover:shadow-2xl transition-all duration-200 w-auto text-sm sm:text-base"
+                  >
+                    Visit Site
+                    <ArrowUpIcon theme={theme} />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </motion.div>

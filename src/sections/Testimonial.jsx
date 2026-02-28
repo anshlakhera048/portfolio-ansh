@@ -13,7 +13,7 @@ const ReviewCard = ({ img, name, username, body }) => {
       tabIndex={0}
       aria-label={`Testimonial from ${name}`}
     >
-      <div className="flex flex-row items-center gap-2">
+      <div className="flex flex-row items-center gap-4">
         <img
           className="rounded-full bg-white/10"
           width="32"
@@ -22,22 +22,22 @@ const ReviewCard = ({ img, name, username, body }) => {
           src={img}
         />
         <div className="flex flex-col">
-          <figcaption className="text-sm font-medium text-white">
+          <figcaption className="text-base font-bold text-white">
             {name}
           </figcaption>
           <p className="text-xs font-medium text-white/40">{username}</p>
         </div>
       </div>
-      <blockquote className="mt-2 text-sm">{body}</blockquote>
+      <blockquote className="mt-2 text-base font-medium">{body}</blockquote>
     </figure>
   );
 };
 
 export default function Testimonial() {
   return (
-    <section className="items-start mt-25 md:mt-35 c-space" aria-label="Testimonials">
+    <section className="items-start c-space section-spacing mt-28" aria-label="Testimonials">
       <h2 className="text-heading mb-2">Hear From My Clients</h2>
-      <div className="relative flex flex-col items-center justify-center w-full mt-12 overflow-hidden">
+      <div className="relative flex flex-col items-center justify-center w-full mt-12 gap-8 overflow-hidden">
         <Marquee pauseOnHover aria-label="Client testimonials" className="[--duration:20s]">
           {firstRow.map((review) => (
             <ReviewCard key={review.username} {...review} />

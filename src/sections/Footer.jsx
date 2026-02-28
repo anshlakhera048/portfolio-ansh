@@ -38,8 +38,8 @@ const Footer = () => {
   }, [svgCache]);
 
   return (
-    <footer className="w-full max-w-[100vw] flex flex-col items-center justify-center gap-4 pb-3 text-xs sm:text-sm text-neutral-400 bg-transparent" aria-label="Footer">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full flex flex-col sm:flex-row flex-wrap items-center justify-between gap-4 sm:gap-5">
+    <footer className="w-full max-w-[100vw] flex flex-col items-center justify-center gap-8 pb-3 text-xs sm:text-sm text-neutral-400 bg-transparent" aria-label="Footer">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full flex flex-col sm:flex-row flex-wrap items-center justify-between gap-8">
         <div
           className={
             `mb-4 h-[1px] w-full ` +

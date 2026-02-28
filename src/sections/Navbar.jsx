@@ -140,7 +140,15 @@ const Navbar = () => {
                 ${theme === "light" ? "text-gray-700 hover:text-indigo-700" : "text-neutral-400 hover:text-white"}`}
             >
               <img
-                src={isOpen ? "assets/close.svg" : "assets/menu.svg"}
+                src={
+                  theme === "light"
+                    ? isOpen
+                      ? "assets/close-dark.svg"
+                      : "assets/menu-dark.svg"
+                    : isOpen
+                    ? "assets/close.svg"
+                    : "assets/menu.svg"
+                }
                 className="w-6 h-6"
                 alt="toggle"
               />
