@@ -1,76 +1,101 @@
 "use client";
-import { useScroll, useTransform, motion } from "framer-motion";
+
+import { useScroll, useTransform, motion, AnimatePresence } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
+
 export const Timeline = ({ data }) => {
-  const ref = useRef(null);
   const containerRef = useRef(null);
-  const [height, setHeight] = useState(0);
+  const [progress, setProgress] = useState(0);
 
+  // Animate vertical progress bar as user scrolls
   useEffect(() => {
-    if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      setHeight(rect.height);
-    }
-  }, [ref]);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 10%", "end 50%"],
-  });
-
-  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
-  const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const totalHeight = rect.height - windowHeight * 0.3;
+      const scrolled = Math.min(Math.max(windowHeight * 0.3 - rect.top, 0), totalHeight);
+      setProgress(totalHeight > 0 ? scrolled / totalHeight : 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <div className="c-space section-spacing" ref={containerRef}>
-      <h2 className="text-heading">My Work Experience</h2>
-      <div ref={ref} className="relative pb-20">
-        {data.map((item, index) => (
-          <div
-            key={index}
-            className="flex justify-start pt-10 md:pt-40 md:gap-10"
-          >
-            <div className="sticky z-40 flex flex-col items-center self-start max-w-xs md:flex-row top-20 sm:top-32 md:top-40 lg:max-w-sm md:w-full">
-              <div className="absolute flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full -left-[12px] sm:-left-[15px] bg-midnight z-10">
-                <div className="w-3 h-3 sm:w-4 sm:h-4 p-1.5 sm:p-2 border rounded-full bg-neutral-800 border-neutral-700" />
+    <section className="c-space section-spacing relative" ref={containerRef}>
+      <div className="relative flex flex-col md:gap-16 gap-10 max-w-4xl mx-auto">
+        <AnimatePresence>
+          {data.map((item, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: idx * 0.15, type: "spring", bounce: 0.2 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="relative flex md:items-center gap-6 md:gap-10 group"
+            >
+              {/* Modern Timeline Dot + Connector */}
+              <div className="z-10 flex flex-col items-center min-w-[2.5rem]">
+                <motion.span
+                  className="block w-7 h-7 md:w-9 md:h-9 rounded-full bg-gradient-to-br from-indigo via-lavender to-fuchsia-400 border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-300"
+                  animate={{ boxShadow: [
+                    "0 0 0 0 rgba(102,126,234,0.15)",
+                    "0 0 0 8px rgba(102,126,234,0.08)",
+                    "0 0 0 0 rgba(102,126,234,0.15)"
+                  ] }}
+                  transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                />
+                {idx !== data.length - 1 && (
+                  <motion.span
+                    className="w-1 h-full bg-gradient-to-b from-indigo via-lavender to-fuchsia-400 opacity-70 rounded-full"
+                    initial={{ scaleY: 0.7 }}
+                    animate={{ scaleY: 1 }}
+                    transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+                  />
+                )}
               </div>
-              <div className="flex-col hidden gap-2 text-xl font-bold md:flex md:pl-20 md:text-4xl text-neutral-300">
-                <h3>{item.date}</h3>
-                <h3 className="text-3xl text-neutral-400">{item.title}</h3>
-                <h3 className="text-3xl text-neutral-500">{item.job}</h3>
-              </div>
-            </div>
-
-            <div className="relative w-full pl-12 sm:pl-16 md:pl-20 pr-4 md:pl-4">
-              <div className="block mb-3 sm:mb-4 text-lg sm:text-xl md:text-2xl font-bold text-left text-neutral-300 md:hidden">
-                <h3 className="text-base sm:text-lg">{item.date}</h3>
-                <h3 className="text-lg sm:text-xl">{item.title}</h3>
-                <h3 className="text-base sm:text-lg text-neutral-400">{item.job}</h3>
-              </div>
-              {item.contents.map((content, index) => (
-                <p className="mb-2 sm:mb-3 text-sm sm:text-base font-normal text-neutral-400" key={index}>
-                  {content}
-                </p>
-              ))}
-            </div>
-          </div>
-        ))}
-        <div
-          style={{
-            height: height + "px",
-          }}
-          className="absolute left-0 sm:left-[2px] md:left-1 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-neutral-700 to-transparent to-[99%]  [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] "
-        >
-          <motion.div
-            style={{
-              height: heightTransform,
-              opacity: opacityTransform,
-            }}
-            className="absolute inset-x-0 top-0  w-[2px] bg-gradient-to-t from-purple-500 via-lavender/50 to-transparent from-[0%] via-[10%] rounded-full"
-          />
-        </div>
+              {/* Experience Card */}
+              <motion.div
+                whileHover={{ scale: 1.04, boxShadow: "0 12px 36px 0 rgba(102,126,234,0.18)" }}
+                className="flex-1 bg-black-200 dark:bg-midnight rounded-2xl shadow-xl border border-black-300 px-6 py-6 md:py-8 transition-all duration-300"
+              >
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-2">
+                  <div className="flex items-center gap-3">
+                    {item.logo && (
+                      <img src={item.logo} alt={item.title} className="w-10 h-10 rounded-md object-contain bg-white p-1 shadow" />
+                    )}
+                    <h3 className="text-xl md:text-2xl font-bold text-white-800 dark:text-white mb-1 md:mb-0">
+                      {item.title}
+                    </h3>
+                  </div>
+                  <span className="text-sm md:text-base font-semibold text-primary dark:text-lavender bg-primary/10 px-3 py-1 rounded-full">
+                    {item.date}
+                  </span>
+                </div>
+                <div className="text-base md:text-lg text-white-600 dark:text-neutral-300 font-medium mb-1">
+                  {item.job}
+                </div>
+                <ul className="list-disc pl-5 space-y-2 mt-2">
+                  {item.contents.map((content, i) => (
+                    <motion.li
+                      key={i}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: i * 0.08 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      className="text-white-600 dark:text-neutral-400 text-sm md:text-base"
+                    >
+                      {content}
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
-    </div>
+    </section>
   );
 };

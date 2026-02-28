@@ -14,6 +14,13 @@
   --color-orange: #cc6033;
   --color-sand: #d6995c;
   --color-coral: #ea4884;
+  
+  /* Light mode colors */
+  --color-light-primary: #f8f9fa;
+  --color-light-secondary: #ffffff;
+  --color-light-text: #1a202c;
+  --color-light-text-secondary: #4a5568;
+  --color-light-border: #e2e8f0;
   --animate-orbit: orbit 50s linear infinite;
   @keyframes orbit {
     0% {
@@ -65,6 +72,410 @@ body {
   color: white;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode styles */
+html.light body {
+  background: #f8f9fa;
+  color: #1a202c;
+}
+
+/* Text colors */
+html.light .text-white {
+  color: #1a202c !important;
+}
+
+html.light .text-neutral-300,
+html.light .text-neutral-400,
+html.light .text-neutral-500 {
+  color: #4a5568 !important;
+}
+
+html.light .text-gray-400 {
+  color: #718096 !important;
+}
+
+html.light .text-white\/40,
+html.light .text-white\/60 {
+  color: rgba(26, 32, 44, 0.6) !important;
+}
+
+html.light .text-red-400 {
+  color: #e53e3e !important;
+}
+
+/* Background colors */
+html.light .bg-primary {
+  background: #ffffff !important;
+}
+
+html.light .bg-black-100,
+html.light .bg-black-200,
+html.light .bg-black-300,
+html.light .bg-white\/10,
+html.light .bg-white\/20 {
+  background: rgba(255,255,255,0.92) !important;
+  border: 1.5px solid #e2e8f0 !important;
+  box-shadow: 0 8px 32px 0 rgba(102,126,234,0.10) !important;
+  color: #1a202c !important;
+}
+
+html.light .bg-primary\/40 {
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Borders */
+html.light .border-white\/10,
+html.light .border-white\/20 {
+  border-color: #e2e8f0 !important;
+}
+
+html.light .border-black-300 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Backdrop blur */
+html.light .backdrop-blur-lg,
+html.light .backdrop-blur-md {
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Gradients - convert to solid light colors */
+html.light .bg-gradient-to-b.from-storm.to-indigo,
+html.light .grid-default-color {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+html.light .bg-gradient-to-b.from-royal.to-lavender,
+html.light .grid-special-color {
+  background: #f7fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+html.light .bg-gradient-to-tl,
+html.light .grid-black-color {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+html.light .bg-gradient-to-r {
+  background: linear-gradient(to right, #667eea, #764ba2) !important;
+}
+
+/* Form inputs */
+html.light .field-input {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e0 !important;
+  color: #1a202c !important;
+}
+
+html.light .field-input::placeholder {
+  color: #a0aec0 !important;
+}
+
+html.light .field-input:focus {
+  border-color: #667eea !important;
+  outline: none !important;
+}
+
+/* Buttons */
+html.light .btn {
+  background: linear-gradient(90deg, #667eea 60%, #764ba2 100%) !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: 0 2px 8px 0 rgba(102,126,234,0.10);
+}
+
+/* Navigation */
+html.light .nav-link {
+  color: #4a5568 !important;
+  background: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  transition: color 0.2s;
+}
+html.light .nav-link.text-white,
+html.light .nav-link.active {
+  color: #fff !important;
+  background: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+html.light .nav-link:hover {
+  color: #fff !important;
+  background: #667eea !important;
+}
+html.light .nav-li {
+  color: #4a5568 !important;
+}
+html.light .nav-li:hover {
+  color: #667eea !important;
+}
+html.light .navbar,
+html.light .fixed.inset-x-0.z-50.w-full.backdrop-blur-lg {
+  background: rgba(3,4,18,0.85) !important;
+  border-bottom: 1px solid #23263a !important;
+  box-shadow: 0 2px 8px 0 rgba(3,4,18,0.10);
+}
+
+/* Cards and containers */
+html.light .rounded-lg,
+html.light .rounded-xl,
+html.light .rounded-2xl {
+  background: #fff !important;
+  box-shadow: 0 8px 32px 0 rgba(102,126,234,0.08), 0 1.5px 4px 0 rgba(0,0,0,0.04) !important;
+  border: 1.5px solid #e2e8f0 !important;
+}
+
+/* Headings */
+html.light .text-heading,
+html.light .headtext,
+html.light .head-text {
+  color: #5a67d8 !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  background-clip: initial !important;
+  text-fill-color: initial !important;
+}
+
+html.light .subtext {
+  color: #4a5568 !important;
+}
+
+/* Footer */
+html.light footer {
+  border-top: 1px solid #e2e8f0 !important;
+}
+
+/* Work/Projects section tags */
+html.light .p-3.rounded-md {
+  background: #f7fafc !important;
+}
+
+/* Specific overrides for better contrast */
+html.light .opacity-50 {
+  opacity: 0.7 !important;
+}
+
+html.light .text-white-600,
+html.light .text-white-700,
+html.light .text-white-800 {
+  color: #2d3748 !important;
+}
+
+/* Hero section */
+html.light .absolute {
+  mix-blend-mode: normal !important;
+}
+
+/* 3D canvas background */
+html.light canvas {
+  opacity: 0.4 !important;
+}
+
+/* Alert component */
+html.light .bg-black-200,
+html.light .bg-black-300 {
+  background: #ffffff !important;
+}
+
+/* Social links and icons */
+html.light svg {
+  filter: none !important;
+}
+
+html.light .hover\:text-white:hover {
+  color: #667eea !important;
+}
+
+/* Timeline and Experience cards */
+html.light .border-l,
+html.light .border-r,
+html.light .border-t,
+html.light .border-b {
+  border-color: #e2e8f0 !important;
+}
+
+/* Scrollbar styling for light mode */
+html.light ::-webkit-scrollbar-track {
+  background: #f1f1f1 !important;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e0 !important;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0 !important;
+}
+
+/* Copy button and interactive elements */
+html.light button,
+html.light .cursor-pointer {
+  transition: all 0.2s ease !important;
+}
+
+html.light button:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* Modal and overlay backgrounds */
+html.light .fixed.inset-0 {
+  background: rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Tag/Badge styles */
+html.light .rounded-full,
+html.light .rounded-md {
+  background: #f7fafc !important;
+  color: #2d3748 !important;
+}
+
+/* Shadow improvements */
+html.light .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light .shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Improve readability of code/pre blocks if any */
+html.light pre,
+html.light code {
+  background: #2d3748 !important;
+  color: #f7fafc !important;
+}
+
+/* Add subtle dividers between sections */
+html.light section {
+  border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+  background: #f8f9fa !important;
+}
+
+html.light section:last-child {
+  border-bottom: none;
+}
+
+/* Ensure proper contrast for all heading levels */
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5,
+html.light h6 {
+  color: #1a202c !important;
+  font-weight: 600 !important;
+}
+
+/* Large display text like FlipWords */
+html.light .font-black,
+html.light .text-8xl,
+html.light .text-7xl,
+html.light .text-6xl,
+html.light .text-5xl {
+  color: #1a202c !important;
+  font-weight: 800 !important;
+}
+
+/* Paragraph text */
+html.light p {
+  color: #4a5568 !important;
+}
+
+/* Link styling */
+html.light a {
+  color: #667eea !important;
+  transition: color 0.2s ease !important;
+}
+
+html.light a:hover {
+  color: #5a67d8 !important;
+}
+
+/* Loading spinner if present */
+html.light .animate-spin {
+  color: #667eea !important;
+}
+
+/* ScrollToTop button */
+html.light .fixed.bottom-8.right-8 {
+  background: linear-gradient(to right, #667eea, #764ba2) !important;
+  border-color: rgba(102, 126, 234, 0.3) !important;
+  box-shadow: 0 10px 15px -3px rgba(102, 126, 234, 0.3) !important;
+}
+
+/* Navbar specific improvements */
+html.light nav,
+html.light .fixed.top-0 {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Card hover effects */
+html.light .hover\:-translate-y-1:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Ensure good contrast for spans */
+html.light span {
+  color: inherit !important;
+}
+
+/* Project cards and image containers */
+html.light .relative.overflow-hidden {
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* Make sure logos and images are visible */
+html.light img {
+  mix-blend-mode: normal !important;
+}
+
+/* Tech stack icons container */
+html.light .grid > div {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* Testimonial cards if present */
+html.light figure {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* Timeline dots and connectors */
+html.light .w-4.h-4.rounded-full {
+  background: #667eea !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Focus states for accessibility */
+html.light *:focus-visible {
+  outline: 2px solid #667eea !important;
+  outline-offset: 2px !important;
+}
+
+/* Disabled state */
+html.light .disabled\:opacity-50:disabled,
+html.light [disabled] {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+/* Selection color */
+html.light ::selection {
+  background: #667eea !important;
+  color: #ffffff !important;
+}
+
+/* Smooth transition for theme switch */
+html.light * {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
 }
 
 #root {

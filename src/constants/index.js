@@ -154,7 +154,7 @@ export const myProjects = [
       {
         id: 1,
         name: "Python",
-        path: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU1IiB2aWV3Qm94PSIwIDAgMjU2IDI1NSI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJTVkdzR20zNWNqUCIgeDE9IjEyLjk1OSUiIHgyPSI3OS42MzklIiB5MT0iMTIuMDM5JSIgeTI9Ijc4LjIwMSUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMzODdlYjgiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzNjY5OTQiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHU3ZRYUxjaFQiIHgxPSIxOS4xMjglIiB4Mj0iOTAuNzQyJSIgeTE9IjIwLjU3OSUiIHkyPSI4OC40MjklIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmZlMDUyIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmZjMzMxIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHBhdGggZmlsbD0idXJsKCNTVkdzR20zNWNqUCkiIGQ9Ik0xMjYuOTE2LjA3MmMtNjQuODMyIDAtNjAuNzg0IDI4LjExNS02MC43ODQgMjguMTE1bC4wNzIgMjkuMTI4aDYxLjg2OHY4Ljc0NUg0MS42MzFTLjE0NSA2MS4zNTUuMTQ1IDEyNi43N2MwIDY1LjQxNyAzNi4yMSA2My4wOTcgMzYuMjEgNjMuMDk3aDIxLjYxdi0zMC4zNTZzLTEuMTY1LTM2LjIxIDM1LjYzMi0zNi4yMWg2MS4zNjJzMzQuNDc1LjU1NyAzNC40NzUtMzMuMzE5VjMzLjk3UzE5NC42Ny4wNzIgMTI2LjkxNi4wNzJNOTIuODAyIDE5LjY2YTExLjEyIDExLjEyIDAgMCAxIDExLjEzIDExLjEzYTExLjEyIDExLjEyIDAgMCAxLTExLjEzIDExLjEzYTExLjEyIDExLjEyIDAgMCAxLTExLjEzLTExLjEzYTExLjEyIDExLjEyIDAgMCAxIDExLjEzLTExLjEzIi8+PHBhdGggZmlsbD0idXJsKCNTVkdTdlFhTGNoVCkiIGQ9Ik0xMjguNzU3IDI1NC4xMjZjNjQuODMyIDAgNjAuNzg0LTI4LjExNSA2MC43ODQtMjguMTE1bC0uMDcyLTI5LjEyN0gxMjcuNnYtOC43NDVoODYuNDQxczQxLjQ4NiA0LjcwNSA0MS40ODYtNjAuNzEyYzAtNjUuNDE2LTM2LjIxLTYzLjA5Ni0zNi4yMS02My4wOTZoLTIxLjYxdjMwLjM1NXMxLjE2NSAzNi4yMS0zNS42MzIgMzYuMjFoLTYxLjM2MnMtMzQuNDc1LS41NTctMzQuNDc1IDMzLjMydjU2LjAxM3MtNS4yMzUgMzMuODk3IDYyLjUxOCAzMy44OTdtMzQuMTE0LTE5LjU4NmExMS4xMiAxMS4xMiAwIDAgMS0xMS4xMy0xMS4xM2ExMS4xMiAxMS4xMiAwIDAgMSAxMS4xMy0xMS4xMzFhMTEuMTIgMTEuMTIgMCAwIDEgMTEuMTMgMTEuMTNhMTEuMTIgMTEuMTIgMCAwIDEtMTEuMTMgMTEuMTMiLz48L3N2Zz4=/assets/logos/python.svg",
+        path: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjMDI4OGQxIiBkPSJNOS44NiAyQTIuODYgMi44NiAwIDAgMCA3IDQuODZ2MS42OGg0LjI5Yy4zOSAwIC43MS41Ny43MS45Nkg0Ljg2QTIuODYgMi44NiAwIDAgMCAyIDEwLjM2djMuNzgxYTIuODYgMi44NiAwIDAgMCAyLjg2IDIuODZoMS4xOHYtMi42OGEyLjg1IDIuODUgMCAwIDEgMi44NS0yLjg2aDUuMjVjMS41OCAwIDIuODYtMS4yNzEgMi44Ni0yLjg1MVY0Ljg2QTIuODYgMi44NiAwIDAgMCAxNC4xNCAyem0tLjcyIDEuNjFjLjQgMCAuNzIuMTIuNzIuNzFzLS4zMi44OTEtLjcyLjg5MWMtLjM5IDAtLjcxLS4zLS43MS0uODlzLjMyLS43MTEuNzEtLjcxMSIvPjxwYXRoIGZpbGw9IiNmZGQ4MzUiIGQ9Ik0xNy45NTkgN3YyLjY4YTIuODUgMi44NSAwIDAgMS0yLjg1IDIuODU5SDkuODZBMi44NSAyLjg1IDAgMCAwIDcgMTUuMzg5djMuNzVhMi44NiAyLjg2IDAgMCAwIDIuODYgMi44Nmg0LjI4QTIuODYgMi44NiAwIDAgMCAxNyAxOS4xNHYtMS42OGgtNC4yOTFjLS4zOSAwLS43MDktLjU3LS43MDktLjk2aDcuMTRBMi44NiAyLjg2IDAgMCAwIDIyIDEzLjY0VjkuODZBMi44NiAyLjg2IDAgMCAwIDE5LjE0IDd6TTguMzIgMTEuNTEzbC0uMDA0LjAwNGwuMDM4LS4wMDR6bTYuNTQgNy4yNzZjLjM5IDAgLjcxLjMuNzEuODlhLjcxLjcxIDAgMCAxLS43MS43MWMtLjQgMC0uNzItLjEyLS43Mi0uNzFzLjMyLS44OS43Mi0uODkiLz48L3N2Zz4=",
       },
     ],
   },
@@ -217,37 +217,52 @@ export const mySocials = [
 
 export const experiences = [
   {
+    title: "Tripfactory",
+    job: "SDE Intern",
+    date: "Jan 2026 - Present",
+    logo: "/assets/tripfactory.png",
+    contents: [
+      "Integrated BPoint REST v5 gateway and implemented payment APIs tested via Postman; stabilized transaction flows.",
+      "Built scalable refund flow with search, excess checks, multi-gateway states, and reduced manual processing delays.",
+      "Developed reusable HTTP layer with secure POST/PUT and safe amount scaling; eliminated cross-service inconsistencies.",
+      "Fixed production bugs in transaction ID mapping, scaling, and session refresh; strengthened state consistency and reduced payment failures.",
+      "Contributed in Agile sprints, optimized state reconciliation, and stabilized cross-gateway payment states across distributed services."
+    ],
+  },
+  {
     title: "Bluestock Fintech",
     job: "SDE Intern",
     date: "May 2025 - July 2025",
+    logo: "/assets/bluestocks.webp",
     contents: [
-      "✔️ Built a scalable full-stack IPO application using React.js, Node.js & Tailwind CSS, delivering real-time IPO insights through a clean and responsive UI.",
-      "🚀 Collaborated in an Agile team of 10+, leading standups, sprint planning & Git-flow processes for smooth and on-time delivery.",
-      "⚡ Enhanced frontend performance by modularizing reusable React components & optimizing Tailwind utilities.",
-      "🛠️ Proposed and drafted scalable architectural upgrades including WebSocket-based alerts & Dockerized environments, improving future system efficiency.",
+      "Built a scalable full-stack IPO application using React.js, Node.js, and Tailwind CSS, delivering real-time IPO insights through a clean, responsive UI.",
+      "Collaborated in an Agile team, leading standups, sprint planning, and Git-flow processes for smooth, on-time delivery.",
+      "Enhanced frontend performance by modularizing reusable React components and optimizing Tailwind utilities.",
+      "Proposed and drafted scalable architectural upgrades, including WebSocket-based alerts and Dockerized environments, improving future system efficiency."
     ],
   },
   {
     title: "Warble Solutions",
     job: "UI/UX Intern",
     date: "April 2024 - May 2024",
+    logo: "/assets/warbleSolutions.png",
     contents: [
-      "🎯 Designed structured SAP training modules that reduced onboarding time by **50%** across 100+ employees.",
-      "📹 Created 10+ multimedia tutorial workflows adopted by enterprise clients (e.g., Reliance Industries), boosting training efficiency by **40%**.",
-      "✔️ Improved documentation clarity & process flow, enabling faster knowledge transfer for beginners.",
+      "Designed structured SAP training modules that reduced onboarding time by 50% across 100+ employees.",
+      "Created multimedia tutorial workflows adopted by enterprise clients (e.g., Reliance Industries), boosting training efficiency by 40%.",
+      "Improved documentation clarity and process flow, enabling faster knowledge transfer for new team members."
     ],
   },
   {
     title: "Freelancer",
     job: "Software Developer",
     date: "2023 - Present",
+    logo: "/assets/AvtarKala_Logo.png",
     contents: [
-      "🧩 Built custom full-stack web apps, dashboards & automation tools for individual and startup clients.",
-      "✔️ Delivered optimized, production-ready solutions with clean UI/UX, API integrations & cloud deployment.",
-      "🤝 Collaborated directly with clients to define requirements, scope features & ship high-impact solutions on time.",
+      "Built custom full-stack web apps, dashboards, and automation tools for individual and startup clients.",
+      "Delivered optimized, production-ready solutions with clean UI/UX, API integrations, and cloud deployment.",
+      "Collaborated directly with clients to define requirements, scope features, and ship high-impact solutions on time."
     ],
   },
-  ,
 ];
 
 export const reviews = [

@@ -10,11 +10,12 @@ const About = () => {
     <section
       className="c-space section-spacing overflow-x-hidden w-full"
       id="about"
+      aria-label="About section"
     >
-      <h2 className="text-heading">About Me</h2>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-12">
+      <h2 className="text-heading mb-2">About Me</h2>
+      <div className="grid grid-cols-1 gap-6 md:gap-8 md:grid-cols-6 md:auto-rows-[18rem] mt-12 px-4 sm:px-0">
         {/* Grid 1 */}
-        <div className="flex items-end grid-default-color grid-1">
+        <div className="flex items-end grid-default-color grid-1 relative rounded-2xl shadow-lg focus-within:ring-2 focus-within:ring-indigo-400" tabIndex={0} aria-label="About intro">
           <img
             src="assets/coding-pov.png"
             className="absolute scale-[1.2] -right-[3rem] -top-[0.5rem] sm:scale-[1.5] sm:-right-[4rem] md:scale-[3] md:left-50 md:inset-y-10 lg:scale-[2.5]"
@@ -33,7 +34,7 @@ const About = () => {
           <div className="absolute inset-x-0 pointer-events-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-indigo" />
         </div>
         {/* Grid 2 */}
-        <div className="grid-default-color grid-2">
+        <div className="grid-default-color grid-2 relative rounded-2xl shadow-lg" tabIndex={0} aria-label="Tech principles">
           <div
             ref={grid2Container}
             className="flex items-center justify-center w-full h-full relative overflow-hidden"
@@ -84,7 +85,7 @@ const About = () => {
           </div>
         </div>
         {/* Grid 3 */}
-        <div className="grid-black-color grid-3 relative overflow-hidden">
+        <div className="grid-black-color grid-3 relative overflow-hidden rounded-2xl shadow-lg" tabIndex={0} aria-label="Location">
           <div className="z-10 w-full sm:w-[60%] md:w-[50%] p-4 sm:p-6">
             <p className="headtext text-lg sm:text-xl">Based In</p>
             <p className="subtext text-sm sm:text-base">
@@ -97,7 +98,7 @@ const About = () => {
           </figure>
         </div>
         {/* Grid 4 */}
-        <div className="grid-special-color grid-4">
+        <div className="grid-special-color grid-4 rounded-2xl shadow-lg" tabIndex={0} aria-label="Contact prompt">
           <div className="flex flex-col items-center justify-center gap-4 size-full">
             <p className="text-center headtext text-lg sm:text-xl px-4">
               Do you want to start a project together?
@@ -106,7 +107,7 @@ const About = () => {
           </div>
         </div>
         {/* Grid 5 */}
-        <div className="grid-default-color grid-5 relative overflow-hidden">
+        <div className="grid-default-color grid-5 relative overflow-hidden rounded-2xl shadow-lg" tabIndex={0} aria-label="Tech stack">
           <div className="z-10 w-40 sm:w-[60%] md:w-[50%] lg:w-[45%] p-4 sm:p-6">
             <p className="headtext text-lg sm:text-xl">Tech Stack</p>
             <p className="subtext text-sm sm:text-base">

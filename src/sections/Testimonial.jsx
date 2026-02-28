@@ -8,15 +8,17 @@ const ReviewCard = ({ img, name, username, body }) => {
   return (
     <figure
       className={twMerge(
-        "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4 border-gray-50/[.1] bg-gradient-to-r bg-indigo to-storm hover:bg-royal hover-animation"
+        "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4 border-gray-50/[.1] bg-gradient-to-r bg-indigo to-storm hover:bg-royal hover:shadow-xl transition-all duration-200 focus-within:ring-2 focus-within:ring-indigo-400"
       )}
+      tabIndex={0}
+      aria-label={`Testimonial from ${name}`}
     >
       <div className="flex flex-row items-center gap-2">
         <img
           className="rounded-full bg-white/10"
           width="32"
           height="32"
-          alt=""
+          alt={name}
           src={img}
         />
         <div className="flex flex-col">
@@ -33,15 +35,15 @@ const ReviewCard = ({ img, name, username, body }) => {
 
 export default function Testimonial() {
   return (
-    <div className="items-start mt-25 md:mt-35 c-space">
-      <h2 className="text-heading">Hear From My Clients</h2>
+    <section className="items-start mt-25 md:mt-35 c-space" aria-label="Testimonials">
+      <h2 className="text-heading mb-2">Hear From My Clients</h2>
       <div className="relative flex flex-col items-center justify-center w-full mt-12 overflow-hidden">
-        <Marquee pauseOnHover className="[--duration:20s]">
+        <Marquee pauseOnHover aria-label="Client testimonials" className="[--duration:20s]">
           {firstRow.map((review) => (
             <ReviewCard key={review.username} {...review} />
           ))}
         </Marquee>
-        <Marquee reverse pauseOnHover className="[--duration:20s]">
+        <Marquee reverse pauseOnHover aria-label="Client testimonials" className="[--duration:20s]">
           {secondRow.map((review) => (
             <ReviewCard key={review.username} {...review} />
           ))}
@@ -49,6 +51,6 @@ export default function Testimonial() {
         <div className="absolute inset-y-0 left-0 w-1/4 pointer-events-none bg-gradient-to-r from-primary"></div>
         <div className="absolute inset-y-0 right-0 w-1/4 pointer-events-none bg-gradient-to-l from-primary"></div>
       </div>
-    </div>
+    </section>
   );
 }

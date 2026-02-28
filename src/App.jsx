@@ -5,21 +5,26 @@ import Projects from "./sections/Projects";
 import Experiences from "./sections/Experiences";
 import Contact from "./sections/Contact";
 import Footer from './sections/Footer';
+import ScrollToTop from './components/ScrollToTop';
+import PageTransition from './components/PageTransition';
 
 const App = () => {
   return (
-    <div className="w-full max-w-[100vw] overflow-x-hidden relative">
-      <Navbar />
-      <Hero />
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 overflow-x-hidden">
-        <About />
-        <Projects />
-        <Experiences />
-        {/* <Testimonial /> */}
-        <Contact />
+    <PageTransition>
+      <div className="w-full max-w-[100vw] overflow-x-hidden relative">
+        <Navbar />
+        <Hero />
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 overflow-x-hidden">
+          <About />
+          <Projects />
+          <Experiences />
+          {/* <Testimonial /> */}
+          <Contact />
+        </div>
+        <Footer/>
+        <ScrollToTop />
       </div>
-      <Footer/>
-    </div>
+    </PageTransition>
   );
 };
 
