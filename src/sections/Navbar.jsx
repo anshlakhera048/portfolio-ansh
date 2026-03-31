@@ -69,8 +69,8 @@ function Navigation({ onLinkClick }) {
         {[
           { id: "home", label: "Home" },
           { id: "about", label: "About" },
-          { id: "experiences", label: "Experience" },
           { id: "work", label: "Work" },
+          { id: "experiences", label: "Experience" },
           { id: "contact", label: "Contact" },
         ].map((item) => (
           <li className="nav-li" key={item.id} role="none">
