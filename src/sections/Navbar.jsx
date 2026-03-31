@@ -83,6 +83,8 @@ function Navigation({ onLinkClick }) {
                   : activeSection === item.id
                     ? "text-white font-semibold bg-white/10 rounded-md"
                     : "text-neutral-400 hover:text-white"}
+                    ? "text-white font-semibold bg-white/10 rounded-md"
+                    : "text-neutral-400 hover:text-white"}
               `}
               href={`#${item.id}`}
               onClick={handleClick}
@@ -97,11 +99,7 @@ function Navigation({ onLinkClick }) {
         <li className="nav-li" role="none">
           <a
             className={`nav-link transition-colors duration-200 ${theme === "light" ? "text-gray-700 hover:text-indigo-700" : "text-neutral-400 hover:text-white"}`}
-<<<<<<< HEAD
             href="https://drive.google.com/file/d/1AxaJGhQI10XZJiPptxwBdm95o62TNr1F/view?usp=sharing"
-=======
-            href="https://drive.google.com/file/d/1D7NuvblbaK6YInoVDeL1a7vDvCNkRLVd/view?usp=drive_link"
->>>>>>> main
             target="_blank"
             rel="noopener noreferrer"
             role="menuitem"
