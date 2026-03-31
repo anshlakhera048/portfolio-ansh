@@ -1,6 +1,133 @@
 export const myProjects = [
   {
     id: 1,
+    title: "AgentHub",
+    description:
+      "Modular multi-agent AI orchestration platform with RAG, tool execution, and DAG-based workflows using local LLMs.",
+    subDescription: [
+      "Designed a multi-agent AI system with pluggable agents (prompt optimization, planning, code review, RAG, tool execution) using clean interface-driven architecture.",
+      "Built a central orchestrator supporting agent chaining and DAG-based workflows with async execution using CompletableFuture for parallel processing.",
+      "Implemented Retrieval-Augmented Generation (RAG) using vector embeddings (ChromaDB) to improve response grounding and reduce hallucinations.",
+      "Developed a secure tool-calling framework (file I/O, HTTP client, sandboxed code execution) with LLM-driven tool selection and backend-controlled execution.",
+      "Integrated local LLM inference via Ollama with streaming responses (SSE) and Redis-based session memory for contextual multi-turn interactions.",
+    ],
+    href: "https://github.com/anshlakhera048/AgentHub",
+    logo: "",
+    image: "/assets/projects/agenthub.png",
+    tags: [
+      {
+        id: 1,
+        name: "Java",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+      },
+      {
+        id: 2,
+        name: "Spring Boot",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg",
+      },
+      {
+        id: 3,
+        name: "Redis",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+      },
+      {
+        id: 4,
+        name: "PostgreSQL",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+      },
+      {
+        id: 5,
+        name: "Docker",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+      },
+      {
+        id: 6,
+        name: "React",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      },
+      {
+        id: 7,
+        name: "ChromaDB",
+        path: "https://raw.githubusercontent.com/chroma-core/chroma/main/docs/docs.trychroma.com/img/chroma-logo.png",
+      },
+      {
+        id: 8,
+        name: "Ollama",
+        path: "https://avatars.githubusercontent.com/u/151674099?s=200&v=4",
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "Distributed Payments Infrastructure with Real-Time Fraud Detection",
+    description:
+      "Event-driven distributed payments system with real-time fraud detection, ensuring strong consistency, fault tolerance, and scalable transaction processing using Kafka-based streaming architecture.",
+    subDescription: [
+      "Designed and implemented a high-throughput payments platform using Java (Spring Boot), processing transactions via Kafka-driven asynchronous pipelines with end-to-end fault tolerance.",
+      "Built a strongly consistent double-entry ledger system with account-level optimistic locking to prevent race conditions and ensure ACID-compliant financial operations.",
+      "Implemented idempotent APIs and consumers using Redis caching, DB constraints, and event deduplication to achieve effectively exactly-once processing over Kafka.",
+      "Developed a real-time fraud detection pipeline using Python (FastAPI) with rule-based filtering and ML-based anomaly detection integrated via event streaming.",
+      "Engineered resilience using distributed systems patterns including transactional outbox, Saga workflows, retry with exponential backoff, DLQs, and circuit breakers.",
+      "Integrated observability with Prometheus and Grafana, including Kafka lag monitoring and adaptive backpressure for system stability under high load.",
+    ],
+    href: "https://github.com/anshlakhera048/Distributed-Payment-Infrastructure",
+    logo: "",
+    image: "/assets/projects/payments.png",
+    tags: [
+      {
+        id: 1,
+        name: "Java",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+      },
+      {
+        id: 2,
+        name: "Spring Boot",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg",
+      },
+      {
+        id: 3,
+        name: "Apache Kafka",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg",
+      },
+      {
+        id: 4,
+        name: "PostgreSQL",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+      },
+      {
+        id: 5,
+        name: "Redis",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+      },
+      {
+        id: 6,
+        name: "Python",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+      },
+      {
+        id: 7,
+        name: "FastAPI",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+      },
+      {
+        id: 8,
+        name: "Docker",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+      },
+      {
+        id: 9,
+        name: "Prometheus",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg",
+      },
+      {
+        id: 10,
+        name: "Grafana",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg",
+      },
+    ],
+  },
+  {
+    id: 3,
     title: "WanderAI",
     description:
       "AI-powered travel planner generating personalized itineraries based on user preferences, deployed on Vercel.",
@@ -29,51 +156,51 @@ export const myProjects = [
       },
     ],
   },
+  // {
+  //   id: 2,
+  //   title: "Eduwave",
+  //   description:
+  //     "Scalable microservices-based learning platform supporting authentication, course management, and containerized deployment.",
+  //   subDescription: [
+  //     "Developed backend microservices using Node.js, Express.js, MongoDB, and JWT for secure authentication and course workflows.",
+  //     "Containerized all services using Docker and Docker Compose for modular deployment and orchestration.",
+  //     "Built a responsive frontend with React.js and Tailwind CSS for seamless login, signup, and course interactions.",
+  //     "Resolved Docker networking, JWT expiration, and MongoDB connectivity issues to ensure platform stability.",
+  //   ],
+  //   href: "https://github.com/anshlakhera048/EduWave",
+  //   logo: "",
+  //   image: "/assets/d.svg",
+  //   tags: [
+  //     {
+  //       id: 1,
+  //       name: "Node.js",
+  //       path: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBmaWxsPSIjODNjZDI5IiBkPSJNMTYgMzBhMi4xNSAyLjE1IDAgMCAxLTEuMDc2LS4yODhMMTEuNSAyNy42ODVjLS41MTEtLjI4Ni0uMjYyLS4zODctLjA5My0uNDQ2YTYuOCA2LjggMCAwIDAgMS41NDktLjdhLjI2LjI2IDAgMCAxIC4yNTUuMDE5bDIuNjMxIDEuNTYzYS4zNC4zNCAwIDAgMCAuMzE4IDBsMTAuMjYtNS45MjJhLjMyLjMyIDAgMCAwIC4xNTctLjI3OFYxMC4wNzVhLjMzLjMzIDAgMCAwLS4xNTktLjI4M2wtMTAuMjYtNS45MTdhLjMyLjMyIDAgMCAwLS4zMTcgMEw1LjU4NyA5Ljc5NGEuMzMuMzMgMCAwIDAtLjE2Mi4yODF2MTEuODQxYS4zMi4zMiAwIDAgMCAuMTYxLjI3NEw4LjQgMjMuODE0YzEuNTI1Ljc2MiAyLjQ1OS0uMTM2IDIuNDU5LTEuMDM4VjExLjA4NWEuMy4zIDAgMCAxIC4zLS4zaDEuM2EuMy4zIDAgMCAxIC4zLjN2MTEuNjkyYzAgMi4wMzUtMS4xMDggMy4yLTMuMDM4IDMuMmE0LjQgNC40IDAgMCAxLTIuMzYzLS42NDJsLTIuNjk3LTEuNTQ3YTIuMTcgMi4xNyAwIDAgMS0xLjA3Ni0xLjg3MlYxMC4wNzVBMi4xNiAyLjE2IDAgMCAxIDQuNjYxIDguMmwxMC4yNjEtNS45MjRhMi4yNSAyLjI1IDAgMCAxIDIuMTU2IDBMMjcuMzM4IDguMmEyLjE3IDIuMTcgMCAwIDEgMS4wNzcgMS44N3YxMS44NDZhMi4xNyAyLjE3IDAgMCAxLTEuMDc3IDEuODcybC0xMC4yNiA1LjkyNEEyLjE1IDIuMTUgMCAwIDEgMTYgMzAiLz48cGF0aCBmaWxsPSIjODNjZDI5IiBkPSJNMTQuMDU0IDE3Ljk1M2EuMy4zIDAgMCAxIC4zLS4zaDEuMzI3YS4zLjMgMCAwIDEgLjI5NS4yNTFjLjIgMS4zNTEuOCAyLjAzMiAzLjUxMyAyLjAzMmMyLjE2MSAwIDMuMDgyLS40ODkgMy4wODItMS42MzZjMC0uNjYxLS4yNjEtMS4xNTItMy42Mi0xLjQ4MWMtMi44MDgtLjI3OC00LjU0NC0uOS00LjU0NC0zLjE0NGMwLTIuMDcgMS43NDUtMy4zMDUgNC42Ny0zLjMwNWMzLjI4NyAwIDQuOTE0IDEuMTQxIDUuMTIgMy41ODlhLjMuMyAwIDAgMS0uMjk1LjMyM2gtMS4zMzZhLjMuMyAwIDAgMS0uMjg4LS4yMzJjLS4zMTktMS40MjEtMS4xLTEuODc1LTMuMi0xLjg3NWMtMi4zNiAwLTIuNjM0LjgyMi0yLjYzNCAxLjQzOGMwIC43NDYuMzI0Ljk2NCAzLjUxIDEuMzg1YzMuMTUzLjQxNyA0LjY1MSAxLjAwNyA0LjY1MSAzLjIyM2MwIDIuMjM2LTEuODY0IDMuNTE2LTUuMTE1IDMuNTE2Yy00LjQ5NS4wMDYtNS40MzYtMi4wNTUtNS40MzYtMy43ODQiLz48L3N2Zz4=",
+  //     },
+  //     {
+  //       id: 2,
+  //       name: "Express.js",
+  //       path: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiI+PGcgZmlsbD0ibm9uZSI+PHJlY3Qgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiIGZpbGw9IiNmNGYyZWQiIHJ4PSI2MCIvPjxwYXRoIGZpbGw9IiMwZjBmMGYiIGQ9Ik0yMjggMTgyLjkzN2ExMi43MyAxMi43MyAwIDAgMS0xNS43OTEtNi4wMDVjLTkuMDYzLTEzLjU2Ny0xOS4wNzEtMjYuNTIyLTI4LjY5LTM5Ljc1NWwtNC4xNzEtNS41NmMtMTEuNDU0IDE1LjM0Ni0yMi45MDggMzAuMDgtMzMuMzYxIDQ1LjM3MWExMi4yMyAxMi4yMyAwIDAgMS0xNS4wMTIgNS44OTRsNDIuOTgtNTcuNjU5bC0zOS45NzgtNTIuMWExMy4yOSAxMy4yOSAwIDAgMSAxNS44NDcgNS41NmM5LjI4NSAxMy41NjggMTkuNTcyIDI2LjUyMyAyOS44MDIgNDAuMjU3YzEwLjI4Ny0xMy42MjMgMjAuNDYyLTI2LjYzNCAyOS45Ny00MC4wOWExMS45NSAxMS45NSAwIDAgMSAxNC45MDEtNS41NmwtMTUuNTEzIDIwLjU3M2MtNi45NSA5LjE3NC0xMy43ODkgMTguNDA0LTIxLjAxNyAyNy4zNTZhNS41NiA1LjU2IDAgMCAwIDAgOC4yODVjMTMuMjg5IDE3LjYyNiAyNi40NjYgMzUuMzA3IDQwLjAzMyA1My40MzNNMjggMTI0LjVjMS4xNjgtNS41NiAxLjg5LTExLjYyMSAzLjUwMy0xNy4yOTJjOS42MTktMzQuMTk1IDQ4LjgxOC00OC40MyA3NS43ODUtMjcuMjQ1YzE1Ljc5MSAxMi40IDE5LjczOSAyOS45NyAxOC45NjEgNDkuNzY0SDM3LjI4NmMtMS40NDYgMzUuMzYzIDI0LjA3NSA1Ni43MTQgNTYuNzEzIDQ1LjgxNmEzMy44NiAzMy44NiAwIDAgMCAyMS41MTgtMjMuOTY1YzEuNzI0LTUuNTYgNC41MDQtNi41MDUgOS43ODYtNC44OTNhNDUuMTUgNDUuMTUgMCAwIDEtMjEuNTczIDMyLjk3MmE1Mi4yNiA1Mi4yNiAwIDAgMS02MC44ODQtNy43ODRhNTQuNzcgNTQuNzcgMCAwIDEtMTMuNjc4LTMyLjEzOGMwLTEuODktLjcyMy0zLjc4MS0xLjExMi01LjU2QTg2MSA4NjEgMCAwIDEgMjggMTI0LjVtOS4zOTctMi4zOTFoODAuNDU2Yy0uNTAxLTI1LjYzMi0xNi42ODEtNDMuODE0LTM4LjI1NC00My45OGMtMjQuMDItLjMzNC00MS4yMDEgMTcuNDU4LTQyLjI1OCA0My44Njl6Ii8+PC9nPjwvc3ZnPg==",
+  //     },
+  //     {
+  //       id: 3,
+  //       name: "MongoDB",
+  //       path: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiI+PGcgZmlsbD0ibm9uZSI+PHJlY3Qgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiIGZpbGw9IiMwMjM0MzAiIHJ4PSI2MCIvPjxwYXRoIGZpbGw9IiMxMGFhNTAiIGQ9Ik0xNzEuMTczIDEwNy41OTFjLTEwLjUzNy00Ni40ODEtMzIuNDk3LTU4Ljg1NS0zOC4wOTktNjcuNjAyQTk5IDk5IDAgMCAxIDEyNi45NDkgMjhjLS4yOTYgNC4xMy0uODQgNi43My00LjM1IDkuODYyYy03LjA0NyA2LjI4My0zNi45NzcgMzAuNjczLTM5LjQ5NiA4My40ODZjLTIuMzQ3IDQ5LjI0MiAzNi4yIDc5LjYwNSA0MS4yOTIgODIuNzQ0YzMuOTE2IDEuOTI3IDguNjg1LjA0MSAxMS4wMTItMS43MjhjMTguNTgxLTEyLjc1MiA0My45NjktNDYuNzUgMzUuNzg2LTk0Ljc3MyIvPjxwYXRoIGZpbGw9IiNiOGM0YzIiIGQ9Ik0xMjguNTQ1IDE3Ny44NzFjLS45NyAxMi4xODgtMS42NjUgMTkuMjctNC4xMjkgMjYuMjM1YzAgMCAxLjYxNyAxMS42MDMgMi43NTMgMjMuODk0aDQuMDE5YTIyNCAyMjQgMCAwIDEgNC4zODQtMjUuNzMyYy01LjIwMy0yLjU2LTYuODI3LTEzLjcwMi03LjAyNy0yNC4zOTciLz48cGF0aCBmaWxsPSIjMTI5MjRmIiBkPSJNMTM1LjU2NSAyMDIuMjc1Yy01LjI1OC0yLjQyOS02Ljc3OS0xMy44MDYtNy4wMTMtMjQuNDA0YTUwMCA1MDAgMCAwIDAgMS4xMzYtNTIuNTQ1Yy0uMjc2LTkuMTk0LjEzLTg1LjE1OC0yLjI2NS05Ni4yOGE5MiA5MiAwIDAgMCA1LjY1MSAxMC45MzZjNS42MDIgOC43NTQgMjcuNTY5IDIxLjEyOCAzOC4wOTkgNjcuNjA5YzguMjAzIDQ3Ljk0MS0xNy4wNDcgODEuODQ5LTM1LjYwOCA5NC42ODQiLz48L2c+PC9zdmc+",
+  //     },
+  //     {
+  //       id: 4,
+  //       name: "JWT",
+  //       path: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU3IiB2aWV3Qm94PSIwIDAgMjU2IDI1NyI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE0Ny4zODYgNjkuMDcxTDE0Ny4xMjkgMGgtMzguNTE1bC4yNTcgNjkuMDcxbDE5LjI1NyAyNi40NDh6bS0zOC41MTUgMTE4LjM3MXY2OS4zMjhoMzguNTE1di02OS4zMjhsLTE5LjI1OC0yNi40NDd6Ii8+PHBhdGggZmlsbD0iIzAwZjJlNiIgZD0ibTE0Ny4zODYgMTg3LjQ0Mmw0MC41NyA1NS45NzZsMzEuMDY5LTIyLjU5NmwtNDAuNTctNTUuOTc1bC0zMS4wNjktMTAuMDE1ek0xMDguODcxIDY5LjA3MUw2OC4wNDQgMTMuMDk1TDM2Ljk3NSAzNS42OTFsNDAuNTcgNTUuOTc2bDMxLjMyNiAxMC4wMTR6Ii8+PHBhdGggZmlsbD0iIzAwYjlmMSIgZD0iTTc3LjU0NSA5MS42NjdMMTEuODExIDcwLjM1NUwwIDEwNi44MTZsNjUuNzMzIDIxLjU2OWwzMS4wNjktMTAuMjcxem04MS42NTMgNDYuNzMybDE5LjI1NyAyNi40NDhsNjUuNzM0IDIxLjMxMUwyNTYgMTQ5LjY5N2wtNjUuNzMzLTIxLjMxMnoiLz48cGF0aCBmaWxsPSIjZDYzYWZmIiBkPSJNMTkwLjI2NyAxMjguMzg1TDI1NiAxMDYuODE2bC0xMS44MTEtMzYuNDYxbC02NS43MzQgMjEuMzEybC0xOS4yNTcgMjYuNDQ3em0tMTI0LjUzNCAwTDAgMTQ5LjY5N2wxMS44MTEgMzYuNDYxbDY1LjczNC0yMS4zMTFsMTkuMjU3LTI2LjQ0OHoiLz48cGF0aCBmaWxsPSIjZmIwMTViIiBkPSJtNzcuNTQ1IDE2NC44NDdsLTQwLjU3IDU1Ljk3NWwzMS4wNjkgMjIuNTk2bDQwLjgyNy01NS45NzZ2LTMyLjYxem0xMDAuOTEtNzMuMThsNDAuNTctNTUuOTc2bC0zMS4wNjktMjIuNTk2bC00MC41NyA1NS45NzZ2MzIuNjF6Ii8+PC9zdmc+",
+  //     },
+  //     {
+  //       id: 5,
+  //       name: "Docker",
+  //       path: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiI+PGcgZmlsbD0ibm9uZSI+PHJlY3Qgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiIGZpbGw9IiMyMzk2ZWQiIHJ4PSI2MCIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xNDEuMTg3IDEyMi4xMjNoMjAuNzE3di0xOC43NDRoLTIwLjcxN3ptLTI0LjY2MiAwaDIwLjcxNnYtMTguNzQ0aC0yMC43MTZ6bS0yNC4xNyAwaDIwLjcxN3YtMTguNzQ0SDkyLjM1NXptLTI0LjE3IDBIODguNDF2LTE4Ljc0NEg2OC4xODZ6bS0yNC42NjIgMEg2NC4yNHYtMTguNzQ0SDQzLjUyM3ptMjQuNjYzLTIyLjY5aDIwLjIyM1Y4MC42OUg2OC4xODZ6bTI0LjE3IDBoMjAuNzE2VjgwLjY5SDkyLjM1NXptMjQuMTY5IDBoMjAuNzE2VjgwLjY5aC0yMC43MTZ6bTAtMjIuNjloMjAuNzE2VjU4aC0yMC43MTZ6TTIyOCAxMTMuNzM5cy04Ljg3OS04LjM4Ni0yNy4xMjktNS40MjZjLTEuOTczLTE0LjMwNS0xNy4yNjQtMjIuNjktMTcuMjY0LTIyLjY5cy0xNC4zMDQgMTcuMjY0LTMuOTQ2IDM2LjUwMWMtMi45NTkgMS40OC03Ljg5MiAzLjQ1My0xNS4yOTEgMy40NTNIMjguNzI2Yy0yLjQ2NyA5LjM3Mi0yLjQ2NyA3MS41MjEgNjUuNjAyIDcxLjUyMWM0OC44MzIgMCA4NS4zMzMtMjIuNjg5IDEwMi41OTctNjQuMTIzQzIyMi41NzQgMTM0Ljk0OCAyMjggMTEzLjczOCAyMjggMTEzLjczOCIvPjwvZz48L3N2Zz4=",
+  //     },
+  //     { id: 6, name: "TailwindCSS", path: "/assets/logos/tailwindcss.svg" },
+  //   ],
+  // },
   {
-    id: 2,
-    title: "Eduwave",
-    description:
-      "Scalable microservices-based learning platform supporting authentication, course management, and containerized deployment.",
-    subDescription: [
-      "Developed backend microservices using Node.js, Express.js, MongoDB, and JWT for secure authentication and course workflows.",
-      "Containerized all services using Docker and Docker Compose for modular deployment and orchestration.",
-      "Built a responsive frontend with React.js and Tailwind CSS for seamless login, signup, and course interactions.",
-      "Resolved Docker networking, JWT expiration, and MongoDB connectivity issues to ensure platform stability.",
-    ],
-    href: "https://github.com/anshlakhera048/EduWave",
-    logo: "",
-    image: "/assets/d.svg",
-    tags: [
-      {
-        id: 1,
-        name: "Node.js",
-        path: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBmaWxsPSIjODNjZDI5IiBkPSJNMTYgMzBhMi4xNSAyLjE1IDAgMCAxLTEuMDc2LS4yODhMMTEuNSAyNy42ODVjLS41MTEtLjI4Ni0uMjYyLS4zODctLjA5My0uNDQ2YTYuOCA2LjggMCAwIDAgMS41NDktLjdhLjI2LjI2IDAgMCAxIC4yNTUuMDE5bDIuNjMxIDEuNTYzYS4zNC4zNCAwIDAgMCAuMzE4IDBsMTAuMjYtNS45MjJhLjMyLjMyIDAgMCAwIC4xNTctLjI3OFYxMC4wNzVhLjMzLjMzIDAgMCAwLS4xNTktLjI4M2wtMTAuMjYtNS45MTdhLjMyLjMyIDAgMCAwLS4zMTcgMEw1LjU4NyA5Ljc5NGEuMzMuMzMgMCAwIDAtLjE2Mi4yODF2MTEuODQxYS4zMi4zMiAwIDAgMCAuMTYxLjI3NEw4LjQgMjMuODE0YzEuNTI1Ljc2MiAyLjQ1OS0uMTM2IDIuNDU5LTEuMDM4VjExLjA4NWEuMy4zIDAgMCAxIC4zLS4zaDEuM2EuMy4zIDAgMCAxIC4zLjN2MTEuNjkyYzAgMi4wMzUtMS4xMDggMy4yLTMuMDM4IDMuMmE0LjQgNC40IDAgMCAxLTIuMzYzLS42NDJsLTIuNjk3LTEuNTQ3YTIuMTcgMi4xNyAwIDAgMS0xLjA3Ni0xLjg3MlYxMC4wNzVBMi4xNiAyLjE2IDAgMCAxIDQuNjYxIDguMmwxMC4yNjEtNS45MjRhMi4yNSAyLjI1IDAgMCAxIDIuMTU2IDBMMjcuMzM4IDguMmEyLjE3IDIuMTcgMCAwIDEgMS4wNzcgMS44N3YxMS44NDZhMi4xNyAyLjE3IDAgMCAxLTEuMDc3IDEuODcybC0xMC4yNiA1LjkyNEEyLjE1IDIuMTUgMCAwIDEgMTYgMzAiLz48cGF0aCBmaWxsPSIjODNjZDI5IiBkPSJNMTQuMDU0IDE3Ljk1M2EuMy4zIDAgMCAxIC4zLS4zaDEuMzI3YS4zLjMgMCAwIDEgLjI5NS4yNTFjLjIgMS4zNTEuOCAyLjAzMiAzLjUxMyAyLjAzMmMyLjE2MSAwIDMuMDgyLS40ODkgMy4wODItMS42MzZjMC0uNjYxLS4yNjEtMS4xNTItMy42Mi0xLjQ4MWMtMi44MDgtLjI3OC00LjU0NC0uOS00LjU0NC0zLjE0NGMwLTIuMDcgMS43NDUtMy4zMDUgNC42Ny0zLjMwNWMzLjI4NyAwIDQuOTE0IDEuMTQxIDUuMTIgMy41ODlhLjMuMyAwIDAgMS0uMjk1LjMyM2gtMS4zMzZhLjMuMyAwIDAgMS0uMjg4LS4yMzJjLS4zMTktMS40MjEtMS4xLTEuODc1LTMuMi0xLjg3NWMtMi4zNiAwLTIuNjM0LjgyMi0yLjYzNCAxLjQzOGMwIC43NDYuMzI0Ljk2NCAzLjUxIDEuMzg1YzMuMTUzLjQxNyA0LjY1MSAxLjAwNyA0LjY1MSAzLjIyM2MwIDIuMjM2LTEuODY0IDMuNTE2LTUuMTE1IDMuNTE2Yy00LjQ5NS4wMDYtNS40MzYtMi4wNTUtNS40MzYtMy43ODQiLz48L3N2Zz4=",
-      },
-      {
-        id: 2,
-        name: "Express.js",
-        path: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiI+PGcgZmlsbD0ibm9uZSI+PHJlY3Qgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiIGZpbGw9IiNmNGYyZWQiIHJ4PSI2MCIvPjxwYXRoIGZpbGw9IiMwZjBmMGYiIGQ9Ik0yMjggMTgyLjkzN2ExMi43MyAxMi43MyAwIDAgMS0xNS43OTEtNi4wMDVjLTkuMDYzLTEzLjU2Ny0xOS4wNzEtMjYuNTIyLTI4LjY5LTM5Ljc1NWwtNC4xNzEtNS41NmMtMTEuNDU0IDE1LjM0Ni0yMi45MDggMzAuMDgtMzMuMzYxIDQ1LjM3MWExMi4yMyAxMi4yMyAwIDAgMS0xNS4wMTIgNS44OTRsNDIuOTgtNTcuNjU5bC0zOS45NzgtNTIuMWExMy4yOSAxMy4yOSAwIDAgMSAxNS44NDcgNS41NmM5LjI4NSAxMy41NjggMTkuNTcyIDI2LjUyMyAyOS44MDIgNDAuMjU3YzEwLjI4Ny0xMy42MjMgMjAuNDYyLTI2LjYzNCAyOS45Ny00MC4wOWExMS45NSAxMS45NSAwIDAgMSAxNC45MDEtNS41NmwtMTUuNTEzIDIwLjU3M2MtNi45NSA5LjE3NC0xMy43ODkgMTguNDA0LTIxLjAxNyAyNy4zNTZhNS41NiA1LjU2IDAgMCAwIDAgOC4yODVjMTMuMjg5IDE3LjYyNiAyNi40NjYgMzUuMzA3IDQwLjAzMyA1My40MzNNMjggMTI0LjVjMS4xNjgtNS41NiAxLjg5LTExLjYyMSAzLjUwMy0xNy4yOTJjOS42MTktMzQuMTk1IDQ4LjgxOC00OC40MyA3NS43ODUtMjcuMjQ1YzE1Ljc5MSAxMi40IDE5LjczOSAyOS45NyAxOC45NjEgNDkuNzY0SDM3LjI4NmMtMS40NDYgMzUuMzYzIDI0LjA3NSA1Ni43MTQgNTYuNzEzIDQ1LjgxNmEzMy44NiAzMy44NiAwIDAgMCAyMS41MTgtMjMuOTY1YzEuNzI0LTUuNTYgNC41MDQtNi41MDUgOS43ODYtNC44OTNhNDUuMTUgNDUuMTUgMCAwIDEtMjEuNTczIDMyLjk3MmE1Mi4yNiA1Mi4yNiAwIDAgMS02MC44ODQtNy43ODRhNTQuNzcgNTQuNzcgMCAwIDEtMTMuNjc4LTMyLjEzOGMwLTEuODktLjcyMy0zLjc4MS0xLjExMi01LjU2QTg2MSA4NjEgMCAwIDEgMjggMTI0LjVtOS4zOTctMi4zOTFoODAuNDU2Yy0uNTAxLTI1LjYzMi0xNi42ODEtNDMuODE0LTM4LjI1NC00My45OGMtMjQuMDItLjMzNC00MS4yMDEgMTcuNDU4LTQyLjI1OCA0My44Njl6Ii8+PC9nPjwvc3ZnPg==",
-      },
-      {
-        id: 3,
-        name: "MongoDB",
-        path: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiI+PGcgZmlsbD0ibm9uZSI+PHJlY3Qgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiIGZpbGw9IiMwMjM0MzAiIHJ4PSI2MCIvPjxwYXRoIGZpbGw9IiMxMGFhNTAiIGQ9Ik0xNzEuMTczIDEwNy41OTFjLTEwLjUzNy00Ni40ODEtMzIuNDk3LTU4Ljg1NS0zOC4wOTktNjcuNjAyQTk5IDk5IDAgMCAxIDEyNi45NDkgMjhjLS4yOTYgNC4xMy0uODQgNi43My00LjM1IDkuODYyYy03LjA0NyA2LjI4My0zNi45NzcgMzAuNjczLTM5LjQ5NiA4My40ODZjLTIuMzQ3IDQ5LjI0MiAzNi4yIDc5LjYwNSA0MS4yOTIgODIuNzQ0YzMuOTE2IDEuOTI3IDguNjg1LjA0MSAxMS4wMTItMS43MjhjMTguNTgxLTEyLjc1MiA0My45NjktNDYuNzUgMzUuNzg2LTk0Ljc3MyIvPjxwYXRoIGZpbGw9IiNiOGM0YzIiIGQ9Ik0xMjguNTQ1IDE3Ny44NzFjLS45NyAxMi4xODgtMS42NjUgMTkuMjctNC4xMjkgMjYuMjM1YzAgMCAxLjYxNyAxMS42MDMgMi43NTMgMjMuODk0aDQuMDE5YTIyNCAyMjQgMCAwIDEgNC4zODQtMjUuNzMyYy01LjIwMy0yLjU2LTYuODI3LTEzLjcwMi03LjAyNy0yNC4zOTciLz48cGF0aCBmaWxsPSIjMTI5MjRmIiBkPSJNMTM1LjU2NSAyMDIuMjc1Yy01LjI1OC0yLjQyOS02Ljc3OS0xMy44MDYtNy4wMTMtMjQuNDA0YTUwMCA1MDAgMCAwIDAgMS4xMzYtNTIuNTQ1Yy0uMjc2LTkuMTk0LjEzLTg1LjE1OC0yLjI2NS05Ni4yOGE5MiA5MiAwIDAgMCA1LjY1MSAxMC45MzZjNS42MDIgOC43NTQgMjcuNTY5IDIxLjEyOCAzOC4wOTkgNjcuNjA5YzguMjAzIDQ3Ljk0MS0xNy4wNDcgODEuODQ5LTM1LjYwOCA5NC42ODQiLz48L2c+PC9zdmc+",
-      },
-      {
-        id: 4,
-        name: "JWT",
-        path: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU3IiB2aWV3Qm94PSIwIDAgMjU2IDI1NyI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE0Ny4zODYgNjkuMDcxTDE0Ny4xMjkgMGgtMzguNTE1bC4yNTcgNjkuMDcxbDE5LjI1NyAyNi40NDh6bS0zOC41MTUgMTE4LjM3MXY2OS4zMjhoMzguNTE1di02OS4zMjhsLTE5LjI1OC0yNi40NDd6Ii8+PHBhdGggZmlsbD0iIzAwZjJlNiIgZD0ibTE0Ny4zODYgMTg3LjQ0Mmw0MC41NyA1NS45NzZsMzEuMDY5LTIyLjU5NmwtNDAuNTctNTUuOTc1bC0zMS4wNjktMTAuMDE1ek0xMDguODcxIDY5LjA3MUw2OC4wNDQgMTMuMDk1TDM2Ljk3NSAzNS42OTFsNDAuNTcgNTUuOTc2bDMxLjMyNiAxMC4wMTR6Ii8+PHBhdGggZmlsbD0iIzAwYjlmMSIgZD0iTTc3LjU0NSA5MS42NjdMMTEuODExIDcwLjM1NUwwIDEwNi44MTZsNjUuNzMzIDIxLjU2OWwzMS4wNjktMTAuMjcxem04MS42NTMgNDYuNzMybDE5LjI1NyAyNi40NDhsNjUuNzM0IDIxLjMxMUwyNTYgMTQ5LjY5N2wtNjUuNzMzLTIxLjMxMnoiLz48cGF0aCBmaWxsPSIjZDYzYWZmIiBkPSJNMTkwLjI2NyAxMjguMzg1TDI1NiAxMDYuODE2bC0xMS44MTEtMzYuNDYxbC02NS43MzQgMjEuMzEybC0xOS4yNTcgMjYuNDQ3em0tMTI0LjUzNCAwTDAgMTQ5LjY5N2wxMS44MTEgMzYuNDYxbDY1LjczNC0yMS4zMTFsMTkuMjU3LTI2LjQ0OHoiLz48cGF0aCBmaWxsPSIjZmIwMTViIiBkPSJtNzcuNTQ1IDE2NC44NDdsLTQwLjU3IDU1Ljk3NWwzMS4wNjkgMjIuNTk2bDQwLjgyNy01NS45NzZ2LTMyLjYxem0xMDAuOTEtNzMuMThsNDAuNTctNTUuOTc2bC0zMS4wNjktMjIuNTk2bC00MC41NyA1NS45NzZ2MzIuNjF6Ii8+PC9zdmc+",
-      },
-      {
-        id: 5,
-        name: "Docker",
-        path: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiI+PGcgZmlsbD0ibm9uZSI+PHJlY3Qgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiIGZpbGw9IiMyMzk2ZWQiIHJ4PSI2MCIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xNDEuMTg3IDEyMi4xMjNoMjAuNzE3di0xOC43NDRoLTIwLjcxN3ptLTI0LjY2MiAwaDIwLjcxNnYtMTguNzQ0aC0yMC43MTZ6bS0yNC4xNyAwaDIwLjcxN3YtMTguNzQ0SDkyLjM1NXptLTI0LjE3IDBIODguNDF2LTE4Ljc0NEg2OC4xODZ6bS0yNC42NjIgMEg2NC4yNHYtMTguNzQ0SDQzLjUyM3ptMjQuNjYzLTIyLjY5aDIwLjIyM1Y4MC42OUg2OC4xODZ6bTI0LjE3IDBoMjAuNzE2VjgwLjY5SDkyLjM1NXptMjQuMTY5IDBoMjAuNzE2VjgwLjY5aC0yMC43MTZ6bTAtMjIuNjloMjAuNzE2VjU4aC0yMC43MTZ6TTIyOCAxMTMuNzM5cy04Ljg3OS04LjM4Ni0yNy4xMjktNS40MjZjLTEuOTczLTE0LjMwNS0xNy4yNjQtMjIuNjktMTcuMjY0LTIyLjY5cy0xNC4zMDQgMTcuMjY0LTMuOTQ2IDM2LjUwMWMtMi45NTkgMS40OC03Ljg5MiAzLjQ1My0xNS4yOTEgMy40NTNIMjguNzI2Yy0yLjQ2NyA5LjM3Mi0yLjQ2NyA3MS41MjEgNjUuNjAyIDcxLjUyMWM0OC44MzIgMCA4NS4zMzMtMjIuNjg5IDEwMi41OTctNjQuMTIzQzIyMi41NzQgMTM0Ljk0OCAyMjggMTEzLjczOCAyMjggMTEzLjczOCIvPjwvZz48L3N2Zz4=",
-      },
-      { id: 6, name: "TailwindCSS", path: "/assets/logos/tailwindcss.svg" },
-    ],
-  },
-  {
-    id: 3,
+    id: 4,
     title: "Customer Churn Prediction on Cloud",
     description:
       "End-to-end churn prediction system leveraging Google Cloud, Machine Learning, and Power BI for business insights.",
@@ -104,38 +231,38 @@ export const myProjects = [
       },
     ],
   },
-  {
-    id: 4,
-    title: "E-Commerce Website",
-    description:
-      "Responsive e-commerce platform featuring 20+ products, optimized for performance and cross-device compatibility.",
-    subDescription: [
-      "Designed and deployed a fully responsive website using HTML, CSS, and JavaScript.",
-      "Enhanced user engagement with responsive layouts, smooth transitions, and a sticky navigation bar.",
-      "Implemented clean, modular HTML structure and reusable CSS styles for maintainability.",
-      "Achieved 95% device compatibility through adaptive UI and robust scaling.",
-    ],
-    href: "https://anon-e-com.vercel.app/",
-    logo: "",
-    image: "/assets/b.svg",
-    tags: [
-      {
-        id: 1,
-        name: "HTML",
-        path: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBmaWxsPSIjZTQ0ZjI2IiBkPSJNNS45MDIgMjcuMjAxTDMuNjU1IDJoMjQuNjlsLTIuMjUgMjUuMTk3TDE1Ljk4NSAzMHoiLz48cGF0aCBmaWxsPSIjZjE2NjJhIiBkPSJtMTYgMjcuODU4bDguMTctMi4yNjVsMS45MjItMjEuNTMySDE2eiIvPjxwYXRoIGZpbGw9IiNlYmViZWIiIGQ9Ik0xNiAxMy40MDdoLTQuMDlsLS4yODItMy4xNjVIMTZWNy4xNTFIOC4yNWwuMDc0LjgzbC43NTkgOC41MTdIMTZ6bTAgOC4wMjdsLS4wMTQuMDA0bC0zLjQ0Mi0uOTI5bC0uMjItMi40NjVIOS4yMjFsLjQzMyA0Ljg1Mmw2LjMzMiAxLjc1OGwuMDE0LS4wMDR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE1Ljk4OSAxMy40MDd2My4wOTFoMy44MDZsLS4zNTggNC4wMDlsLTMuNDQ4LjkzdjMuMjE2bDYuMzM3LTEuNzU3bC4wNDYtLjUyMmwuNzI2LTguMTM3bC4wNzYtLjgzem0wLTYuMjU2djMuMDkxaDcuNDY2bC4wNjItLjY5NGwuMTQxLTEuNTY3bC4wNzQtLjgzeiIvPjwvc3ZnPg==",
-      },
-      {
-        id: 2,
-        name: "CSS",
-        path: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiI+PGcgZmlsbD0ibm9uZSI+PHJlY3Qgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiIGZpbGw9IiMwMjc3YmQiIHJ4PSI2MCIvPjxwYXRoIGZpbGw9IiNlYmViZWIiIGQ9Im01My43NTMgMTAyLjY1MWwyLjg2MiAzMS45NDJoNzEuNDgxdi0zMS45NDJ6TTEyOC4wOTUgMzhINDhsMi45MDQgMzEuOTQyaDc3LjE5MXptMCAxODAuODQxdi0zMy4yMzNsLS4xNC4wMzdsLTM1LjU3NC05LjYwNWwtMi4yNzQtMjUuNDc2SDU4LjA0Mmw0LjQ3NSA1MC4xNTRsNjUuNDMxIDE4LjE2NHoiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJtMTY3LjMxOCAxMzQuNTkzbC0zLjcwOCA0MS40MjZsLTM1LjYyNSA5LjYxNnYzMy4yMzFsNjUuNDgzLTE4LjE0OGwuNDgtNS4zOTdsNy41MDYtODQuMDkybC43NzktOC41NzhMMjA4IDM4aC04MC4wMTV2MzEuOTQyaDQ1LjAwOWwtMi45MDYgMzIuNzA5aC00Mi4xMDN2MzEuOTQyeiIvPjwvZz48L3N2Zz4=",
-      },
-      {
-        id: 3,
-        name: "JavaScript",
-        path: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBmaWxsPSIjZjVkZTE5IiBkPSJNMiAyaDI4djI4SDJ6Ii8+PHBhdGggZD0iTTIwLjgwOSAyMy44NzVhMi44NyAyLjg3IDAgMCAwIDIuNiAxLjZjMS4wOSAwIDEuNzg3LS41NDUgMS43ODctMS4zYzAtLjktLjcxNi0xLjIyMi0xLjkxNi0xLjc0N2wtLjY1OC0uMjgyYy0xLjktLjgwOS0zLjE2LTEuODIyLTMuMTYtMy45NjRjMC0xLjk3MyAxLjUtMy40NzYgMy44NTMtMy40NzZhMy44OSAzLjg5IDAgMCAxIDMuNzQyIDIuMTA3TDI1IDE4LjEyOEExLjc5IDEuNzkgMCAwIDAgMjMuMzExIDE3YTEuMTQ1IDEuMTQ1IDAgMCAwLTEuMjU5IDEuMTI4YzAgLjc4OS40ODkgMS4xMDkgMS42MTggMS42bC42NTguMjgyYzIuMjM2Ljk1OSAzLjUgMS45MzYgMy41IDQuMTMzYzAgMi4zNjktMS44NjEgMy42NjctNC4zNiAzLjY2N2E1LjA2IDUuMDYgMCAwIDEtNC43OTUtMi42OTFabS05LjI5NS4yMjhjLjQxMy43MzMuNzg5IDEuMzUzIDEuNjkzIDEuMzUzYy44NjQgMCAxLjQxLS4zMzggMS40MS0xLjY1M3YtOC45NDdoMi42MzF2OC45ODJjMCAyLjcyNC0xLjYgMy45NjQtMy45MjkgMy45NjRhNC4wODUgNC4wODUgMCAwIDEtMy45NDctMi40WiIvPjwvc3ZnPg==",
-      },
-    ],
-  },
+  // {
+  //   id: 4,
+  //   title: "E-Commerce Website",
+  //   description:
+  //     "Responsive e-commerce platform featuring 20+ products, optimized for performance and cross-device compatibility.",
+  //   subDescription: [
+  //     "Designed and deployed a fully responsive website using HTML, CSS, and JavaScript.",
+  //     "Enhanced user engagement with responsive layouts, smooth transitions, and a sticky navigation bar.",
+  //     "Implemented clean, modular HTML structure and reusable CSS styles for maintainability.",
+  //     "Achieved 95% device compatibility through adaptive UI and robust scaling.",
+  //   ],
+  //   href: "https://anon-e-com.vercel.app/",
+  //   logo: "",
+  //   image: "/assets/b.svg",
+  //   tags: [
+  //     {
+  //       id: 1,
+  //       name: "HTML",
+  //       path: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBmaWxsPSIjZTQ0ZjI2IiBkPSJNNS45MDIgMjcuMjAxTDMuNjU1IDJoMjQuNjlsLTIuMjUgMjUuMTk3TDE1Ljk4NSAzMHoiLz48cGF0aCBmaWxsPSIjZjE2NjJhIiBkPSJtMTYgMjcuODU4bDguMTctMi4yNjVsMS45MjItMjEuNTMySDE2eiIvPjxwYXRoIGZpbGw9IiNlYmViZWIiIGQ9Ik0xNiAxMy40MDdoLTQuMDlsLS4yODItMy4xNjVIMTZWNy4xNTFIOC4yNWwuMDc0LjgzbC43NTkgOC41MTdIMTZ6bTAgOC4wMjdsLS4wMTQuMDA0bC0zLjQ0Mi0uOTI5bC0uMjItMi40NjVIOS4yMjFsLjQzMyA0Ljg1Mmw2LjMzMiAxLjc1OGwuMDE0LS4wMDR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE1Ljk4OSAxMy40MDd2My4wOTFoMy44MDZsLS4zNTggNC4wMDlsLTMuNDQ4LjkzdjMuMjE2bDYuMzM3LTEuNzU3bC4wNDYtLjUyMmwuNzI2LTguMTM3bC4wNzYtLjgzem0wLTYuMjU2djMuMDkxaDcuNDY2bC4wNjItLjY5NGwuMTQxLTEuNTY3bC4wNzQtLjgzeiIvPjwvc3ZnPg==",
+  //     },
+  //     {
+  //       id: 2,
+  //       name: "CSS",
+  //       path: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgMjU2IDI1NiI+PGcgZmlsbD0ibm9uZSI+PHJlY3Qgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiIGZpbGw9IiMwMjc3YmQiIHJ4PSI2MCIvPjxwYXRoIGZpbGw9IiNlYmViZWIiIGQ9Im01My43NTMgMTAyLjY1MWwyLjg2MiAzMS45NDJoNzEuNDgxdi0zMS45NDJ6TTEyOC4wOTUgMzhINDhsMi45MDQgMzEuOTQyaDc3LjE5MXptMCAxODAuODQxdi0zMy4yMzNsLS4xNC4wMzdsLTM1LjU3NC05LjYwNWwtMi4yNzQtMjUuNDc2SDU4LjA0Mmw0LjQ3NSA1MC4xNTRsNjUuNDMxIDE4LjE2NHoiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJtMTY3LjMxOCAxMzQuNTkzbC0zLjcwOCA0MS40MjZsLTM1LjYyNSA5LjYxNnYzMy4yMzFsNjUuNDgzLTE4LjE0OGwuNDgtNS4zOTdsNy41MDYtODQuMDkybC43NzktOC41NzhMMjA4IDM4aC04MC4wMTV2MzEuOTQyaDQ1LjAwOWwtMi45MDYgMzIuNzA5aC00Mi4xMDN2MzEuOTQyeiIvPjwvZz48L3N2Zz4=",
+  //     },
+  //     {
+  //       id: 3,
+  //       name: "JavaScript",
+  //       path: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBmaWxsPSIjZjVkZTE5IiBkPSJNMiAyaDI4djI4SDJ6Ii8+PHBhdGggZD0iTTIwLjgwOSAyMy44NzVhMi44NyAyLjg3IDAgMCAwIDIuNiAxLjZjMS4wOSAwIDEuNzg3LS41NDUgMS43ODctMS4zYzAtLjktLjcxNi0xLjIyMi0xLjkxNi0xLjc0N2wtLjY1OC0uMjgyYy0xLjktLjgwOS0zLjE2LTEuODIyLTMuMTYtMy45NjRjMC0xLjk3MyAxLjUtMy40NzYgMy44NTMtMy40NzZhMy44OSAzLjg5IDAgMCAxIDMuNzQyIDIuMTA3TDI1IDE4LjEyOEExLjc5IDEuNzkgMCAwIDAgMjMuMzExIDE3YTEuMTQ1IDEuMTQ1IDAgMCAwLTEuMjU5IDEuMTI4YzAgLjc4OS40ODkgMS4xMDkgMS42MTggMS42bC42NTguMjgyYzIuMjM2Ljk1OSAzLjUgMS45MzYgMy41IDQuMTMzYzAgMi4zNjktMS44NjEgMy42NjctNC4zNiAzLjY2N2E1LjA2IDUuMDYgMCAwIDEtNC43OTUtMi42OTFabS05LjI5NS4yMjhjLjQxMy43MzMuNzg5IDEuMzUzIDEuNjkzIDEuMzUzYy44NjQgMCAxLjQxLS4zMzggMS40MS0xLjY1M3YtOC45NDdoMi42MzF2OC45ODJjMCAyLjcyNC0xLjYgMy45NjQtMy45MjkgMy45NjRhNC4wODUgNC4wODUgMCAwIDEtMy45NDctMi40WiIvPjwvc3ZnPg==",
+  //     },
+  //   ],
+  // },
   {
     id: 5,
     title: "Sudoku Solver",
@@ -222,11 +349,11 @@ export const experiences = [
     date: "Jan 2026 - Present",
     logo: "/assets/tripfactory.png",
     contents: [
-      "Integrated BPoint REST v5 and built payment APIs; stabilized transaction flows.",
-      "Designed scalable refund flow with search, excess checks, and multi-gateway states.",
-      "Built reusable secure HTTP layer (POST/PUT) with safe amount scaling.",
-      "Resolved production issues in ID mapping, scaling, and session handling; reduced failures.",
-      "Optimized reconciliation and cross-gateway state consistency in distributed services."
+      "Integrated BPoint REST v5 gateway into distributed services; ensured consistent multi-gateway transaction state handling",
+      "Built state-machine refund system with idempotent transitions, retries, and multi-gateway reconciliation under concurrency",
+      "Developed idempotent HTTP layer with validation, retries, and standardized monetary handling across distributed services",
+      "Resolved production issues in transaction mapping, session lifecycle, and state reconciliation under high concurrency",
+      "Analyzed CDC pipeline from PostgreSQL via Debezium/Kafka to ClickHouse; identified data gaps and API failures"
     ],
   },
   {
