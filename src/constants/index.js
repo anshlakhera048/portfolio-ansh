@@ -139,7 +139,11 @@ export const myProjects = [
     ],
     href: "https://wander-ai-ten.vercel.app/",
     logo: "",
+<<<<<<< HEAD
   image: "/assets/wanderai.png",
+=======
+    image: "/assets/wanderai.png",
+>>>>>>> e272e51 (Image changed)
     tags: [
       { id: 1, name: "JavaScript", path: "/assets/logos/javascript.svg" },
       { id: 2, name: "ReactJS", path: "/assets/logos/react.svg" },
