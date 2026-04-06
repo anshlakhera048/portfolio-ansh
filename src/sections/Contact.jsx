@@ -173,7 +173,7 @@ const Contact = () => {
               name="name"
               type="text"
               className={`field-input field-input-focus bg-white/20 dark:bg-black/30 text-white peer ring-0 focus:ring-2 focus:ring-lavender ${errors.name ? "border-red-500" : "border-white/20"}`}
-              placeholder="John Doe"
+              placeholder="Your Name"
               value={formData.name}
               onChange={handleChange}
               required
@@ -200,7 +200,7 @@ const Contact = () => {
               name="email"
               type="email"
               className={`field-input field-input-focus bg-white/20 dark:bg-black/30 text-white peer ring-0 focus:ring-2 focus:ring-lavender ${errors.email ? "border-red-500" : "border-white/20"}`}
-              placeholder="johndoe@email.com"
+              placeholder="example@email.com"
               value={formData.email}
               onChange={handleChange}
               required
