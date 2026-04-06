@@ -69,8 +69,8 @@ function Navigation({ onLinkClick }) {
         {[
           { id: "home", label: "Home" },
           { id: "about", label: "About" },
-          { id: "experiences", label: "Experience" },
           { id: "work", label: "Work" },
+          { id: "experiences", label: "Experience" },
           { id: "contact", label: "Contact" },
         ].map((item) => (
           <li className="nav-li" key={item.id} role="none">
@@ -81,8 +81,8 @@ function Navigation({ onLinkClick }) {
                     ? "text-gray-900 font-semibold bg-gray-100 rounded-md"
                     : "text-gray-700 hover:text-indigo-700"
                   : activeSection === item.id
-                  ? "text-white font-semibold bg-white/10 rounded-md"
-                  : "text-neutral-400 hover:text-white"}
+                    ? "text-white font-semibold bg-white/10 rounded-md"
+                    : "text-neutral-400 hover:text-white"}
               `}
               href={`#${item.id}`}
               onClick={handleClick}
@@ -97,7 +97,11 @@ function Navigation({ onLinkClick }) {
         <li className="nav-li" role="none">
           <a
             className={`nav-link transition-colors duration-200 ${theme === "light" ? "text-gray-700 hover:text-indigo-700" : "text-neutral-400 hover:text-white"}`}
+<<<<<<< HEAD
             href="https://drive.google.com/file/d/1AxaJGhQI10XZJiPptxwBdm95o62TNr1F/view?usp=sharing"
+=======
+            href="https://drive.google.com/file/d/1D7NuvblbaK6YInoVDeL1a7vDvCNkRLVd/view?usp=drive_link"
+>>>>>>> main
             target="_blank"
             rel="noopener noreferrer"
             role="menuitem"
@@ -146,8 +150,8 @@ const Navbar = () => {
                       ? "assets/close-dark.svg"
                       : "assets/menu-dark.svg"
                     : isOpen
-                    ? "assets/close.svg"
-                    : "assets/menu.svg"
+                      ? "assets/close.svg"
+                      : "assets/menu.svg"
                 }
                 className="w-6 h-6"
                 alt="toggle"
