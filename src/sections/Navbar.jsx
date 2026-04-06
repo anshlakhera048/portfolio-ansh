@@ -97,7 +97,7 @@ function Navigation({ onLinkClick }) {
         <li className="nav-li" role="none">
           <a
             className={`nav-link transition-colors duration-200 ${theme === "light" ? "text-gray-700 hover:text-indigo-700" : "text-neutral-400 hover:text-white"}`}
-            href="https://drive.google.com/file/d/1Z3n7RKSnmSXdabUJ_VljIy8XAbqNKPUL/view?usp=sharing"
+            href="https://drive.google.com/file/d/1AxaJGhQI10XZJiPptxwBdm95o62TNr1F/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             role="menuitem"
