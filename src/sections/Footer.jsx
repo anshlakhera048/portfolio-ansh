@@ -2,8 +2,10 @@ import { mySocials } from "../constants";
 import { useEffect, useState } from "react";
 import { useCallback } from "react";
 import { useRef } from "react";
+import LegalModal from "../components/LegalModal";
 const Footer = () => {
   const [isDark, setIsDark] = useState(false);
+  const [legalModal, setLegalModal] = useState(null);
   useEffect(() => {
     const match = window.matchMedia('(prefers-color-scheme: dark)');
     setIsDark(match.matches);
@@ -49,9 +51,19 @@ const Footer = () => {
           }
         />
         <nav className="flex gap-2 items-center" aria-label="Footer links">
-          <a href="#terms" className="hover:text-white transition-colors underline focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded-sm">Terms & Conditions</a>
-          <span>|</span>
-          <a href="#privacy" className="hover:text-white transition-colors underline focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded-sm">Privacy Policy</a>
+          <button
+            onClick={() => setLegalModal("terms")}
+            className="hover:text-white transition-colors underline focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded-sm cursor-pointer"
+          >
+            Terms &amp; Conditions
+          </button>
+          <span aria-hidden="true">|</span>
+          <button
+            onClick={() => setLegalModal("privacy")}
+            className="hover:text-white transition-colors underline focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded-sm cursor-pointer"
+          >
+            Privacy Policy
+          </button>
         </nav>
         <div className="flex gap-3" aria-label="Social links">
           {mySocials.map((social, index) => {
@@ -124,6 +136,9 @@ const Footer = () => {
         </div>
         <p className="text-center sm:text-left">© 2026 Ansh. All rights reserved.</p>
       </div>
+      {legalModal && (
+        <LegalModal type={legalModal} onClose={() => setLegalModal(null)} />
+      )}
     </footer>
   );
 };

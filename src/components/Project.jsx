@@ -25,7 +25,7 @@ const Project = ({
   tags,
 }) => {
   const [showDetails, setShowDetails] = useState(false);
-  const { theme } = useTheme ? useTheme() : { theme: 'light' };
+  const { theme } = useTheme();
   return (
     <>
       <motion.div

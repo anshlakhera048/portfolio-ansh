@@ -16,7 +16,7 @@ const ProjectDetails = ({
   href,
   closeModal,
 }) => {
-  const { theme } = useTheme ? useTheme() : { theme: 'light' };
+  const { theme } = useTheme();
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center w-full h-full overflow-y-auto backdrop-blur-sm p-4 sm:p-6">
       <motion.div

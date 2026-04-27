@@ -1,3 +1,4 @@
+
 import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
@@ -18,7 +19,6 @@ const App = () => {
           <About />
           <Projects />
           <Experiences />
-          {/* <Testimonial /> */}
           <Contact />
         </div>
         <Footer/>

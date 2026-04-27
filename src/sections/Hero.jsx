@@ -1,7 +1,9 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import HeroText from "../components/HeroText";
 import ParallaxBackground from "../components/ParallaxBackground";
-import { Astronaut } from "../components/Astronaut";
+import { AstronautFanArt } from "../components/AstronautModels";
+import { PixelLabsModel } from "../components/PixelLabsModel";
+import { BannerModel } from "../components/BannerModel";
 import { Float } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
 import { easing } from "maath";
@@ -42,9 +44,17 @@ const Hero = () => {
         >
           <Suspense fallback={<Loader />}>
             <Float>
-              <Astronaut
+              <AstronautFanArt
                 scale={isMobile ? 0.23 : isTablet ? 0.25 : 0.33}
                 position={isMobile ? [0, -1.5, 0] : isTablet ? [1.5, -0.5, 0] : [0, 5, -0.5]}
+              />
+              <PixelLabsModel
+                scale={isMobile ? 0.18 : isTablet ? 0.2 : 0.25}
+                position={isMobile ? [-1, -1.5, 0] : isTablet ? [-1.5, -0.5, 0] : [-1.5, 4, -0.5]}
+              />
+              <BannerModel
+                scale={isMobile ? 0.18 : isTablet ? 0.2 : 0.25}
+                position={isMobile ? [1, -1.5, 0] : isTablet ? [2, -0.5, 0] : [1.5, 4, -0.5]}
               />
             </Float>
             <Rig />

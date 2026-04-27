@@ -4,6 +4,28 @@ import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import Alert from "../components/Alert";
 import { Particles } from "../components/Particles";
+import ContactProfileCard from "../components/ContactProfileCard";
+
+const SOCIAL_PROFILES = [
+  {
+    platform: "LinkedIn",
+    url: "https://www.linkedin.com/in/ansh-lakhera/",
+    handle: "@ansh-lakhera",
+    avatar: "/assets/ansh_linkedin.png",
+  },
+  {
+    platform: "Github",
+    url: "https://github.com/anshlakhera048",
+    handle: "@anshlakhera048",
+    avatar: "https://github.com/anshlakhera048.png",
+  },
+  {
+    platform: "Instagram",
+    url: "https://www.instagram.com/me.ansh048/",
+    handle: "@me.ansh048",
+    avatar: "/assets/ansh_instagram.jpg",
+  },
+];
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -93,14 +115,10 @@ const Contact = () => {
 
     setIsLoading(true);
 
-    const SERVICE_ID = "service_rc90ht9";
-    const TEMPLATE_ID = "template_n33rv4j";
-    const PUBLIC_KEY = "oH-njbQ029HPRbQZZ";
-
     emailjs
       .send(
-        SERVICE_ID,
-        TEMPLATE_ID,
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
           name: formData.name,
           email: formData.email,
@@ -108,7 +126,7 @@ const Contact = () => {
           title: "New Contact Message",
           time: new Date().toLocaleString(),
         },
-        PUBLIC_KEY
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(
         () => {
@@ -152,7 +170,9 @@ const Contact = () => {
         Contact
       </motion.h2>
 
-      <div className="relative flex flex-col items-center justify-center w-full max-w-lg px-2 py-4 sm:p-6 md:p-10 mx-auto rounded-3xl bg-white/10 dark:bg-midnight/80 shadow-2xl border border-white/20 backdrop-blur-xl overflow-hidden animate-fade-in focus-within:ring-2 focus-within:ring-lavender mt-12" tabIndex={0} aria-label="Contact form">
+      <ContactProfileCard profiles={SOCIAL_PROFILES} />
+
+      <div className="relative flex flex-col items-center justify-center w-full max-w-lg px-2 py-4 sm:p-6 md:p-10 mx-auto rounded-3xl bg-white/10 dark:bg-midnight/80 shadow-2xl border border-white/20 backdrop-blur-xl overflow-hidden animate-fade-in focus-within:ring-2 focus-within:ring-lavender" tabIndex={0} aria-label="Contact form">
         <motion.p
           className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-8 drop-shadow-lg text-fuchsia-700 dark:bg-gradient-to-r dark:from-lavender dark:to-fuchsia-400 dark:bg-clip-text dark:text-transparent"
           initial={{ opacity: 0, y: 20 }}
