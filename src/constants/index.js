@@ -1,39 +1,39 @@
 export const myProjects = [
   {
     id: 1,
-    title: "AgentHub",
+    title: "QuantStream",
     description:
-      "Modular multi-agent AI orchestration platform with RAG, tool execution, and DAG-based workflows using local LLMs.",
+      "Real-time quantitative market data pipeline for streaming analytics, feature engineering, replayable backtesting, and low-latency financial signal computation.",
     subDescription: [
-      "Designed a multi-agent AI system with pluggable agents (prompt optimization, planning, code review, RAG, tool execution) using clean interface-driven architecture.",
-      "Built a central orchestrator supporting agent chaining and DAG-based workflows with async execution using CompletableFuture for parallel processing.",
-      "Implemented Retrieval-Augmented Generation (RAG) using vector embeddings (ChromaDB) to improve response grounding and reduce hallucinations.",
-      "Developed a secure tool-calling framework (file I/O, HTTP client, sandboxed code execution) with LLM-driven tool selection and backend-controlled execution.",
-      "Integrated local LLM inference via Ollama with streaming responses (SSE) and Redis-based session memory for contextual multi-turn interactions.",
+      "Built an event-time Kafka → Flink streaming pipeline computing SMA, VWAP, volatility, and rolling indicators using sliding windows and watermark-based processing.",
+      "Implemented stateful Flink processing with RocksDB state backend, checkpointing, and exactly-once semantics ensuring replay recovery and operational reliability.",
+      "Designed a dual-layer feature store architecture using Redis for low-latency serving and ClickHouse for analytical workloads with consistency validation and drift detection.",
+      "Developed resilient ingestion infrastructure from Binance WebSocket feeds to Kafka using Avro serialization, Schema Registry, DLQ handling, and backward-compatible schema evolution.",
+      "Engineered deterministic replay backtesting, circuit-breaker-based fault tolerance, observability pipelines, and containerized deployment using Docker and Kubernetes.",
     ],
-    href: "https://github.com/anshlakhera048/AgentHub",
+    href: "https://github.com/anshlakhera048/QuantStream",
     logo: "",
-    image: "/assets/projects/agenthub.png",
+    image: "/assets/quantstream.png",
     tags: [
       {
         id: 1,
-        name: "Java",
-        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+        name: "Kafka",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg",
       },
       {
         id: 2,
+        name: "Apache Flink",
+        path: "https://upload.wikimedia.org/wikipedia/commons/7/77/Apache_Flink_logo.svg",
+      },
+      {
+        id: 3,
         name: "Spring Boot",
         path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg",
       },
       {
-        id: 3,
+        id: 4,
         name: "Redis",
         path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
-      },
-      {
-        id: 4,
-        name: "PostgreSQL",
-        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
       },
       {
         id: 5,
@@ -42,23 +42,81 @@ export const myProjects = [
       },
       {
         id: 6,
-        name: "React",
-        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+        name: "Kubernetes",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",
       },
       {
         id: 7,
-        name: "ChromaDB",
-        path: "https://raw.githubusercontent.com/chroma-core/chroma/main/docs/docs.trychroma.com/img/chroma-logo.png",
+        name: "ClickHouse",
+        path: "https://avatars.githubusercontent.com/u/54801242?s=200&v=4",
       },
       {
         id: 8,
-        name: "Ollama",
-        path: "https://avatars.githubusercontent.com/u/151674099?s=200&v=4",
+        name: "Apache Avro",
+        path: "https://svn.apache.org/repos/asf/comdev/project-logos/originals/avro.svg",
       },
     ],
   },
   {
     id: 2,
+    title: "AxiomX",
+    description:
+      "Ultra-low latency deterministic exchange engine with lock-free order ingestion, event sourcing, FIX connectivity, and replayable matching infrastructure.",
+    subDescription: [
+      "Built a deterministic exchange engine processing 480K+ ops/sec with sub-microsecond p50 latency using single-threaded Disruptor ring-buffer architecture.",
+      "Designed a price-time priority order book using TreeMap + FIFO queues enabling O(log N) matching and O(1) cancellation via indexed order references.",
+      "Implemented lock-free ingestion pipelines using Disruptor SPSC queues and custom sequencers ensuring strict event ordering with zero contention.",
+      "Optimized hot execution paths using object pooling, Agrona buffers, fastutil primitive collections, and zero-allocation techniques to reduce GC pressure and improve cache locality.",
+      "Engineered event sourcing, snapshotting, deterministic replay, FIX gateway integration, and benchmarking infrastructure ensuring fault recovery and consistency at scale.",
+    ],
+    href: "https://github.com/anshlakhera048/AxiomX",
+    logo: "",
+    image: "/assets/axiomx.png",
+    tags: [
+      {
+        id: 1,
+        name: "Java",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+      },
+      {
+        id: 2,
+        name: "Disruptor",
+        path: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/lmax.svg",
+      },
+      {
+        id: 3,
+        name: "Docker",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+      },
+      {
+        id: 4,
+        name: "Redis",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+      },
+      {
+        id: 5,
+        name: "Linux",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
+      },
+      {
+        id: 6,
+        name: "Maven",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/maven/maven-original.svg",
+      },
+      {
+        id: 7,
+        name: "Chronicle Queue",
+        path: "https://avatars.githubusercontent.com/u/7308370?s=200&v=4",
+      },
+      {
+        id: 8,
+        name: "FIX Protocol",
+        path: "https://upload.wikimedia.org/wikipedia/commons/6/68/FIX_Protocol_Logo.png",
+      },
+    ],
+  },
+  {
+    id: 3,
     title: "Distributed Payments Infrastructure with Real-Time Fraud Detection",
     description:
       "Event-driven distributed payments system with real-time fraud detection, ensuring strong consistency, fault tolerance, and scalable transaction processing using Kafka-based streaming architecture.",
@@ -72,7 +130,7 @@ export const myProjects = [
     ],
     href: "https://github.com/anshlakhera048/Distributed-Payment-Infrastructure",
     logo: "",
-    image: "/assets/projects/payments.png",
+    image: "/assets/distributed_payment_infra.png",
     tags: [
       {
         id: 1,
@@ -127,7 +185,65 @@ export const myProjects = [
     ],
   },
   {
-    id: 3,
+    id: 4,
+    title: "AgentHub",
+    description:
+      "Modular multi-agent AI orchestration platform with RAG, tool execution, and DAG-based workflows using local LLMs.",
+    subDescription: [
+      "Designed a multi-agent AI system with pluggable agents (prompt optimization, planning, code review, RAG, tool execution) using clean interface-driven architecture.",
+      "Built a central orchestrator supporting agent chaining and DAG-based workflows with async execution using CompletableFuture for parallel processing.",
+      "Implemented Retrieval-Augmented Generation (RAG) using vector embeddings (ChromaDB) to improve response grounding and reduce hallucinations.",
+      "Developed a secure tool-calling framework (file I/O, HTTP client, sandboxed code execution) with LLM-driven tool selection and backend-controlled execution.",
+      "Integrated local LLM inference via Ollama with streaming responses (SSE) and Redis-based session memory for contextual multi-turn interactions.",
+    ],
+    href: "https://github.com/anshlakhera048/AgentHub",
+    logo: "",
+    image: "/assets/agenthub.png",
+    tags: [
+      {
+        id: 1,
+        name: "Java",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+      },
+      {
+        id: 2,
+        name: "Spring Boot",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg",
+      },
+      {
+        id: 3,
+        name: "Redis",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+      },
+      {
+        id: 4,
+        name: "PostgreSQL",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+      },
+      {
+        id: 5,
+        name: "Docker",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+      },
+      {
+        id: 6,
+        name: "React",
+        path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      },
+      {
+        id: 7,
+        name: "ChromaDB",
+        path: "https://raw.githubusercontent.com/chroma-core/chroma/main/docs/docs.trychroma.com/img/chroma-logo.png",
+      },
+      {
+        id: 8,
+        name: "Ollama",
+        path: "https://avatars.githubusercontent.com/u/151674099?s=200&v=4",
+      },
+    ],
+  },
+  {
+    id: 5,
     title: "WanderAI",
     description:
       "AI-powered travel planner generating personalized itineraries based on user preferences, deployed on Vercel.",
@@ -139,7 +255,7 @@ export const myProjects = [
     ],
     href: "https://wander-ai-ten.vercel.app/",
     logo: "",
-  image: "/assets/wanderai.png",
+    image: "/assets/wanderai.png",
     tags: [
       { id: 1, name: "JavaScript", path: "/assets/logos/javascript.svg" },
       { id: 2, name: "ReactJS", path: "/assets/logos/react.svg" },
@@ -156,6 +272,8 @@ export const myProjects = [
       },
     ],
   },
+
+
 ];
 
 export const mySocials = [
@@ -171,7 +289,7 @@ export const mySocials = [
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com/me.ansh048/",
+    href: "https://www.instagram.com/swe.ngineer",
     icon: "/assets/socials/instagram.svg",
   },
 ];

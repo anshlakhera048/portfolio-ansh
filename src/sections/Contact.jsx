@@ -1,6 +1,5 @@
-// ...existing code...
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import emailjs from "@emailjs/browser";
 import Alert from "../components/Alert";
 import { Particles } from "../components/Particles";
@@ -8,9 +7,15 @@ import ContactProfileCard from "../components/ContactProfileCard";
 
 const SOCIAL_PROFILES = [
   {
+    platform: "Instagram",
+    url: "https://www.instagram.com/swe.ngineer",
+    handle: "@swe.ngineer",
+    avatar: "/assets/ansh_instagram.png",
+  },
+  {
     platform: "LinkedIn",
     url: "https://www.linkedin.com/in/ansh-lakhera/",
-    handle: "@ansh-lakhera",
+    handle: "@ansh",
     avatar: "/assets/ansh_linkedin.png",
   },
   {
@@ -18,12 +23,6 @@ const SOCIAL_PROFILES = [
     url: "https://github.com/anshlakhera048",
     handle: "@anshlakhera048",
     avatar: "https://github.com/anshlakhera048.png",
-  },
-  {
-    platform: "Instagram",
-    url: "https://www.instagram.com/me.ansh048/",
-    handle: "@me.ansh048",
-    avatar: "/assets/ansh_instagram.jpg",
   },
 ];
 
@@ -144,12 +143,12 @@ const Contact = () => {
   };
 
   return (
-    <section className="relative c-space section-spacing w-full min-h-screen mt-28" id="contact" aria-label="Contact section">
+    <section className="relative c-space section-spacing w-full" id="contact" aria-label="Contact section">
       <Particles
         className="absolute inset-0 -z-50"
-        quantity={120}
+        quantity={60}
         ease={80}
-        color={"#a78bfa"}
+        color={"var(--accent-primary)"}
         refresh
       />
 
@@ -159,6 +158,19 @@ const Contact = () => {
         </div>
       )}
 
+
+      <motion.div
+        className="flex items-center gap-4 mb-2"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <span className="w-2 h-2 rounded-full" style={{ background: "var(--accent-primary)", boxShadow: "0 0 8px var(--accent-primary)" }} />
+        <p className="text-xs tracking-widest uppercase" style={{ fontFamily: "'JetBrains Mono', monospace", color: "var(--txt-muted)" }}>
+          // get in touch
+        </p>
+      </motion.div>
 
       <motion.h2
         className="text-heading mb-2"
@@ -172,19 +184,31 @@ const Contact = () => {
 
       <ContactProfileCard profiles={SOCIAL_PROFILES} />
 
-      <div className="relative flex flex-col items-center justify-center w-full max-w-lg px-2 py-4 sm:p-6 md:p-10 mx-auto rounded-3xl bg-white/10 dark:bg-midnight/80 shadow-2xl border border-white/20 backdrop-blur-xl overflow-hidden animate-fade-in focus-within:ring-2 focus-within:ring-lavender" tabIndex={0} aria-label="Contact form">
+      <div
+        className="relative flex flex-col items-center justify-center w-full max-w-lg px-2 py-4 sm:p-6 md:p-10 mx-auto rounded-2xl overflow-hidden"
+        style={{
+          background: "var(--bg-surface)",
+          border: "1px solid var(--border-default)",
+          borderTop: "2px solid var(--border-accent)",
+          boxShadow: "var(--shadow-card)",
+        }}
+        tabIndex={0}
+        aria-label="Contact form"
+      >
+        {/* Teal glow from top */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-12 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse at center, var(--accent-glow), transparent 70%)" }} />
         <motion.p
-          className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-8 drop-shadow-lg text-fuchsia-700 dark:bg-gradient-to-r dark:from-lavender dark:to-fuchsia-400 dark:bg-clip-text dark:text-transparent"
+          className="text-xl sm:text-2xl font-bold text-center mb-6 tracking-tight"
+          style={{ fontFamily: "'JetBrains Mono', monospace", color: "var(--txt-primary)" }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
+          transition={{ duration: 0.5 }}
         >
-          Let's Connect
+          <span style={{ color: "var(--accent-primary)" }}>{"// "}</span>
+          Let&apos;s Connect
         </motion.p>
-        {/* Floating gradient blobs */}
-        <div className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-br from-purple-400 via-lavender to-fuchsia-400 opacity-30 rounded-full blur-2xl animate-pulse z-0" />
-        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-tr from-fuchsia-400 via-lavender to-purple-400 opacity-30 rounded-full blur-2xl animate-pulse z-0" />
 
         <form onSubmit={handleSubmit} className="w-full z-10">
           <div className="mb-3 sm:mb-6 relative">
@@ -192,7 +216,7 @@ const Contact = () => {
               id="name"
               name="name"
               type="text"
-              className={`field-input field-input-focus bg-white/20 dark:bg-black/30 text-white peer ring-0 focus:ring-2 focus:ring-lavender ${errors.name ? "border-red-500" : "border-white/20"}`}
+              className={`field-input field-input-focus ${errors.name ? "border-red-500" : ""}`}
               placeholder="Your Name"
               value={formData.name}
               onChange={handleChange}
@@ -201,12 +225,13 @@ const Contact = () => {
               aria-invalid={!!errors.name}
               aria-describedby="name-error"
             />
-            <label htmlFor="name" className="absolute left-3 top-2 text-sm text-neutral-400 transition-all duration-200 pointer-events-none
+            <label htmlFor="name" className="absolute left-3 top-2 text-sm transition-all duration-200 pointer-events-none
               peer-focus:-top-5 peer-focus:text-xs peer-focus:text-lavender
-              peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm peer-placeholder-shown:text-neutral-400
+              peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm
               peer-placeholder-shown:opacity-0
-              peer-not-placeholder-shown:-top-5 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-lavender peer-not-placeholder-shown:opacity-100">
-              Full Name
+              peer-not-placeholder-shown:-top-5 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-lavender peer-not-placeholder-shown:opacity-100"
+              style={{ color: "var(--txt-muted)" }}>
+              {/* Full Name */}
             </label>
             {errors.name && (
               <p id="name-error" className="mt-1 text-xs text-red-400">{errors.name}</p>
@@ -219,7 +244,7 @@ const Contact = () => {
               id="email"
               name="email"
               type="email"
-              className={`field-input field-input-focus bg-white/20 dark:bg-black/30 text-white peer ring-0 focus:ring-2 focus:ring-lavender ${errors.email ? "border-red-500" : "border-white/20"}`}
+              className={`field-input field-input-focus ${errors.email ? "border-red-500" : ""}`}
               placeholder="example@email.com"
               value={formData.email}
               onChange={handleChange}
@@ -228,38 +253,20 @@ const Contact = () => {
               aria-invalid={!!errors.email}
               aria-describedby="email-error"
             />
-            <label htmlFor="email" className="absolute left-3 top-2 text-sm text-neutral-400 transition-all duration-200 pointer-events-none
+            <label htmlFor="email" className="absolute left-3 top-2 text-sm transition-all duration-200 pointer-events-none
               peer-focus:-top-5 peer-focus:text-xs peer-focus:text-lavender
-              peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm peer-placeholder-shown:text-neutral-400
+              peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm
               peer-placeholder-shown:opacity-0
-              peer-not-placeholder-shown:-top-5 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-lavender peer-not-placeholder-shown:opacity-100">
-              Email
+              peer-not-placeholder-shown:-top-5 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-lavender peer-not-placeholder-shown:opacity-100"
+              style={{ color: "var(--txt-muted)" }}>
+              {/* Email */}
             </label>
             {errors.email && (
               <p id="email-error" className="mt-1 text-xs text-red-400">{errors.email}</p>
             )}
           </div>
 
-          {/* <div className="mb-8 relative">
-            <textarea
-              id="message"
-              name="message"
-              rows="4"
-              className={`field-input field-input-focus bg-white/20 dark:bg-black/30 text-white placeholder-transparent peer resize-none ring-0 focus:ring-2 focus:ring-lavender ${errors.message ? "border-red-500" : "border-white/20"}`}
-              placeholder="Message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              aria-invalid={!!errors.message}
-              aria-describedby="message-error"
-            ></textarea>
-            <label htmlFor="message" className="absolute left-3 top-2 text-sm text-neutral-400 transition-all duration-200 peer-focus:-top-5 peer-focus:text-xs peer-focus:text-lavender peer-valid:-top-5 peer-valid:text-xs peer-valid:text-lavender pointer-events-none">
-              Message
-            </label>
-            {errors.message && (
-              <p id="message-error" className="mt-1 text-xs text-red-400">{errors.message}</p>
-            )}
-          </div> */}
+
 
 
 
@@ -268,7 +275,7 @@ const Contact = () => {
               id="message"
               name="message"
               rows="4"
-              className={`field-input field-input-focus bg-white/20 dark:bg-black/30 text-white placeholder-transparent peer resize-none ${errors.message ? "border-red-500" : "border-white/20"}`}
+              className={`field-input field-input-focus resize-none ${errors.message ? "border-red-500" : ""}`}
               placeholder="Message"
               value={formData.message}
               onChange={handleChange}
@@ -285,7 +292,11 @@ const Contact = () => {
           <div className="flex justify-center w-full">
             <button
               type="submit"
-              className="w-9/12 sm:w-1/2 px-2 py-2 text-sm sm:text-base text-center rounded-lg font-semibold bg-gradient-to-r from-lavender via-fuchsia-400 to-purple-500 shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed tracking-wide"
+              className="w-full px-4 py-3 text-sm font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed tracking-wide"
+              style={{
+                background: "linear-gradient(135deg, #61c2a2 0%, #8be9c7 100%)",
+                color: "#0d1117",
+              }}
               disabled={isLoading}
             >
               {!isLoading ? (

@@ -1,6 +1,6 @@
 "use client";
 
-import { useScroll, useTransform, motion, AnimatePresence } from "framer-motion";
+import { useScroll, useTransform, motion, AnimatePresence } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
 
 
@@ -38,23 +38,43 @@ export const Timeline = ({ data, cardGap = "gap-4 md:gap-4" }) => {
             >
               {/* Experience Card */}
               <motion.div
-                whileHover={{ scale: 1.04, boxShadow: '0 12px 36px 0 rgba(102,126,234,0.18)' }}
-                className="bg-black-200 dark:bg-midnight rounded-2xl shadow-xl border border-black-300 px-4 py-4 md:px-8 md:py-8 transition-all duration-300 w-full"
+                whileHover={{ scale: 1.02, y: -2 }}
+                className="rounded-2xl px-4 py-4 md:px-8 md:py-8 transition-all duration-300 w-full"
+                style={{
+                  background: "var(--bg-surface)",
+                  border: "1px solid var(--border-default)",
+                  boxShadow: "var(--shadow-card)",
+                  borderLeft: "3px solid rgba(97,194,162,0.4)",
+                }}
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-2">
                   <div className="flex items-center gap-3">
                     {item.logo && (
                       <img src={item.logo} alt={item.title} className="w-10 h-10 rounded-md object-contain bg-white p-1 shadow" />
                     )}
-                    <h3 className="text-xl md:text-2xl font-bold text-white-800 dark:text-white mb-1 md:mb-0">
+                    <h3
+                      className="text-xl md:text-2xl font-bold mb-1 md:mb-0"
+                      style={{ color: "var(--txt-primary)" }}
+                    >
                       {item.title}
                     </h3>
                   </div>
-                  <span className="text-sm md:text-base font-semibold text-primary dark:text-lavender bg-primary/10 px-3 py-1 rounded-full">
+                  <span
+                    className="text-sm md:text-base font-semibold px-3 py-1 rounded-full"
+                    style={{
+                      color: "#61c2a2",
+                      background: "rgba(97,194,162,0.1)",
+                      border: "1px solid rgba(97,194,162,0.2)",
+                      fontFamily: "'JetBrains Mono', monospace",
+                    }}
+                  >
                     {item.date}
                   </span>
                 </div>
-                <div className="text-base md:text-lg text-white-600 dark:text-neutral-300 font-medium mb-1">
+                <div
+                  className="text-base md:text-lg font-medium mb-1"
+                  style={{ color: "var(--txt-secondary)" }}
+                >
                   {item.job}
                 </div>
                 <ul className="list-disc pl-5 space-y-2 mt-2">
@@ -65,7 +85,8 @@ export const Timeline = ({ data, cardGap = "gap-4 md:gap-4" }) => {
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.5, delay: i * 0.08 }}
                       viewport={{ once: true, amount: 0.2 }}
-                      className="text-white-600 dark:text-neutral-400 text-sm md:text-base"
+                      className="text-sm md:text-base"
+                      style={{ color: "var(--txt-secondary)" }}
                     >
                       {content}
                     </motion.li>

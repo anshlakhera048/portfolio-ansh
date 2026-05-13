@@ -1,118 +1,211 @@
-
 import React, { useState } from "react";
-import { useTheme } from "../context/ThemeContext";
-import { motion } from "framer-motion";
-import ProjectDetails from "./ProjectDetails";
+import { motion, AnimatePresence } from "motion/react";
 
-const ArrowRightIcon = ({ theme }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" className="w-4 h-4">
-    <path fill={theme === "light" ? "#222" : "#fff"} fillRule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8" clipRule="evenodd"/>
+// Derive display status from project URL
+function getStatus(href) {
+  if (!href) return { label: "BUILT", color: "#8b949e", glow: "rgba(139,148,158,0.4)" };
+  if (!href.includes("github.com")) return { label: "LIVE",  color: "#61c2a2", glow: "rgba(97,194,162,0.5)" };
+  return { label: "BUILT", color: "#e6a900", glow: "rgba(230,169,0,0.5)" };
+}
+
+// Inline SVG external-link icon
+const ExternalIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+    <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
-const ArrowUpIcon = ({ theme }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="w-4 h-4">
-    <path fill="none" stroke={theme === "light" ? "#222" : "#fff"} strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.5 10.5L21 3m-5 0h5v5m0 6v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/>
-  </svg>
-);
+const Project = ({ title, description, subDescription, href, image, tags }) => {
+  const [expanded, setExpanded] = useState(false);
+  const status = getStatus(href);
 
-const Project = ({
-  title,
-  description,
-  subDescription,
-  href,
-  image,
-  tags,
-}) => {
-  const [showDetails, setShowDetails] = useState(false);
-  const { theme } = useTheme();
   return (
-    <>
-      <motion.div
-        className="group relative flex flex-col md:flex-row items-stretch gap-6 md:gap-10 bg-black-200 dark:bg-midnight rounded-2xl shadow-xl border border-black-300 p-5 md:p-8 my-4 hover:shadow-2xl transition-all duration-300 overflow-hidden"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, type: "spring", bounce: 0.18 }}
-        viewport={{ once: true, amount: 0.2 }}
+    <motion.div
+      initial={{ opacity: 0, y: 36 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.55, type: "spring", bounce: 0.12 }}
+      className="group relative rounded-2xl overflow-hidden transition-all duration-300"
+      style={{
+        background: "var(--bg-surface)",
+        border: "1px solid var(--border-default)",
+        borderLeft: "3px solid rgba(97,194,162,0.5)",
+        boxShadow: "var(--shadow-card)",
+      }}
+      whileHover={{ y: -2 }}
+    >
+      {/* ── Header row ─────────────────────────────────────────── */}
+      <div
+        className="flex items-center justify-between px-5 py-3.5"
+        style={{ borderBottom: "1px solid var(--border-default)" }}
       >
-        {/* Project Image */}
-        <motion.div
-          className="relative w-full md:w-64 h-40 md:h-48 rounded-xl overflow-hidden shadow-lg border border-black-300 flex-shrink-0 mb-4 md:mb-0"
-          whileHover={{ scale: 1.04 }}
-          transition={{ duration: 0.3 }}
+        <div className="flex items-center gap-3 min-w-0">
+          {/* Status badge */}
+          <div className="flex items-center gap-1.5 flex-shrink-0">
+            <span
+              className="w-2 h-2 rounded-full"
+              style={{ background: status.color, boxShadow: `0 0 7px ${status.glow}` }}
+            />
+            <span
+              className="text-xs font-mono font-semibold tracking-wide"
+              style={{ color: status.color, fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              {status.label}
+            </span>
+          </div>
+
+          <span style={{ color: "var(--border-default)", fontSize: "0.9em" }}>│</span>
+
+          {/* Title */}
+          <h3
+            className="text-base font-bold truncate"
+            style={{ color: "var(--txt-primary)", fontFamily: "'JetBrains Mono', monospace" }}
+          >
+            {title}
+          </h3>
+        </div>
+
+        {/* External link */}
+        {href && (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-xs font-mono flex-shrink-0 ml-3 transition-colors duration-200"
+            style={{ color: "var(--txt-muted)" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#61c2a2")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--txt-muted)")}
+          >
+            <ExternalIcon />
+            {status.label === "LIVE" ? "visit" : "github"}
+          </a>
+        )}
+      </div>
+
+      {/* ── Body ───────────────────────────────────────────────── */}
+      <div className="flex flex-col md:flex-row gap-5 p-5">
+        {/* Project image */}
+        <div
+          className="relative w-full md:w-56 h-36 rounded-xl overflow-hidden flex-shrink-0"
+          style={{ border: "1px solid var(--border-default)" }}
         >
           <img
             src={image}
             alt={title}
-            className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+            className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
           />
-        </motion.div>
-        {/* Project Content */}
-        <div className="flex flex-col flex-1 justify-between">
-          <div>
-            <h3 className="text-2xl md:text-3xl font-bold text-white-800 dark:text-white mb-2">
-              {title}
-            </h3>
-            <p className="text-base md:text-lg text-white-600 dark:text-neutral-300 mb-3 line-clamp-2">
-              {description}
-            </p>
-            <div className="flex flex-wrap gap-2 mt-2">
-              {tags.map((tag) => (
+          {/* Right-edge blend */}
+          <div
+            className="absolute inset-0"
+            style={{ background: "linear-gradient(to right, transparent 55%, var(--bg-surface))" }}
+          />
+        </div>
+
+        {/* Content */}
+        <div className="flex flex-col flex-1 min-w-0">
+          {/* Description */}
+          <p
+            className="text-sm leading-relaxed mb-4"
+            style={{ color: "var(--txt-secondary)" }}
+          >
+            {description}
+          </p>
+
+          {/* Stack topology — tags as connected chips */}
+          <div className="flex flex-wrap items-center gap-1.5 mb-4">
+            {tags.slice(0, 6).map((tag, i) => (
+              <React.Fragment key={tag.id}>
                 <span
-                  key={tag.id}
-                  className="flex items-center gap-1 px-3 py-1 rounded-full bg-primary/10 text-primary dark:text-lavender text-xs md:text-sm font-semibold shadow-sm border border-black-300"
-                  style={{ minWidth: 0 }}
+                  className="flex items-center gap-1 px-2.5 py-1 rounded text-xs font-medium"
+                  style={{
+                    background: "var(--bg-elevated)",
+                    border: "1px solid var(--border-default)",
+                    color: "var(--txt-secondary)",
+                  }}
                 >
-                  {tag.path && (tag.path.startsWith("/assets/") || tag.path.startsWith("data:image/svg+xml")) ? (
+                  {tag.path && (
                     <img
                       src={tag.path}
                       alt={tag.name}
-                      className="w-5 h-5 mr-1"
+                      className="w-3.5 h-3.5"
+                      onError={(e) => (e.currentTarget.style.display = "none")}
                     />
-                  ) : null}
+                  )}
                   {tag.name}
                 </span>
-              ))}
-            </div>
+                {i < Math.min(tags.length - 1, 5) && (
+                  <span className="text-xs font-mono" style={{ color: "rgba(97,194,162,0.45)" }}>→</span>
+                )}
+              </React.Fragment>
+            ))}
+            {tags.length > 6 && (
+              <span className="text-xs font-mono" style={{ color: "var(--txt-muted)" }}>
+                +{tags.length - 6} more
+              </span>
+            )}
           </div>
-          <div className="flex items-center gap-4 mt-6">
-            <div className="flex flex-col sm:flex-row gap-3 w-full">
-              <div className="flex flex-row gap-3 w-full max-[400px]:flex-col">
-                <div className="flex flex-row gap-3 w-full flex-nowrap">
-                  <button
-                    onClick={() => setShowDetails(true)}
-                    className="inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-purple-500 to-fuchsia-500 text-white font-semibold shadow hover:scale-105 hover:shadow-2xl transition-all duration-200 w-auto text-sm sm:text-base"
-                  >
-                    Read More
-                    <ArrowRightIcon theme={theme} />
-                  </button>
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-lavender to-purple-400 text-white font-semibold shadow hover:scale-105 hover:shadow-2xl transition-all duration-200 w-auto text-sm sm:text-base"
-                  >
-                    Visit Site
-                    <ArrowUpIcon theme={theme} />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+
+          {/* Expand button */}
+          <button
+            onClick={() => setExpanded((p) => !p)}
+            className="self-start flex items-center gap-1.5 text-xs font-mono font-medium px-3 py-1.5 rounded transition-all duration-200"
+            style={{
+              color: "#61c2a2",
+              border: "1px solid rgba(97,194,162,0.3)",
+              background: expanded ? "rgba(97,194,162,0.1)" : "rgba(97,194,162,0.06)",
+            }}
+          >
+            <span
+              className="transition-transform duration-200"
+              style={{ display: "inline-block", transform: expanded ? "rotate(90deg)" : "rotate(0deg)" }}
+            >
+              ▸
+            </span>
+            {expanded ? "collapse" : "architecture"}
+          </button>
         </div>
-      </motion.div>
-      {showDetails && (
-        <ProjectDetails
-          title={title}
-          description={description}
-          subDescription={subDescription}
-          image={image}
-          tags={tags}
-          href={href}
-          closeModal={() => setShowDetails(false)}
-        />
-      )}
-    </>
+      </div>
+
+      {/* ── Expanded architecture details ──────────────────────── */}
+      <AnimatePresence initial={false}>
+        {expanded && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.28, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div
+              className="px-5 pb-5 pt-3"
+              style={{ borderTop: "1px solid var(--border-default)" }}
+            >
+              <p
+                className="text-xs font-mono tracking-widest uppercase mb-3"
+                style={{ color: "#61c2a2", fontFamily: "'JetBrains Mono', monospace" }}
+              >
+                // architecture
+              </p>
+              <ul className="space-y-2.5">
+                {subDescription.map((item, i) => (
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.04 }}
+                    className="flex gap-2.5 text-sm"
+                    style={{ color: "var(--txt-secondary)" }}
+                  >
+                    <span className="flex-shrink-0 font-mono" style={{ color: "#61c2a2" }}>›</span>
+                    {item}
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 

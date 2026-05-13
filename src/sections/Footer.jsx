@@ -1,18 +1,12 @@
 import { mySocials } from "../constants";
-import { useEffect, useState } from "react";
 import { useCallback } from "react";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
+import { useTheme } from "../context/ThemeContext";
 import LegalModal from "../components/LegalModal";
 const Footer = () => {
-  const [isDark, setIsDark] = useState(false);
+  const { theme } = useTheme();
+  const isDark = theme !== "light";
   const [legalModal, setLegalModal] = useState(null);
-  useEffect(() => {
-    const match = window.matchMedia('(prefers-color-scheme: dark)');
-    setIsDark(match.matches);
-    const handler = (e) => setIsDark(e.matches);
-    match.addEventListener('change', handler);
-    return () => match.removeEventListener('change', handler);
-  }, []);
 
   // Helper to decode base64 SVGs
   const decodeBase64Svg = useCallback((dataUrl) => {
@@ -40,32 +34,39 @@ const Footer = () => {
   }, [svgCache]);
 
   return (
-    <footer className="w-full max-w-[100vw] flex flex-col items-center justify-center gap-8 pb-3 text-xs sm:text-sm text-neutral-400 bg-transparent" aria-label="Footer">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full flex flex-col sm:flex-row flex-wrap items-center justify-between gap-8">
+    <footer className="w-full max-w-[100vw] bg-transparent py-8" style={{ color: "var(--txt-muted)" }} aria-label="Footer">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
+        {/* Divider */}
         <div
-          className={
-            `mb-4 h-[1px] w-full ` +
-            (isDark
-              ? 'bg-gradient-to-r from-transparent via-neutral-700 to-transparent'
-              : 'bg-gradient-to-r from-transparent via-neutral-100/0 via-neutral-300 via-neutral-100/0')
-          }
+          className="h-[1px] w-full mb-6"
+          style={{ background: 'var(--border-default)' }}
         />
-        <nav className="flex gap-2 items-center" aria-label="Footer links">
-          <button
-            onClick={() => setLegalModal("terms")}
-            className="hover:text-white transition-colors underline focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded-sm cursor-pointer"
-          >
-            Terms &amp; Conditions
-          </button>
-          <span aria-hidden="true">|</span>
-          <button
-            onClick={() => setLegalModal("privacy")}
-            className="hover:text-white transition-colors underline focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded-sm cursor-pointer"
-          >
+        {/* Footer content row */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          {/* Legal links */}
+          <nav className="flex gap-3 items-center text-sm" aria-label="Footer links">
+            <button
+              onClick={() => setLegalModal("terms")}
+              className="transition-colors duration-200 underline underline-offset-2 focus:outline-none focus:ring-2 focus:ring-teal rounded-sm cursor-pointer"
+              style={{ color: "var(--txt-secondary)" }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-primary)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'var(--txt-secondary)'}
+            >
+              Terms &amp; Conditions
+            </button>
+            <span style={{ color: "var(--txt-muted)" }}>·</span>
+            <button
+              onClick={() => setLegalModal("privacy")}
+              className="transition-colors duration-200 underline underline-offset-2 focus:outline-none focus:ring-2 focus:ring-teal rounded-sm cursor-pointer"
+              style={{ color: "var(--txt-secondary)" }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-primary)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'var(--txt-secondary)'}
+            >
             Privacy Policy
           </button>
         </nav>
-        <div className="flex gap-3" aria-label="Social links">
+          {/* Social icons */}
+          <div className="flex gap-3 items-center" aria-label="Social links">
           {mySocials.map((social, index) => {
             // Inline SVG (base64 or file)
             const aStyle = {
@@ -74,12 +75,11 @@ const Footer = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: isDark ? '#fff' : '#111',
+              color: 'var(--txt-secondary)',
             };
             if (social.icon.startsWith('data:image/svg+xml')) {
               const svg = decodeBase64Svg(social.icon);
               if (svg) {
-                // Replace all fill attributes with fill="currentColor"
                 const svgWithCurrentColor = svg.replace(/fill="[^"]*"/g, 'fill="currentColor"');
                 return (
                   <a
@@ -87,7 +87,7 @@ const Footer = () => {
                     key={index}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded-full"
+                    className="hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-teal rounded-full"
                     aria-label={social.name}
                     style={aStyle}
                     dangerouslySetInnerHTML={{ __html: svgWithCurrentColor }}
@@ -105,36 +105,36 @@ const Footer = () => {
                     key={index}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded-full"
+                    className="hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-teal rounded-full"
                     aria-label={social.name}
                     style={aStyle}
                     dangerouslySetInnerHTML={{ __html: svgWithCurrentColor }}
                   />
                 );
               } else {
-                // fallback to img while loading
                 return (
                   <img
                     key={index}
                     src={social.icon}
-                    style={{ width: '1.25rem', height: '1.25rem', filter: isDark ? 'invert(1) brightness(2) contrast(2)' : 'invert(0) brightness(0)' }}
+                    style={{ width: '1.25rem', height: '1.25rem', filter: isDark ? 'invert(1) brightness(2)' : 'invert(0.35)' }}
                     alt={social.name}
                   />
                 );
               }
             }
-            // PNG or other
             return (
               <img
                 key={index}
                 src={social.icon}
-                style={{ width: '1.25rem', height: '1.25rem', filter: isDark ? 'invert(1) brightness(2) contrast(2)' : 'invert(0) brightness(0)' }}
+                style={{ width: '1.25rem', height: '1.25rem', filter: isDark ? 'invert(1) brightness(2)' : 'invert(0.35)' }}
                 alt={social.name}
               />
             );
           })}
+          </div>
+          {/* Copyright */}
+          <p className="text-xs" style={{ color: "var(--txt-muted)" }}>© 2026 Ansh. All rights reserved.</p>
         </div>
-        <p className="text-center sm:text-left">© 2026 Ansh. All rights reserved.</p>
       </div>
       {legalModal && (
         <LegalModal type={legalModal} onClose={() => setLegalModal(null)} />
