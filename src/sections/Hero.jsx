@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import HeroText from "../components/HeroText";
 import Loader from "../components/Loader";
 import EngineeringBackground from "../components/EngineeringBackground";
+import ErrorBoundary from "../components/ErrorBoundary";
 import { useTheme } from "../context/ThemeContext";
 
 // Lazy-load the 3D scene so Three.js splits into its own chunk
@@ -111,17 +112,19 @@ const Hero = () => {
               : "linear-gradient(to bottom, rgba(13,17,23,0.6) 0%, rgba(13,17,23,0.3) 40%, rgba(13,17,23,0.7) 100%)",
           }}
         />
-        <Canvas
-          camera={{ position: [0, 0.8, 5.5], fov: 50 }}
-          gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}
-          dpr={[1, 1]}
-          performance={{ min: 0.3 }}
-          style={{ width: "100%", height: "100%" }}
-        >
-          <Suspense fallback={null}>
-            <InfraGalaxy isLight={isLight} mobile />
-          </Suspense>
-        </Canvas>
+        <ErrorBoundary>
+          <Canvas
+            camera={{ position: [0, 0.8, 5.5], fov: 50 }}
+            gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}
+            dpr={[1, 1]}
+            performance={{ min: 0.3 }}
+            style={{ width: "100%", height: "100%" }}
+          >
+            <Suspense fallback={null}>
+              <InfraGalaxy isLight={isLight} mobile />
+            </Suspense>
+          </Canvas>
+        </ErrorBoundary>
       </motion.div>
 
       {/* Left column — terminal text */}
@@ -162,17 +165,19 @@ const Hero = () => {
             background: "linear-gradient(to right, var(--bg-base), transparent)",
           }}
         />
-        <Canvas
-          camera={{ position: [0.5, 1.0, 6.5], fov: 42 }}
-          gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-          dpr={[1, 1.5]}
-          performance={{ min: 0.5 }}
-          style={{ width: "100%", height: "100%" }}
-        >
-          <Suspense fallback={<Loader />}>
-            <InfraGalaxy isLight={isLight} />
-          </Suspense>
-        </Canvas>
+        <ErrorBoundary>
+          <Canvas
+            camera={{ position: [0.5, 1.0, 6.5], fov: 42 }}
+            gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+            dpr={[1, 1.5]}
+            performance={{ min: 0.5 }}
+            style={{ width: "100%", height: "100%" }}
+          >
+            <Suspense fallback={<Loader />}>
+              <InfraGalaxy isLight={isLight} />
+            </Suspense>
+          </Canvas>
+        </ErrorBoundary>
       </motion.figure>
     </section>
   );
