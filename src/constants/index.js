@@ -198,7 +198,7 @@ export const myProjects = [
     ],
     href: "https://github.com/anshlakhera048/AgentHub",
     logo: "",
-    image: "/assets/agenthub.png",
+    image: "/assets/agentHub.png",
     tags: [
       {
         id: 1,
