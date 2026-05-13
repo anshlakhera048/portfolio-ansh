@@ -30,7 +30,12 @@ const ScrollToTop = () => {
       {isVisible && (
         <motion.button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 p-3 bg-gradient-to-r from-royal to-lavender rounded-full shadow-lg hover:shadow-xl transition-shadow border border-white/20"
+          className="fixed bottom-8 right-8 z-50 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-200"
+          style={{
+            background: "var(--bg-surface)",
+            border: "1px solid var(--border-accent)",
+            color: "var(--accent-primary)",
+          }}
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0 }}
@@ -39,7 +44,7 @@ const ScrollToTop = () => {
           aria-label="Scroll to top"
         >
           <svg
-            className="w-6 h-6 text-white"
+            className="w-5 h-5"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

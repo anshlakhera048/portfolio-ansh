@@ -72,9 +72,14 @@ const CopyEmailButton = () => {
   return (
     <motion.button
       onClick={copyToClipboard}
-      whileHover={{ y: -5 }}
-      whileTap={{ scale: 1.05 }}
-      className="relative px-3 sm:px-1 py-3 sm:py-4 text-xs sm:text-sm text-center rounded-full font-extralight bg-primary w-full sm:w-[12rem] max-w-[12rem] cursor-pointer overflow-hidden"
+      whileHover={{ y: -3 }}
+      whileTap={{ scale: 1.02 }}
+      className="relative px-4 py-3 text-xs sm:text-sm text-center rounded-xl font-medium w-full sm:w-[13rem] max-w-[13rem] cursor-pointer overflow-hidden transition-all duration-200"
+      style={{
+        background: "var(--bg-elevated)",
+        border: "1px solid var(--border-accent)",
+        color: "var(--txt-primary)",
+      }}
     >
       <AnimatePresence mode="wait">
         {copied ? (

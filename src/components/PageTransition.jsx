@@ -1,49 +1,54 @@
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 
+const BOOT = [
+  { text: "$ initializing system kernel...",      color: "#6e7681" },
+  { text: "✓ distributed services online",        color: "#61c2a2" },
+  { text: "✓ kafka brokers connected [3/3]",      color: "#61c2a2" },
+  { text: "✓ observability pipeline active",      color: "#61c2a2" },
+  { text: "▶ launching interface",                color: "#8be9c7" },
+];
+
 const PageTransition = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [lineIdx, setLineIdx] = useState(0);
 
   useEffect(() => {
-    // Simulate loading for smooth transition
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-
-    return () => clearTimeout(timer);
+    const timers = BOOT.map((_, i) =>
+      setTimeout(() => setLineIdx(i), i * 220)
+    );
+    const done = setTimeout(() => setIsLoading(false), BOOT.length * 220 + 400);
+    return () => { timers.forEach(clearTimeout); clearTimeout(done); };
   }, []);
 
   if (isLoading) {
     return (
-      <motion.div
-        className="fixed inset-0 z-[100] flex items-center justify-center bg-primary"
-        initial={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
+      <div
+        className="fixed inset-0 z-[100] flex items-center justify-center"
+        style={{ background: "var(--bg-base, #0f1115)" }}
       >
-        <motion.div
-          className="flex flex-col items-center gap-4"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="relative w-20 h-20">
-            <motion.div
-              className="absolute inset-0 border-4 border-lavender border-t-transparent rounded-full"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-            />
-          </div>
-          <motion.p
-            className="text-xl font-semibold bg-gradient-to-r from-royal to-lavender bg-clip-text text-transparent"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-          >
-            Loading Portfolio...
-          </motion.p>
-        </motion.div>
-      </motion.div>
+        <div className="space-y-2" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+          {BOOT.slice(0, lineIdx + 1).map((line, i) => (
+            <motion.p
+              key={i}
+              initial={{ opacity: 0, x: -8 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.2 }}
+              className="text-xs sm:text-sm"
+              style={{ color: line.color }}
+            >
+              {line.text}
+            </motion.p>
+          ))}
+          <span
+            className="inline-block w-2 h-4 align-middle mt-1"
+            style={{
+              background: "#61c2a2",
+              animation: "terminal-blink 1.1s step-end infinite",
+            }}
+          />
+        </div>
+      </div>
     );
   }
 
@@ -51,7 +56,7 @@ const PageTransition = ({ children }) => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
     >
       {children}
     </motion.div>
