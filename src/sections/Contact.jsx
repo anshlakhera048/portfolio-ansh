@@ -16,7 +16,7 @@ const SOCIAL_PROFILES = [
     platform: "LinkedIn",
     url: "https://www.linkedin.com/in/ansh-lakhera/",
     handle: "@ansh",
-    avatar: "/assets/ansh_linkedin.jpg",
+    avatar: "/assets/ansh_linkedin.png",
   },
   {
     platform: "Github",
