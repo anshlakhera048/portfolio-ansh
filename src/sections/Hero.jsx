@@ -34,7 +34,7 @@ function SystemHeartbeat() {
       <span className="text-[10px]" style={{ color: "var(--txt-muted)" }}>
         uptime {fmt(uptime)}
       </span>
-      <span className="text-[10px]" style={{ color: "#3fb950" }}>
+      <span className="text-[10px]" style={{ color: "#22C55E" }}>
         ● 6/6 pods healthy
       </span>
       <span className="hidden sm:inline text-[10px]" style={{ color: "var(--txt-muted)" }}>
@@ -67,7 +67,7 @@ const Hero = () => {
         <div
           className="absolute inset-0 pointer-events-none z-1"
           style={{
-            background: "radial-gradient(ellipse at center, transparent 50%, rgba(247,248,250,0.6) 100%)",
+            background: "radial-gradient(ellipse at center, transparent 50%, rgba(250,247,255,0.6) 100%)",
           }}
         />
       )}
@@ -80,8 +80,8 @@ const Hero = () => {
         className="absolute bottom-0 left-0 right-0 h-80 pointer-events-none z-0"
         style={{
           background: isLight
-            ? "radial-gradient(ellipse 80% 60% at 20% 100%, rgba(97,194,162,0.04), transparent)"
-            : "radial-gradient(ellipse 80% 60% at 20% 100%, rgba(97,194,162,0.08), transparent)",
+            ? "radial-gradient(ellipse 80% 60% at 20% 100%, rgba(124,58,237,0.04), transparent)"
+            : "radial-gradient(ellipse 80% 60% at 20% 100%, rgba(124,58,237,0.08), transparent)",
         }}
       />
 
@@ -90,8 +90,8 @@ const Hero = () => {
         className="absolute top-0 right-0 w-[55%] h-[60%] pointer-events-none z-0"
         style={{
           background: isLight
-            ? "radial-gradient(ellipse 60% 70% at 80% 20%, rgba(97,194,162,0.03), transparent)"
-            : "radial-gradient(ellipse 60% 70% at 80% 20%, rgba(97,194,162,0.06), transparent)",
+            ? "radial-gradient(ellipse 60% 70% at 80% 20%, rgba(124,58,237,0.03), transparent)"
+            : "radial-gradient(ellipse 60% 70% at 80% 20%, rgba(124,58,237,0.06), transparent)",
         }}
       />
 
@@ -108,8 +108,8 @@ const Hero = () => {
           className="absolute inset-0 z-10"
           style={{
             background: isLight
-              ? "linear-gradient(to bottom, rgba(247,248,250,0.7) 0%, rgba(247,248,250,0.4) 40%, rgba(247,248,250,0.8) 100%)"
-              : "linear-gradient(to bottom, rgba(13,17,23,0.6) 0%, rgba(13,17,23,0.3) 40%, rgba(13,17,23,0.7) 100%)",
+              ? "linear-gradient(to bottom, rgba(250,247,255,0.7) 0%, rgba(250,247,255,0.4) 40%, rgba(250,247,255,0.8) 100%)"
+              : "linear-gradient(to bottom, rgba(15,15,26,0.6) 0%, rgba(15,15,26,0.3) 40%, rgba(15,15,26,0.7) 100%)",
           }}
         />
         <ErrorBoundary>
@@ -154,8 +154,8 @@ const Hero = () => {
           className="absolute inset-0"
           style={{
             background: isLight
-              ? "linear-gradient(135deg, rgba(247,248,250,0.3) 0%, rgba(247,248,250,0.5) 100%)"
-              : "linear-gradient(135deg, rgba(13,17,23,0.25) 0%, rgba(13,17,23,0.45) 100%)",
+              ? "linear-gradient(135deg, rgba(250,247,255,0.3) 0%, rgba(250,247,255,0.5) 100%)"
+              : "linear-gradient(135deg, rgba(15,15,26,0.25) 0%, rgba(15,15,26,0.45) 100%)",
           }}
         />
         {/* Left-edge fade so it blends into the page */}

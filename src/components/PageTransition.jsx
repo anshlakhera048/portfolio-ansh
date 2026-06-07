@@ -2,11 +2,11 @@ import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 
 const BOOT = [
-  { text: "$ initializing system kernel...",      color: "#6e7681" },
-  { text: "✓ distributed services online",        color: "#61c2a2" },
-  { text: "✓ kafka brokers connected [3/3]",      color: "#61c2a2" },
-  { text: "✓ observability pipeline active",      color: "#61c2a2" },
-  { text: "▶ launching interface",                color: "#8be9c7" },
+  { text: "$ initializing system kernel...",      color: "#B8B8D0" },
+  { text: "✓ distributed services online",        color: "#7C3AED" },
+  { text: "✓ kafka brokers connected [3/3]",      color: "#7C3AED" },
+  { text: "✓ observability pipeline active",      color: "#7C3AED" },
+  { text: "▶ launching interface",                color: "#8B5CF6" },
 ];
 
 const PageTransition = ({ children }) => {
@@ -25,7 +25,7 @@ const PageTransition = ({ children }) => {
     return (
       <div
         className="fixed inset-0 z-[100] flex items-center justify-center"
-        style={{ background: "var(--bg-base, #0f1115)" }}
+        style={{ background: "var(--bg-base, #0F0F1A)" }}
       >
         <div className="space-y-2" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
           {BOOT.slice(0, lineIdx + 1).map((line, i) => (
@@ -43,7 +43,7 @@ const PageTransition = ({ children }) => {
           <span
             className="inline-block w-2 h-4 align-middle mt-1"
             style={{
-              background: "#61c2a2",
+              background: "#7C3AED",
               animation: "terminal-blink 1.1s step-end infinite",
             }}
           />

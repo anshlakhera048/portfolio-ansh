@@ -61,7 +61,7 @@ function SubsystemLabel({ id = "dashboard" }) {
       aria-hidden="true"
     >
       <div className="flex items-center gap-1.5">
-        <span className="w-1 h-1 rounded-full" style={{ background: "#3fb950", boxShadow: "0 0 4px #3fb950" }} />
+        <span className="w-1 h-1 rounded-full" style={{ background: "#22C55E", boxShadow: "0 0 4px #22C55E" }} />
         <span className="text-[9px] uppercase tracking-wider" style={{ color: "var(--txt-muted)", opacity: 0.5 }}>
           {data.module}
         </span>

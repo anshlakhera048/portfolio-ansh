@@ -15,8 +15,8 @@ export default function CursorLight() {
     if (!ref.current) return;
     ref.current.style.background = `radial-gradient(800px circle at ${pos.x * 100}% ${pos.y * 100}%, ${
       theme === "dark"
-        ? "rgba(97, 194, 162, 0.04)"
-        : "rgba(97, 194, 162, 0.025)"
+        ? "rgba(124, 58, 237, 0.04)"
+        : "rgba(124, 58, 237, 0.025)"
     }, transparent 60%)`;
   });
 
@@ -25,8 +25,8 @@ export default function CursorLight() {
     if (!ref.current) return;
     ref.current.style.background = `radial-gradient(800px circle at 50% 50%, ${
       theme === "dark"
-        ? "rgba(97, 194, 162, 0.04)"
-        : "rgba(97, 194, 162, 0.025)"
+        ? "rgba(124, 58, 237, 0.04)"
+        : "rgba(124, 58, 237, 0.025)"
     }, transparent 60%)`;
   }, [theme]);
 

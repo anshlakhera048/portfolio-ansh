@@ -16,7 +16,7 @@ function Navigation({ onLinkClick }) {
   const [activeSection, setActiveSection] = useState("home");
   const { theme } = useTheme();
   const isLight = theme === "light";
-  const activeColor = isLight ? "#2d8a6e" : "#8be9c7";
+  const activeColor = isLight ? "#7C3AED" : "#8B5CF6";
   const pillRef = useRef(null);
   const navRef = useRef(null);
   const activeItemRef = useRef(null);

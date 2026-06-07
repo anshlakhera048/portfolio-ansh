@@ -44,7 +44,7 @@ export const Timeline = ({ data, cardGap = "gap-4 md:gap-4" }) => {
                   background: "var(--bg-surface)",
                   border: "1px solid var(--border-default)",
                   boxShadow: "var(--shadow-card)",
-                  borderLeft: "3px solid rgba(97,194,162,0.4)",
+                  borderLeft: "3px solid rgba(124,58,237,0.4)",
                 }}
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-2">
@@ -62,9 +62,9 @@ export const Timeline = ({ data, cardGap = "gap-4 md:gap-4" }) => {
                   <span
                     className="text-sm md:text-base font-semibold px-3 py-1 rounded-full"
                     style={{
-                      color: "#61c2a2",
-                      background: "rgba(97,194,162,0.1)",
-                      border: "1px solid rgba(97,194,162,0.2)",
+                      color: "#7C3AED",
+                      background: "rgba(124,58,237,0.1)",
+                      border: "1px solid rgba(124,58,237,0.2)",
                       fontFamily: "'JetBrains Mono', monospace",
                     }}
                   >

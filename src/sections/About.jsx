@@ -8,14 +8,14 @@ import { useTheme } from "../context/ThemeContext";
 // ENGINEERING DNA — Neural topology nodes
 // ═══════════════════════════════════════════════════════════════════
 const DNA_NODES = [
-  { id: "dist",    label: "Distributed Systems",     x: 15, y: 20, size: 38, accent: "#61c2a2" },
-  { id: "stream",  label: "Streaming Architecture",  x: 55, y: 12, size: 34, accent: "#8be9c7" },
-  { id: "event",   label: "Event-Driven Design",     x: 82, y: 25, size: 32, accent: "#4a9eff" },
-  { id: "lowlat",  label: "Low-Latency Systems",     x: 28, y: 50, size: 36, accent: "#61c2a2" },
-  { id: "ai",      label: "AI Infrastructure",       x: 68, y: 45, size: 30, accent: "#4a9eff" },
-  { id: "obs",     label: "Observability",           x: 45, y: 70, size: 28, accent: "#8be9c7" },
-  { id: "concur",  label: "Concurrency Engineering", x: 10, y: 75, size: 26, accent: "#61c2a2" },
-  { id: "platform",label: "Platform Engineering",    x: 78, y: 72, size: 30, accent: "#4a9eff" },
+  { id: "dist",    label: "Distributed Systems",     x: 15, y: 20, size: 38, accent: "#7C3AED" },
+  { id: "stream",  label: "Streaming Architecture",  x: 55, y: 12, size: 34, accent: "#8B5CF6" },
+  { id: "event",   label: "Event-Driven Design",     x: 82, y: 25, size: 32, accent: "#A855F7" },
+  { id: "lowlat",  label: "Low-Latency Systems",     x: 28, y: 50, size: 36, accent: "#7C3AED" },
+  { id: "ai",      label: "AI Infrastructure",       x: 68, y: 45, size: 30, accent: "#A855F7" },
+  { id: "obs",     label: "Observability",           x: 45, y: 70, size: 28, accent: "#8B5CF6" },
+  { id: "concur",  label: "Concurrency Engineering", x: 10, y: 75, size: 26, accent: "#7C3AED" },
+  { id: "platform",label: "Platform Engineering",    x: 78, y: 72, size: 30, accent: "#A855F7" },
 ];
 
 const DNA_CONNECTIONS = [
@@ -48,23 +48,23 @@ const EXPERTISE_MATRIX = [
 ];
 
 const CATEGORY_COLORS = {
-  concurrency: "#61c2a2",
-  architecture: "#8be9c7",
-  streaming: "#4a9eff",
-  infrastructure: "#61c2a2",
-  systems: "#8be9c7",
-  observability: "#4a9eff",
-  resilience: "#61c2a2",
+  concurrency: "#7C3AED",
+  architecture: "#8B5CF6",
+  streaming: "#A855F7",
+  infrastructure: "#7C3AED",
+  systems: "#8B5CF6",
+  observability: "#A855F7",
+  resilience: "#7C3AED",
 };
 
 // ═══════════════════════════════════════════════════════════════════
 // ENGINEERING TIMELINE — Architecture evolution
 // ═══════════════════════════════════════════════════════════════════
 const EVOLUTION = [
-  { phase: "Foundation", period: "2022", systems: ["Java Core", "Spring Boot", "REST APIs", "PostgreSQL"], accent: "#61c2a2" },
-  { phase: "Event-Driven", period: "2023", systems: ["Apache Kafka", "CQRS", "Event Sourcing", "Redis Streams"], accent: "#8be9c7" },
-  { phase: "Distributed", period: "2024", systems: ["Saga Patterns", "gRPC", "Circuit Breakers", "Observability"], accent: "#4a9eff" },
-  { phase: "Intelligence", period: "2025", systems: ["AI Pipelines", "RAG Systems", "Flink", "Low-Latency"], accent: "#61c2a2" },
+  { phase: "Foundation", period: "2022", systems: ["Java Core", "Spring Boot", "REST APIs", "PostgreSQL"], accent: "#7C3AED" },
+  { phase: "Event-Driven", period: "2023", systems: ["Apache Kafka", "CQRS", "Event Sourcing", "Redis Streams"], accent: "#8B5CF6" },
+  { phase: "Distributed", period: "2024", systems: ["Saga Patterns", "gRPC", "Circuit Breakers", "Observability"], accent: "#A855F7" },
+  { phase: "Intelligence", period: "2025", systems: ["AI Pipelines", "RAG Systems", "Flink", "Low-Latency"], accent: "#7C3AED" },
 ];
 
 // ═══════════════════════════════════════════════════════════════════
@@ -105,7 +105,7 @@ function EngineeringDNA({ isLight }) {
               key={`${fromId}-${toId}`}
               x1={from.x} y1={from.y}
               x2={to.x} y2={to.y}
-              stroke={isPulsing ? "#61c2a2" : (isLight ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.06)")}
+              stroke={isPulsing ? "#7C3AED" : (isLight ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.06)")}
               strokeWidth={isPulsing ? "0.4" : "0.2"}
               animate={{ opacity: isPulsing ? 1 : 0.4 }}
               transition={{ duration: 0.4 }}
@@ -247,7 +247,7 @@ function ArchitectureEvolution({ isLight }) {
               style={{
                 background: phase.accent,
                 boxShadow: `0 0 10px ${phase.accent}60`,
-                border: `2px solid ${isLight ? "#f7f8fa" : "#0d1117"}`,
+                border: `2px solid ${isLight ? "#f7f8fa" : "#0F0F1A"}`,
               }}
             />
 
@@ -300,9 +300,9 @@ function LiveProcesses() {
           className="text-[9px] px-1.5 py-0.5 rounded transition-all duration-300"
           style={{
             fontFamily: "'JetBrains Mono', monospace",
-            color: i === active ? "#3fb950" : "var(--txt-muted)",
-            background: i === active ? "rgba(63,185,80,0.08)" : "transparent",
-            border: `1px solid ${i === active ? "rgba(63,185,80,0.25)" : "transparent"}`,
+            color: i === active ? "#22C55E" : "var(--txt-muted)",
+            background: i === active ? "rgba(34,197,94,0.08)" : "transparent",
+            border: `1px solid ${i === active ? "rgba(34,197,94,0.25)" : "transparent"}`,
           }}
         >
           {i === active ? "▶" : "●"} {proc}
@@ -331,10 +331,10 @@ function EnvironmentMetadata() {
       className="flex flex-wrap gap-x-4 gap-y-1 text-[9px]"
       style={{ fontFamily: "'JetBrains Mono', monospace", color: "var(--txt-muted)" }}
     >
-      <span>subsystem: <span style={{ color: "#61c2a2" }}>identity.core</span></span>
-      <span>thread: <span style={{ color: "#8be9c7" }}>0x7f3a</span></span>
+      <span>subsystem: <span style={{ color: "#7C3AED" }}>identity.core</span></span>
+      <span>thread: <span style={{ color: "#8B5CF6" }}>0x7f3a</span></span>
       <span>uptime: {fmt(uptime)}</span>
-      <span>heap: <span style={{ color: "#4a9eff" }}>1.42G/2G</span></span>
+      <span>heap: <span style={{ color: "#A855F7" }}>1.42G/2G</span></span>
       <span>gc: ZGC</span>
     </div>
   );
@@ -386,8 +386,8 @@ const About = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background: isLight
-            ? "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(97,194,162,0.03), transparent)"
-            : "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(97,194,162,0.04), transparent)",
+            ? "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(124,58,237,0.03), transparent)"
+            : "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(124,58,237,0.04), transparent)",
         }}
       />
 
@@ -412,7 +412,7 @@ const About = () => {
       >
         <p
           className="text-[10px] tracking-[0.25em] uppercase mb-3"
-          style={{ fontFamily: "'JetBrains Mono', monospace", color: "#61c2a2" }}
+          style={{ fontFamily: "'JetBrains Mono', monospace", color: "#7C3AED" }}
         >
           ● sys.identity.core — engineering profile
         </p>
@@ -440,7 +440,7 @@ const About = () => {
         transition={{ duration: 0.7 }}
       >
         <div className="flex items-center gap-2 mb-4">
-          <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#3fb950", boxShadow: "0 0 6px #3fb950" }} />
+          <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#22C55E", boxShadow: "0 0 6px #22C55E" }} />
           <span className="text-[10px] tracking-wider uppercase" style={{ fontFamily: "'JetBrains Mono', monospace", color: "var(--txt-muted)" }}>
             neural topology — specialization graph
           </span>
@@ -465,7 +465,7 @@ const About = () => {
         transition={{ duration: 0.7, delay: 0.1 }}
       >
         <div className="flex items-center gap-2 mb-4">
-          <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#4a9eff", boxShadow: "0 0 6px #4a9eff" }} />
+          <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#A855F7", boxShadow: "0 0 6px #A855F7" }} />
           <span className="text-[10px] tracking-wider uppercase" style={{ fontFamily: "'JetBrains Mono', monospace", color: "var(--txt-muted)" }}>
             capability matrix — signal strength
           </span>
@@ -488,7 +488,7 @@ const About = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-2 mb-5">
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#8be9c7", boxShadow: "0 0 6px #8be9c7" }} />
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#8B5CF6", boxShadow: "0 0 6px #8B5CF6" }} />
             <span className="text-[10px] tracking-wider uppercase" style={{ fontFamily: "'JetBrains Mono', monospace", color: "var(--txt-muted)" }}>
               architecture evolution — branching tree
             </span>
@@ -509,7 +509,7 @@ const About = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#61c2a2", boxShadow: "0 0 6px #61c2a2" }} />
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#7C3AED", boxShadow: "0 0 6px #7C3AED" }} />
             <span className="text-[10px] tracking-wider uppercase" style={{ fontFamily: "'JetBrains Mono', monospace", color: "var(--txt-muted)" }}>
               deployment region — topology coordinates
             </span>
@@ -531,8 +531,8 @@ const About = () => {
         className="relative mt-10 rounded-xl p-6 text-center"
         style={{
           background: isLight
-            ? "linear-gradient(135deg, rgba(97,194,162,0.04), rgba(74,158,255,0.03))"
-            : "linear-gradient(135deg, rgba(97,194,162,0.05), rgba(74,158,255,0.03))",
+            ? "linear-gradient(135deg, rgba(124,58,237,0.04), rgba(168,85,247,0.03))"
+            : "linear-gradient(135deg, rgba(124,58,237,0.05), rgba(168,85,247,0.03))",
           border: `1px solid ${isLight ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.04)"}`,
         }}
         initial={{ opacity: 0, y: 16 }}

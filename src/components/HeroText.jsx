@@ -4,15 +4,15 @@ import { useTheme } from "../context/ThemeContext";
 
 // Kernel boot — feels like a real system initializing
 const BOOT_LINES = [
-  { text: "kernel: initializing distributed systems core...", color: "#6e7681", delay: 0 },
-  { text: "kernel: memory allocator ready [ZGC, -XX:+UseCompressedOops]", color: "#6e7681", delay: 0 },
-  { text: "[  OK  ] kafka-cluster.service — 3/3 brokers online", color: "#3fb950", delay: 0 },
-  { text: "[  OK  ] postgresql.service — connection pool [10/10]", color: "#3fb950", delay: 0 },
-  { text: "[  OK  ] redis-sentinel.service — ping 0.12ms", color: "#3fb950", delay: 0 },
-  { text: "[  OK  ] fraud-detection.service — model v2.3 loaded [99.7% acc]", color: "#3fb950", delay: 0 },
-  { text: "[  OK  ] saga-orchestrator.service — event loop started", color: "#3fb950", delay: 0 },
-  { text: "[  OK  ] prometheus-scraper.service — 142 series", color: "#3fb950", delay: 0 },
-  { text: "kernel: all subsystems nominal. launching interface...", color: "#8be9c7", delay: 0 },
+  { text: "kernel: initializing distributed systems core...", color: "#B8B8D0", delay: 0 },
+  { text: "kernel: memory allocator ready [ZGC, -XX:+UseCompressedOops]", color: "#B8B8D0", delay: 0 },
+  { text: "[  OK  ] kafka-cluster.service — 3/3 brokers online", color: "#22C55E", delay: 0 },
+  { text: "[  OK  ] postgresql.service — connection pool [10/10]", color: "#22C55E", delay: 0 },
+  { text: "[  OK  ] redis-sentinel.service — ping 0.12ms", color: "#22C55E", delay: 0 },
+  { text: "[  OK  ] fraud-detection.service — model v2.3 loaded [99.7% acc]", color: "#22C55E", delay: 0 },
+  { text: "[  OK  ] saga-orchestrator.service — event loop started", color: "#22C55E", delay: 0 },
+  { text: "[  OK  ] prometheus-scraper.service — 142 series", color: "#22C55E", delay: 0 },
+  { text: "kernel: all subsystems nominal. launching interface...", color: "#8B5CF6", delay: 0 },
 ];
 
 const ROLES = [
@@ -56,9 +56,9 @@ function TerminalBoot({ onComplete }) {
       transition={{ duration: 0.4 }}
     >
       <div className="terminal-titlebar">
-        <span className="terminal-dot" style={{ background: "#f85149" }} />
-        <span className="terminal-dot" style={{ background: "#e6a900" }} />
-        <span className="terminal-dot" style={{ background: "#3fb950" }} />
+        <span className="terminal-dot" style={{ background: "#EF4444" }} />
+        <span className="terminal-dot" style={{ background: "#F59E0B" }} />
+        <span className="terminal-dot" style={{ background: "#22C55E" }} />
         <span className="ml-2 text-xs text-neutral-500 font-mono">kernel — boot sequence</span>
       </div>
       <div className="p-4 space-y-0.5 terminal-text">
@@ -96,7 +96,7 @@ function RoleCycler({ isLight }) {
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         exit={{ opacity: 0, y: -14, filter: "blur(4px)" }}
         transition={{ duration: 0.3 }}
-        style={{ color: isLight ? "#2d8a6e" : "#61c2a2" }}
+        style={{ color: isLight ? "#7C3AED" : "#7C3AED" }}
       >
         {ROLES[idx]}
       </motion.span>
@@ -133,7 +133,7 @@ const HeroText = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.1 }}
             >
-              <span style={{ color: "#3fb950" }}>●</span> sys.engineer.active — pid 1
+              <span style={{ color: "#22C55E" }}>●</span> sys.engineer.active — pid 1
             </motion.p>
 
             {/* Name — dominant presence */}
@@ -198,9 +198,9 @@ const HeroText = () => {
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm"
                 style={{
                   background: isLight
-                    ? "linear-gradient(135deg, #2d8a6e 0%, #3da87f 100%)"
-                    : "linear-gradient(135deg, #61c2a2 0%, #8be9c7 100%)",
-                  color: isLight ? "#fff" : "#0d1117",
+                    ? "linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%)"
+                    : "linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%)",
+                  color: isLight ? "#fff" : "#0F0F1A",
                 }}
               >
                 View Systems
@@ -214,7 +214,7 @@ const HeroText = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm transition-colors duration-200"
                 style={{
-                  border: `1px solid ${isLight ? "rgba(15,23,42,0.12)" : "rgba(255,255,255,0.1)"}`,
+                  border: `1px solid ${isLight ? "rgba(124,58,237,0.12)" : "rgba(255,255,255,0.1)"}`,
                   color: "var(--txt-secondary)",
                 }}
               >

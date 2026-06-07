@@ -18,16 +18,16 @@ const Alert = ({ type, text }) => {
         <div
           className="items-center leading-none lg:rounded-full flex lg:inline-flex rounded-md p-4"
           style={{
-            background: type === "danger" ? "rgba(248,81,73,0.15)" : "rgba(97,194,162,0.15)",
-            border: `1px solid ${type === "danger" ? "rgba(248,81,73,0.3)" : "rgba(97,194,162,0.3)"}`,
+            background: type === "danger" ? "rgba(239,68,68,0.15)" : "rgba(124,58,237,0.15)",
+            border: `1px solid ${type === "danger" ? "rgba(239,68,68,0.3)" : "rgba(124,58,237,0.3)"}`,
             color: "var(--txt-primary)",
           }}
         >
           <p
             className="flex rounded-full uppercase px-2.5 py-1 text-xs font-semibold mr-3"
             style={{
-              background: type === "danger" ? "rgba(248,81,73,0.25)" : "rgba(97,194,162,0.25)",
-              color: type === "danger" ? "#f85149" : "var(--accent-primary)",
+              background: type === "danger" ? "rgba(239,68,68,0.25)" : "rgba(124,58,237,0.25)",
+              color: type === "danger" ? "#EF4444" : "var(--accent-primary)",
             }}
           >
             {type === "danger" ? "Failed" : "Success"}

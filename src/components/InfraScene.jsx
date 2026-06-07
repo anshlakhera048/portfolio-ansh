@@ -6,27 +6,27 @@ import * as THREE from "three";
 
 // ─── Infrastructure tiers ────────────────────────────────────────
 const TIERS = [
-  { name: "api",     y:  1.8, radius: 1.15, tilt: 0.18,  color: "#8be9c7" },
-  { name: "service", y:  0,   radius: 2.0,  tilt: -0.06, color: "#61c2a2" },
-  { name: "data",    y: -1.8, radius: 1.25, tilt: 0.15,  color: "#4a9eff" },
+  { name: "api",     y:  1.8, radius: 1.15, tilt: 0.18,  color: "#8B5CF6" },
+  { name: "service", y:  0,   radius: 2.0,  tilt: -0.06, color: "#7C3AED" },
+  { name: "data",    y: -1.8, radius: 1.25, tilt: 0.15,  color: "#A855F7" },
 ];
 
 // Nodes sit on tier orbital rings
 const NODES = [
   // Tier 0 — API layer
-  { id: "gateway",  tier: 0, angle: 0,   color: "#8be9c7", size: 0.11,  glow: 1.2 },
-  { id: "graphql",  tier: 0, angle: 120, color: "#8be9c7", size: 0.085, glow: 0.7 },
-  { id: "cdn",      tier: 0, angle: 240, color: "#8be9c7", size: 0.078, glow: 0.6 },
+  { id: "gateway",  tier: 0, angle: 0,   color: "#8B5CF6", size: 0.11,  glow: 1.2 },
+  { id: "graphql",  tier: 0, angle: 120, color: "#8B5CF6", size: 0.085, glow: 0.7 },
+  { id: "cdn",      tier: 0, angle: 240, color: "#8B5CF6", size: 0.078, glow: 0.6 },
   // Tier 1 — Services
-  { id: "payment",  tier: 1, angle: 5,   color: "#61c2a2", size: 0.095, glow: 0.8 },
-  { id: "auth",     tier: 1, angle: 72,  color: "#61c2a2", size: 0.085, glow: 0.65 },
-  { id: "kafka",    tier: 1, angle: 144, color: "#e6a900", size: 0.125, glow: 1.3 },
-  { id: "fraud",    tier: 1, angle: 216, color: "#f85149", size: 0.085, glow: 0.7 },
-  { id: "worker",   tier: 1, angle: 288, color: "#61c2a2", size: 0.088, glow: 0.65 },
+  { id: "payment",  tier: 1, angle: 5,   color: "#7C3AED", size: 0.095, glow: 0.8 },
+  { id: "auth",     tier: 1, angle: 72,  color: "#7C3AED", size: 0.085, glow: 0.65 },
+  { id: "kafka",    tier: 1, angle: 144, color: "#F59E0B", size: 0.125, glow: 1.3 },
+  { id: "fraud",    tier: 1, angle: 216, color: "#EF4444", size: 0.085, glow: 0.7 },
+  { id: "worker",   tier: 1, angle: 288, color: "#7C3AED", size: 0.088, glow: 0.65 },
   // Tier 2 — Data layer
-  { id: "postgres", tier: 2, angle: 0,   color: "#4a9eff", size: 0.095, glow: 0.8 },
-  { id: "redis",    tier: 2, angle: 120, color: "#f85149", size: 0.085, glow: 0.85 },
-  { id: "chroma",   tier: 2, angle: 240, color: "#4a9eff", size: 0.08,  glow: 0.6 },
+  { id: "postgres", tier: 2, angle: 0,   color: "#A855F7", size: 0.095, glow: 0.8 },
+  { id: "redis",    tier: 2, angle: 120, color: "#EF4444", size: 0.085, glow: 0.85 },
+  { id: "chroma",   tier: 2, angle: 240, color: "#A855F7", size: 0.08,  glow: 0.6 },
 ];
 
 const EDGES = [
@@ -131,7 +131,7 @@ function ParticleField({ isLight }) {
       </bufferGeometry>
       <pointsMaterial
         size={isLight ? 0.016 : 0.012}
-        color={isLight ? "#1a6b54" : "#8be9c7"}
+        color={isLight ? "#7C3AED" : "#8B5CF6"}
         transparent
         opacity={isLight ? 0.45 : 0.25}
         sizeAttenuation
@@ -160,8 +160,8 @@ function Core({ isLight }) {
         <mesh>
           <icosahedronGeometry args={[0.14, 2]} />
           <meshStandardMaterial
-            color={isLight ? "#2d8a6e" : "#8be9c7"}
-            emissive={isLight ? "#2d8a6e" : "#8be9c7"}
+            color={isLight ? "#7C3AED" : "#8B5CF6"}
+            emissive={isLight ? "#7C3AED" : "#8B5CF6"}
             emissiveIntensity={isLight ? 1.2 : 2.0}
             roughness={0}
             metalness={0.95}
@@ -172,7 +172,7 @@ function Core({ isLight }) {
         <mesh>
           <icosahedronGeometry args={[0.22, 1]} />
           <meshBasicMaterial
-            color={isLight ? "#2d8a6e" : "#61c2a2"}
+            color={isLight ? "#7C3AED" : "#7C3AED"}
             wireframe
             transparent
             opacity={isLight ? 0.35 : 0.2}
@@ -183,7 +183,7 @@ function Core({ isLight }) {
           <mesh key={i} ref={i === 0 ? glowRef : undefined}>
             <sphereGeometry args={[r, 14, 14]} />
             <meshBasicMaterial
-              color={isLight ? "#2d8a6e" : "#8be9c7"}
+              color={isLight ? "#7C3AED" : "#8B5CF6"}
               transparent
               opacity={isLight ? (0.06 - i * 0.015) : (0.04 - i * 0.01)}
               depthWrite={false}
@@ -218,11 +218,11 @@ export default function InfraScene({ isLight = false }) {
 
   // Light mode uses deeper, more saturated colors for contrast on white
   const nodeColorMap = isLight ? {
-    "#8be9c7": "#1a7a5c",
-    "#61c2a2": "#1a6b54",
-    "#4a9eff": "#2563eb",
-    "#e6a900": "#b8860b",
-    "#f85149": "#dc2626",
+    "#8B5CF6": "#7C3AED",
+    "#7C3AED": "#7C3AED",
+    "#A855F7": "#A855F7",
+    "#F59E0B": "#F59E0B",
+    "#EF4444": "#EF4444",
   } : {};
 
   const mapColor = (c) => (isLight && nodeColorMap[c]) ? nodeColorMap[c] : c;
@@ -245,9 +245,9 @@ export default function InfraScene({ isLight = false }) {
       <group ref={groupRef}>
         {/* Lighting — brighter ambient in light mode */}
         <ambientLight intensity={isLight ? 0.6 : 0.15} />
-        <pointLight position={[5, 5, 5]}   intensity={isLight ? 3.5 : 2.5} color={isLight ? "#2d8a6e" : "#8be9c7"} distance={12} />
-        <pointLight position={[-4, -3, 3]} intensity={isLight ? 2.0 : 1.2} color={isLight ? "#2563eb" : "#4a9eff"} distance={10} />
-        <pointLight position={[0, 0, -6]}  intensity={isLight ? 1.2 : 0.6} color={isLight ? "#2d8a6e" : "#61c2a2"} distance={8} />
+        <pointLight position={[5, 5, 5]}   intensity={isLight ? 3.5 : 2.5} color={isLight ? "#7C3AED" : "#8B5CF6"} distance={12} />
+        <pointLight position={[-4, -3, 3]} intensity={isLight ? 2.0 : 1.2} color={isLight ? "#A855F7" : "#A855F7"} distance={10} />
+        <pointLight position={[0, 0, -6]}  intensity={isLight ? 1.2 : 0.6} color={isLight ? "#7C3AED" : "#7C3AED"} distance={8} />
         <pointLight position={[0, 3, 0]}   intensity={isLight ? 1.0 : 0.4} color="#ffffff" distance={6} />
 
         <ParticleField isLight={isLight} />
@@ -272,7 +272,7 @@ export default function InfraScene({ isLight = false }) {
         {[0.7, -0.7, 0.3, -0.3].map((y, i) => (
           <mesh key={i} position={[0, y, 0]} rotation={[0.25 + i * 0.08, i * 0.15, 0]}>
             <torusGeometry args={[1.5 + i * 0.1, 0.0015, 6, 60]} />
-            <meshBasicMaterial color={isLight ? "#1a6b54" : "#61c2a2"} transparent opacity={isLight ? 0.08 : 0.04} />
+            <meshBasicMaterial color={isLight ? "#7C3AED" : "#7C3AED"} transparent opacity={isLight ? 0.08 : 0.04} />
           </mesh>
         ))}
 
@@ -285,7 +285,7 @@ export default function InfraScene({ isLight = false }) {
             <Line
               key={i}
               points={[fp, tp]}
-              color={isLight ? "#1a6b54" : "#61c2a2"}
+              color={isLight ? "#7C3AED" : "#7C3AED"}
               lineWidth={isLight ? 0.9 : 0.6}
               transparent
               opacity={isLight ? 0.3 : 0.18}

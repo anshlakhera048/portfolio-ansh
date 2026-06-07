@@ -70,7 +70,7 @@ function HolographicGrid({ isLight }) {
   const uniforms = useMemo(() => ({
     uTime: { value: 0 },
     uOpacity: { value: isLight ? 0.06 : 0.1 },
-    uColor: { value: new THREE.Color(isLight ? "#1a6b54" : "#61c2a2") },
+    uColor: { value: new THREE.Color(isLight ? "#7C3AED" : "#7C3AED") },
     uIsLight: { value: isLight ? 1.0 : 0.0 },
   }), [isLight]);
 
@@ -98,7 +98,7 @@ function VolumetricFog({ isLight }) {
   const ref = useRef();
   const uniforms = useMemo(() => ({
     uTime: { value: 0 },
-    uColor: { value: new THREE.Color(isLight ? "#2d8a6e" : "#61c2a2") },
+    uColor: { value: new THREE.Color(isLight ? "#7C3AED" : "#7C3AED") },
     uDensity: { value: isLight ? 0.06 : 0.12 },
   }), [isLight]);
 
@@ -144,7 +144,7 @@ function ProceduralStars({ isLight }) {
 
   const uniforms = useMemo(() => ({
     uTime: { value: 0 },
-    uColor: { value: new THREE.Color(isLight ? "#64748b" : "#8be9c7") },
+    uColor: { value: new THREE.Color(isLight ? "#B8B8D0" : "#8B5CF6") },
   }), [isLight]);
 
   useFrame(({ clock }) => {
@@ -215,7 +215,7 @@ function InstancedParticles({ isLight }) {
     <instancedMesh ref={meshRef} args={[null, null, count]} frustumCulled={false}>
       <sphereGeometry args={[1, 6, 6]} />
       <meshBasicMaterial
-        color={isLight ? "#2d8a6e" : "#8be9c7"}
+        color={isLight ? "#7C3AED" : "#8B5CF6"}
         transparent
         opacity={isLight ? 0.5 : 0.3}
         depthWrite={false}
@@ -351,7 +351,7 @@ function EnergyStreams({ isLight }) {
         <mesh key={i} ref={(el) => (pulseRefs.current[i] = el)}>
           <sphereGeometry args={[0.016, 8, 8]} />
           <meshBasicMaterial
-            color={isLight ? "#1a6b54" : "#8be9c7"}
+            color={isLight ? "#7C3AED" : "#8B5CF6"}
             transparent
             opacity={0.85}
             depthWrite={false}
@@ -384,7 +384,7 @@ function TopologyLines({ isLight }) {
         return (
           <line key={i} geometry={geo}>
             <lineBasicMaterial
-              color={isLight ? "#1a6b54" : "#61c2a2"}
+              color={isLight ? "#7C3AED" : "#7C3AED"}
               transparent
               opacity={isLight ? 0.18 : 0.08}
               depthWrite={false}
@@ -406,7 +406,7 @@ function TelemetryRings({ isLight }) {
     }
   });
 
-  const color = isLight ? "#1a6b54" : "#61c2a2";
+  const color = isLight ? "#7C3AED" : "#7C3AED";
   return (
     <group ref={ref}>
       {[1.8, 2.7, 3.6, 4.5].map((r, i) => (
@@ -447,7 +447,7 @@ function CommandCore({ isLight }) {
     }
   });
 
-  const coreColor = isLight ? "#2d8a6e" : "#8be9c7";
+  const coreColor = isLight ? "#7C3AED" : "#8B5CF6";
 
   return (
     <Float speed={1.2} rotationIntensity={0.3} floatIntensity={0.15}>
@@ -503,7 +503,7 @@ function NeuralWave({ isLight }) {
         <mesh key={i} position={[0, -1.0 - i * 0.3, 0]} rotation={[-Math.PI / 2, 0, i * 0.4]}>
           <ringGeometry args={[r - 0.02, r, 128]} />
           <meshBasicMaterial
-            color={isLight ? "#2d8a6e" : "#61c2a2"}
+            color={isLight ? "#7C3AED" : "#7C3AED"}
             transparent
             opacity={isLight ? 0.035 - i * 0.008 : 0.025 - i * 0.006}
             depthWrite={false}
@@ -580,9 +580,9 @@ export default function InfraGalaxy({ isLight = false, mobile = false }) {
       <group ref={sceneRef}>
         {/* Lighting system */}
         <ambientLight intensity={mobile ? (isLight ? 0.5 : 0.12) : (isLight ? 0.35 : 0.06)} />
-        <pointLight position={[5, 5, 5]} intensity={isLight ? 3 : 2.5} color={isLight ? "#2d8a6e" : "#8be9c7"} distance={18} decay={2} />
-        {!mobile && <pointLight position={[-4, -2, 4]} intensity={isLight ? 1.5 : 1.2} color="#4a9eff" distance={12} decay={2} />}
-        {effectiveTier !== "low" && <pointLight position={[0, -4, -5]} intensity={isLight ? 0.8 : 0.6} color="#61c2a2" distance={10} decay={2} />}
+        <pointLight position={[5, 5, 5]} intensity={isLight ? 3 : 2.5} color={isLight ? "#7C3AED" : "#8B5CF6"} distance={18} decay={2} />
+        {!mobile && <pointLight position={[-4, -2, 4]} intensity={isLight ? 1.5 : 1.2} color="#A855F7" distance={12} decay={2} />}
+        {effectiveTier !== "low" && <pointLight position={[0, -4, -5]} intensity={isLight ? 0.8 : 0.6} color="#7C3AED" distance={10} decay={2} />}
         {effectiveTier !== "low" && <pointLight position={[0, 4, 0]} intensity={isLight ? 0.5 : 0.2} color="#ffffff" distance={8} decay={2} />}
 
         {/* Deep background */}

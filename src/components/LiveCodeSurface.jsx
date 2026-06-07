@@ -130,8 +130,8 @@ function LiveCodeSurface({ className = "", position = "left", speed = 80 }) {
   }, [speed]);
 
   const posStyle = position === "left" 
-    ? { left: 0, background: `linear-gradient(to right, transparent, ${isLight ? "rgba(247,248,250,0.95)" : "rgba(13,17,23,0.95)"} 80%)` }
-    : { right: 0, background: `linear-gradient(to left, transparent, ${isLight ? "rgba(247,248,250,0.95)" : "rgba(13,17,23,0.95)"} 80%)` };
+    ? { left: 0, background: `linear-gradient(to right, transparent, ${isLight ? "rgba(250,247,255,0.95)" : "rgba(15,15,26,0.95)"} 80%)` }
+    : { right: 0, background: `linear-gradient(to left, transparent, ${isLight ? "rgba(250,247,255,0.95)" : "rgba(15,15,26,0.95)"} 80%)` };
 
   return (
     <div 
@@ -147,7 +147,7 @@ function LiveCodeSurface({ className = "", position = "left", speed = 80 }) {
             className="text-[10px] leading-relaxed whitespace-pre truncate"
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              color: line.isBlank ? "transparent" : (isLight ? "var(--txt-muted)" : "#6e7681"),
+              color: line.isBlank ? "transparent" : (isLight ? "var(--txt-muted)" : "#B8B8D0"),
             }}
           >
             {line.text || " "}

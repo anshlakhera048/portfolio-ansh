@@ -164,11 +164,11 @@ const COMMANDS = {
       { type: "blank" },
       { type: "text", text: "Running 10s load test... (simulated)" },
       { type: "blank" },
-      { type: "bar", label: "Gateway",    value: 95, color: "#8be9c7" },
-      { type: "bar", label: "Kafka",      value: 88, color: "#e6a900" },
-      { type: "bar", label: "PostgreSQL", value: 72, color: "#4a9eff" },
-      { type: "bar", label: "Redis",      value: 98, color: "#f85149" },
-      { type: "bar", label: "Auth",       value: 91, color: "#61c2a2" },
+      { type: "bar", label: "Gateway",    value: 95, color: "#8B5CF6" },
+      { type: "bar", label: "Kafka",      value: 88, color: "#F59E0B" },
+      { type: "bar", label: "PostgreSQL", value: 72, color: "#A855F7" },
+      { type: "bar", label: "Redis",      value: 98, color: "#EF4444" },
+      { type: "bar", label: "Auth",       value: 91, color: "#7C3AED" },
       { type: "blank" },
       { type: "kv", key: "Requests",     value: "421,847 total" },
       { type: "kv", key: "Throughput",   value: "42,184 rps" },
@@ -294,7 +294,7 @@ function OutputLine({ line }) {
 
   if (line.type === "blank")   return <div className="h-2" />;
   if (line.type === "section") return (
-    <p className="font-semibold mt-1" style={{ ...mono, color: "#8be9c7" }}>
+    <p className="font-semibold mt-1" style={{ ...mono, color: "#8B5CF6" }}>
       {line.text}
     </p>
   );
@@ -302,16 +302,16 @@ function OutputLine({ line }) {
     <p className="text-xs" style={{ ...mono, color: "var(--txt-muted)" }}>{line.text}</p>
   );
   if (line.type === "text") return (
-    <p className="text-xs" style={{ ...mono, color: "#c9d1d9" }}>{line.text}</p>
+    <p className="text-xs" style={{ ...mono, color: "#FFFFFF" }}>{line.text}</p>
   );
   if (line.type === "kv") return (
     <p className="text-xs" style={mono}>
-      <span className="w-24 inline-block" style={{ color: "#6e7681" }}>{line.key}</span>
-      <span style={{ color: "#c9d1d9" }}>{line.value}</span>
+      <span className="w-24 inline-block" style={{ color: "#B8B8D0" }}>{line.key}</span>
+      <span style={{ color: "#FFFFFF" }}>{line.value}</span>
     </p>
   );
   if (line.type === "project-title") return (
-    <p className="text-teal text-xs font-medium mt-1" style={{ ...mono, color: "#61c2a2" }}>
+    <p className="text-teal text-xs font-medium mt-1" style={{ ...mono, color: "#7C3AED" }}>
       {line.text}
     </p>
   );
@@ -324,38 +324,38 @@ function OutputLine({ line }) {
     <div className="space-y-0.5 mt-1">
       {line.rows.map(([cmd, desc], i) => (
         <p key={i} className="text-xs" style={mono}>
-          <span className="w-28 inline-block" style={{ color: "#61c2a2" }}>{cmd}</span>
-          <span style={{ color: "#6e7681" }}>{desc}</span>
+          <span className="w-28 inline-block" style={{ color: "#7C3AED" }}>{cmd}</span>
+          <span style={{ color: "#B8B8D0" }}>{desc}</span>
         </p>
       ))}
     </div>
   );
   if (line.type === "error") return (
-    <p className="text-xs" style={{ ...mono, color: "#f85149" }}>{line.text}</p>
+    <p className="text-xs" style={{ ...mono, color: "#EF4444" }}>{line.text}</p>
   );
   if (line.type === "ascii") return (
-    <p className="text-xs leading-tight" style={{ ...mono, color: "#6e7681", whiteSpace: "pre" }}>{line.text}</p>
+    <p className="text-xs leading-tight" style={{ ...mono, color: "#B8B8D0", whiteSpace: "pre" }}>{line.text}</p>
   );
   if (line.type === "trace") return (
-    <p className="text-xs" style={{ ...mono, color: "#e6a900" }}>{line.text}</p>
+    <p className="text-xs" style={{ ...mono, color: "#F59E0B" }}>{line.text}</p>
   );
   if (line.type === "bar") {
     const width = Math.min(line.value, 100);
     return (
       <div className="flex items-center gap-2 text-xs" style={mono}>
-        <span className="w-20 inline-block" style={{ color: "#6e7681" }}>{line.label}</span>
+        <span className="w-20 inline-block" style={{ color: "#B8B8D0" }}>{line.label}</span>
         <div className="flex-1 h-2.5 rounded-full overflow-hidden max-w-[200px]" style={{ background: "rgba(255,255,255,0.05)" }}>
-          <div className="h-full rounded-full transition-all" style={{ width: `${width}%`, background: line.color || "#61c2a2" }} />
+          <div className="h-full rounded-full transition-all" style={{ width: `${width}%`, background: line.color || "#7C3AED" }} />
         </div>
-        <span style={{ color: "#c9d1d9" }}>{line.value}%</span>
+        <span style={{ color: "#FFFFFF" }}>{line.value}%</span>
       </div>
     );
   }
   if (line.type === "stream") return (
     <p className="text-xs" style={mono}>
-      <span className="w-36 inline-block" style={{ color: "#61c2a2" }}>  {line.topic}</span>
-      <span className="w-14 inline-block" style={{ color: parseInt(line.lag) > 5 ? "#e6a900" : "#3fb950" }}>{line.lag}</span>
-      <span style={{ color: "#6e7681" }}>{line.rate}</span>
+      <span className="w-36 inline-block" style={{ color: "#7C3AED" }}>  {line.topic}</span>
+      <span className="w-14 inline-block" style={{ color: parseInt(line.lag) > 5 ? "#F59E0B" : "#22C55E" }}>{line.lag}</span>
+      <span style={{ color: "#B8B8D0" }}>{line.rate}</span>
     </p>
   );
   return null;
@@ -419,10 +419,10 @@ function DiagnosticsPanel() {
     <div className="terminal-window w-full lg:w-80 flex-shrink-0 hidden md:block">
       {/* Title bar */}
       <div className="terminal-titlebar">
-        <span className="terminal-dot" style={{ background: "#f85149" }} />
-        <span className="terminal-dot" style={{ background: "#e6a900" }} />
-        <span className="terminal-dot" style={{ background: "#3fb950" }} />
-        <span className="ml-2 text-xs" style={{ ...mono, color: "#6e7681" }}>
+        <span className="terminal-dot" style={{ background: "#EF4444" }} />
+        <span className="terminal-dot" style={{ background: "#F59E0B" }} />
+        <span className="terminal-dot" style={{ background: "#22C55E" }} />
+        <span className="ml-2 text-xs" style={{ ...mono, color: "#B8B8D0" }}>
           diagnostics — htop
         </span>
       </div>
@@ -430,14 +430,14 @@ function DiagnosticsPanel() {
       <div className="p-3 h-80 overflow-hidden space-y-3">
         {/* Metrics grid */}
         <div>
-          <p className="text-[9px] uppercase tracking-wider mb-1.5" style={{ ...mono, color: "#6e7681" }}>
+          <p className="text-[9px] uppercase tracking-wider mb-1.5" style={{ ...mono, color: "#B8B8D0" }}>
             runtime metrics
           </p>
           <div className="grid grid-cols-2 gap-x-3 gap-y-1">
             {metrics.map((m) => (
               <div key={m.label} className="flex justify-between" style={mono}>
-                <span className="text-[10px]" style={{ color: "#6e7681" }}>{m.label}</span>
-                <span className="text-[10px] font-medium" style={{ color: "#c9d1d9" }}>{m.value}</span>
+                <span className="text-[10px]" style={{ color: "#B8B8D0" }}>{m.label}</span>
+                <span className="text-[10px] font-medium" style={{ color: "#FFFFFF" }}>{m.value}</span>
               </div>
             ))}
           </div>
@@ -448,7 +448,7 @@ function DiagnosticsPanel() {
 
         {/* Live log stream */}
         <div>
-          <p className="text-[9px] uppercase tracking-wider mb-1.5" style={{ ...mono, color: "#6e7681" }}>
+          <p className="text-[9px] uppercase tracking-wider mb-1.5" style={{ ...mono, color: "#B8B8D0" }}>
             system log stream
           </p>
           <div className="space-y-0.5 overflow-hidden">
@@ -458,7 +458,7 @@ function DiagnosticsPanel() {
                 className="text-[9px] leading-relaxed truncate"
                 style={{
                   ...mono,
-                  color: log.text.includes("[WARN]") ? "#e6a900" : log.text.includes("[DEBUG]") ? "#6e7681" : "#8b949e",
+                  color: log.text.includes("[WARN]") ? "#F59E0B" : log.text.includes("[DEBUG]") ? "#B8B8D0" : "#B8B8D0",
                 }}
               >
                 {log.text}
@@ -472,7 +472,7 @@ function DiagnosticsPanel() {
 
         {/* Process indicators */}
         <div>
-          <p className="text-[9px] uppercase tracking-wider mb-1.5" style={{ ...mono, color: "#6e7681" }}>
+          <p className="text-[9px] uppercase tracking-wider mb-1.5" style={{ ...mono, color: "#B8B8D0" }}>
             active services
           </p>
           <div className="flex flex-wrap gap-1.5">
@@ -480,7 +480,7 @@ function DiagnosticsPanel() {
               <span
                 key={svc}
                 className="text-[9px] px-1.5 py-0.5 rounded"
-                style={{ ...mono, color: "#3fb950", background: "rgba(63,185,80,0.08)", border: "1px solid rgba(63,185,80,0.15)" }}
+                style={{ ...mono, color: "#22C55E", background: "rgba(34,197,94,0.08)", border: "1px solid rgba(34,197,94,0.15)" }}
               >
                 ● {svc}
               </span>
@@ -602,7 +602,7 @@ export default function TerminalSection() {
       >
         <span
           className="w-2 h-2 rounded-full"
-          style={{ background: "#61c2a2", boxShadow: "0 0 8px #61c2a2" }}
+          style={{ background: "#7C3AED", boxShadow: "0 0 8px #7C3AED" }}
         />
         <p
           className="text-xs tracking-widest uppercase"
@@ -634,8 +634,8 @@ export default function TerminalSection() {
         <code
           className="px-1.5 py-0.5 rounded text-teal text-xs"
           style={{
-            background: "rgba(97,194,162,0.1)",
-            border: "1px solid rgba(97,194,162,0.2)",
+            background: "rgba(124,58,237,0.1)",
+            border: "1px solid rgba(124,58,237,0.2)",
             fontFamily: "'JetBrains Mono', monospace",
           }}
         >
@@ -659,18 +659,18 @@ export default function TerminalSection() {
         >
           {/* Title bar */}
           <div className="terminal-titlebar">
-            <span className="terminal-dot" style={{ background: "#f85149" }} />
-            <span className="terminal-dot" style={{ background: "#e6a900" }} />
-            <span className="terminal-dot" style={{ background: "#3fb950" }} />
+            <span className="terminal-dot" style={{ background: "#EF4444" }} />
+            <span className="terminal-dot" style={{ background: "#F59E0B" }} />
+            <span className="terminal-dot" style={{ background: "#22C55E" }} />
             <span
               className="ml-2 text-xs"
-              style={{ fontFamily: "'JetBrains Mono', monospace", color: "#6e7681" }}
+              style={{ fontFamily: "'JetBrains Mono', monospace", color: "#B8B8D0" }}
             >
               infra-console — ansh@cluster-01 — zsh
             </span>
             <span
               className="ml-auto text-[9px]"
-              style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3fb950" }}
+              style={{ fontFamily: "'JetBrains Mono', monospace", color: "#22C55E" }}
             >
               ● LIVE
             </span>
@@ -680,7 +680,7 @@ export default function TerminalSection() {
           <div
             ref={outputRef}
             className="p-4 h-80 overflow-y-auto space-y-0.5 terminal-text"
-            style={{ scrollbarWidth: "thin", scrollbarColor: "rgba(97,194,162,0.2) transparent" }}
+            style={{ scrollbarWidth: "thin", scrollbarColor: "rgba(124,58,237,0.2) transparent" }}
           >
             {history.map((line, i) => (
               <OutputLine key={i} line={line} />
@@ -694,7 +694,7 @@ export default function TerminalSection() {
           >
             <span
               className="text-xs font-medium flex-shrink-0"
-              style={{ color: "#61c2a2", fontFamily: "'JetBrains Mono', monospace" }}
+              style={{ color: "#7C3AED", fontFamily: "'JetBrains Mono', monospace" }}
             >
               ansh@cluster-01:~$
             </span>
@@ -704,7 +704,7 @@ export default function TerminalSection() {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKey}
               className="flex-1 bg-transparent outline-none text-xs caret-teal"
-              style={{ fontFamily: "'JetBrains Mono', monospace", color: "#c9d1d9" }}
+              style={{ fontFamily: "'JetBrains Mono', monospace", color: "#FFFFFF" }}
               placeholder="type a command..."
               aria-label="Terminal input"
               spellCheck={false}
