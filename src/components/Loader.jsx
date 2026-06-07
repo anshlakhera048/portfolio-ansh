@@ -19,14 +19,14 @@ const Loader = () => {
               cx="24"
               cy="24"
               r="20"
-              stroke="rgba(97,194,162,0.2)"
+              stroke="rgba(124,58,237,0.2)"
               strokeWidth="4"
             />
             <circle
               cx="24"
               cy="24"
               r="20"
-              stroke="#61c2a2"
+              stroke="#7C3AED"
               strokeWidth="4"
               strokeLinecap="round"
               strokeDasharray={`${2 * Math.PI * 20}`}
@@ -34,7 +34,7 @@ const Loader = () => {
               style={{ transition: "stroke-dashoffset 0.3s ease" }}
             />
           </svg>
-          <span className="absolute inset-0 flex items-center justify-center text-[10px] font-semibold tabular-nums" style={{ color: "#61c2a2" }}>
+          <span className="absolute inset-0 flex items-center justify-center text-[10px] font-semibold tabular-nums" style={{ color: "#7C3AED" }}>
             {pct}%
           </span>
         </div>

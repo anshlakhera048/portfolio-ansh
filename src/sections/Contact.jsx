@@ -294,8 +294,8 @@ const Contact = () => {
               type="submit"
               className="w-full px-4 py-3 text-sm font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed tracking-wide"
               style={{
-                background: "linear-gradient(135deg, #61c2a2 0%, #8be9c7 100%)",
-                color: "#0d1117",
+                background: "linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%)",
+                color: "#0F0F1A",
               }}
               disabled={isLoading}
             >

@@ -298,7 +298,7 @@ export const experiences = [
   {
     title: "Tripfactory",
     job: "SDE Intern",
-    date: "Jan 2026 - Present",
+    date: "Jan 2026 - June 2026",
     logo: "/assets/tripfactory.png",
     contents: [
       "Integrated BPoint REST v5 gateway into distributed services; ensured consistent multi-gateway transaction state handling",

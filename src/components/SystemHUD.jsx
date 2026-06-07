@@ -90,7 +90,7 @@ function TelemetryStream() {
             className="text-[10px] leading-tight truncate"
             style={{ fontFamily: "'JetBrains Mono', monospace", color: "var(--txt-muted)" }}
           >
-            <span style={{ color: "#3fb950" }}>▸</span> {e.text}
+            <span style={{ color: "#22C55E" }}>▸</span> {e.text}
           </motion.p>
         ))}
       </AnimatePresence>
@@ -122,7 +122,7 @@ function SystemHUD() {
       <div className="absolute top-20 left-4 sm:left-6">
         <div className="space-y-1" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
           <p className="text-[10px] tracking-wide" style={{ color: "var(--txt-muted)" }}>
-            <span style={{ color: isLight ? "#2d8a6e" : "#61c2a2" }}>●</span> SYS.ONLINE
+            <span style={{ color: isLight ? "#7C3AED" : "#7C3AED" }}>●</span> SYS.ONLINE
           </p>
           <p className="text-[9px]" style={{ color: "var(--txt-muted)", opacity: 0.7 }}>
             <SystemClock />
@@ -145,9 +145,9 @@ function SystemHUD() {
               className="text-[10px] leading-tight"
               style={{ fontFamily: "'JetBrains Mono', monospace", color: "var(--txt-muted)", opacity: 0.7 }}
             >
-              <span style={{ color: "#3fb950" }}>▪</span>{" "}
+              <span style={{ color: "#22C55E" }}>▪</span>{" "}
               <span className="inline-block w-[110px]">{p.name}</span>
-              <span className="inline-block w-[38px]" style={{ color: parseFloat(p.cpu) > 5 ? "#e6a900" : "inherit" }}>
+              <span className="inline-block w-[38px]" style={{ color: parseFloat(p.cpu) > 5 ? "#F59E0B" : "inherit" }}>
                 {p.cpu}%
               </span>
               <span className="inline-block w-[42px]">{p.mem}</span>
@@ -168,16 +168,16 @@ function SystemHUD() {
       <div className="absolute bottom-6 right-4 sm:right-6 hidden md:block">
         <div className="space-y-0.5" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
           <p className="text-[9px]" style={{ color: "var(--txt-muted)", opacity: 0.6 }}>
-            <span style={{ color: "#3fb950" }}>●</span> kafka <span style={{ opacity: 0.4 }}>3/3</span>
+            <span style={{ color: "#22C55E" }}>●</span> kafka <span style={{ opacity: 0.4 }}>3/3</span>
           </p>
           <p className="text-[9px]" style={{ color: "var(--txt-muted)", opacity: 0.6 }}>
-            <span style={{ color: "#3fb950" }}>●</span> pg-pool <span style={{ opacity: 0.4 }}>10/10</span>
+            <span style={{ color: "#22C55E" }}>●</span> pg-pool <span style={{ opacity: 0.4 }}>10/10</span>
           </p>
           <p className="text-[9px]" style={{ color: "var(--txt-muted)", opacity: 0.6 }}>
-            <span style={{ color: "#3fb950" }}>●</span> redis <span style={{ opacity: 0.4 }}>0.1ms</span>
+            <span style={{ color: "#22C55E" }}>●</span> redis <span style={{ opacity: 0.4 }}>0.1ms</span>
           </p>
           <p className="text-[9px]" style={{ color: "var(--txt-muted)", opacity: 0.6 }}>
-            <span style={{ color: "#3fb950" }}>●</span> k8s <span style={{ opacity: 0.4 }}>6 pods</span>
+            <span style={{ color: "#22C55E" }}>●</span> k8s <span style={{ opacity: 0.4 }}>6 pods</span>
           </p>
         </div>
       </div>

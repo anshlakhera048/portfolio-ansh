@@ -36,9 +36,9 @@ export default function EngineeringBackground() {
 
     function draw(t) {
       const isLight = document.documentElement.classList.contains("light");
-      const dotColor   = isLight ? "rgba(15,23,42,0.07)"    : "rgba(97,194,162,0.18)";
+      const dotColor   = isLight ? "rgba(124,58,237,0.07)"    : "rgba(124,58,237,0.18)";
       const lineAlpha  = isLight ? 0.05                     : 0.12;
-      const glowRgba   = isLight ? "rgba(97,194,162,0.02)"  : "rgba(97,194,162,0.04)";
+      const glowRgba   = isLight ? "rgba(124,58,237,0.02)"  : "rgba(124,58,237,0.04)";
 
       ctx.clearRect(0, 0, w, h);
 
@@ -61,9 +61,9 @@ export default function EngineeringBackground() {
         const x = p.x * w;
         const y = p.y * h;
         const grad = ctx.createLinearGradient(x - p.width / 2, 0, x + p.width / 2, 0);
-        grad.addColorStop(0,   "rgba(97,194,162,0)");
-        grad.addColorStop(0.5, `rgba(97,194,162,${p.opacity * lineAlpha})`);
-        grad.addColorStop(1,   "rgba(97,194,162,0)");
+        grad.addColorStop(0,   "rgba(124,58,237,0)");
+        grad.addColorStop(0.5, `rgba(124,58,237,${p.opacity * lineAlpha})`);
+        grad.addColorStop(1,   "rgba(124,58,237,0)");
         ctx.fillStyle = grad;
         ctx.fillRect(x - p.width / 2, y - 0.5, p.width, 1);
       });
@@ -71,7 +71,7 @@ export default function EngineeringBackground() {
       // Subtle top-left radial glow
       const glow = ctx.createRadialGradient(0, 0, 0, 0, 0, Math.min(w, h) * 0.6);
       glow.addColorStop(0, glowRgba);
-      glow.addColorStop(1, "rgba(97,194,162,0)");
+      glow.addColorStop(1, "rgba(124,58,237,0)");
       ctx.fillStyle = glow;
       ctx.fillRect(0, 0, w, h);
 

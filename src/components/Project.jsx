@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from "motion/react";
 
 // Derive display status from project URL
 function getStatus(href) {
-  if (!href) return { label: "BUILT", color: "#8b949e", glow: "rgba(139,148,158,0.4)" };
-  if (!href.includes("github.com")) return { label: "LIVE",  color: "#61c2a2", glow: "rgba(97,194,162,0.5)" };
-  return { label: "BUILT", color: "#e6a900", glow: "rgba(230,169,0,0.5)" };
+  if (!href) return { label: "BUILT", color: "#B8B8D0", glow: "rgba(139,148,158,0.4)" };
+  if (!href.includes("github.com")) return { label: "LIVE",  color: "#7C3AED", glow: "rgba(124,58,237,0.5)" };
+  return { label: "BUILT", color: "#F59E0B", glow: "rgba(245,158,11,0.5)" };
 }
 
 // Inline SVG external-link icon
@@ -29,7 +29,7 @@ const Project = ({ title, description, subDescription, href, image, tags }) => {
       style={{
         background: "var(--bg-surface)",
         border: "1px solid var(--border-default)",
-        borderLeft: "3px solid rgba(97,194,162,0.5)",
+        borderLeft: "3px solid rgba(124,58,237,0.5)",
         boxShadow: "var(--shadow-card)",
       }}
       whileHover={{ y: -2 }}
@@ -73,7 +73,7 @@ const Project = ({ title, description, subDescription, href, image, tags }) => {
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-xs font-mono flex-shrink-0 ml-3 transition-colors duration-200"
             style={{ color: "var(--txt-muted)" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#61c2a2")}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#7C3AED")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--txt-muted)")}
           >
             <ExternalIcon />
@@ -134,7 +134,7 @@ const Project = ({ title, description, subDescription, href, image, tags }) => {
                   {tag.name}
                 </span>
                 {i < Math.min(tags.length - 1, 5) && (
-                  <span className="text-xs font-mono" style={{ color: "rgba(97,194,162,0.45)" }}>→</span>
+                  <span className="text-xs font-mono" style={{ color: "rgba(124,58,237,0.45)" }}>→</span>
                 )}
               </React.Fragment>
             ))}
@@ -150,9 +150,9 @@ const Project = ({ title, description, subDescription, href, image, tags }) => {
             onClick={() => setExpanded((p) => !p)}
             className="self-start flex items-center gap-1.5 text-xs font-mono font-medium px-3 py-1.5 rounded transition-all duration-200"
             style={{
-              color: "#61c2a2",
-              border: "1px solid rgba(97,194,162,0.3)",
-              background: expanded ? "rgba(97,194,162,0.1)" : "rgba(97,194,162,0.06)",
+              color: "#7C3AED",
+              border: "1px solid rgba(124,58,237,0.3)",
+              background: expanded ? "rgba(124,58,237,0.1)" : "rgba(124,58,237,0.06)",
             }}
           >
             <span
@@ -182,7 +182,7 @@ const Project = ({ title, description, subDescription, href, image, tags }) => {
             >
               <p
                 className="text-xs font-mono tracking-widest uppercase mb-3"
-                style={{ color: "#61c2a2", fontFamily: "'JetBrains Mono', monospace" }}
+                style={{ color: "#7C3AED", fontFamily: "'JetBrains Mono', monospace" }}
               >
                 // architecture
               </p>
@@ -196,7 +196,7 @@ const Project = ({ title, description, subDescription, href, image, tags }) => {
                     className="flex gap-2.5 text-sm"
                     style={{ color: "var(--txt-secondary)" }}
                   >
-                    <span className="flex-shrink-0 font-mono" style={{ color: "#61c2a2" }}>›</span>
+                    <span className="flex-shrink-0 font-mono" style={{ color: "#7C3AED" }}>›</span>
                     {item}
                   </motion.li>
                 ))}

@@ -113,7 +113,7 @@ const LegalModal = memo(function LegalModal({ type, onClose }) {
             "max-h-[85vh] flex flex-col overflow-hidden",
             "border",
             isDark
-              ? "bg-[#0e0f1f] border-white/10"
+              ? "bg-[#17172A] border-white/10"
               : "bg-white border-neutral-200",
           ].join(" ")}
           initial={{ y: 60, opacity: 0 }}

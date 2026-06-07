@@ -6,49 +6,49 @@ const DOMAINS = [
   {
     name:   "Backend Systems Engineering",
     desc:   "High-throughput REST & gRPC APIs, connection pooling, graceful shutdown, health probes",
-    color:  "#61c2a2",
+    color:  "#7C3AED",
     icon:   "⬡",
   },
   {
     name:   "Event-Driven Architectures",
     desc:   "Saga, Outbox, CQRS patterns; async workflows; eventual consistency guarantees",
-    color:  "#8be9c7",
+    color:  "#8B5CF6",
     icon:   "⬡",
   },
   {
     name:   "Real-Time Streaming",
     desc:   "Apache Kafka pipelines, Redis Streams, backpressure, dead-letter queues, consumer groups",
-    color:  "#e6a900",
+    color:  "#F59E0B",
     icon:   "⬡",
   },
   {
     name:   "AI Infrastructure & RAG",
     desc:   "Vector stores (ChromaDB), embedding pipelines, LangChain, retrieval-augmented generation",
-    color:  "#4a9eff",
+    color:  "#A855F7",
     icon:   "⬡",
   },
   {
     name:   "Distributed Caching",
     desc:   "Redis cache-aside, write-through, TTL strategies, cache invalidation at scale",
-    color:  "#61c2a2",
+    color:  "#7C3AED",
     icon:   "⬡",
   },
   {
     name:   "Observability & Telemetry",
     desc:   "Prometheus metrics, Grafana dashboards, distributed tracing, structured logging",
-    color:  "#8be9c7",
+    color:  "#8B5CF6",
     icon:   "⬡",
   },
   {
     name:   "API Platform Design",
     desc:   "Rate limiting, circuit breakers, idempotency keys, versioning, OpenAPI specs",
-    color:  "#61c2a2",
+    color:  "#7C3AED",
     icon:   "⬡",
   },
   {
     name:   "Low-Latency Systems",
     desc:   "JVM tuning, connection reuse, async I/O, optimistic locking, query optimization",
-    color:  "#4a9eff",
+    color:  "#A855F7",
     icon:   "⬡",
   },
 ];
@@ -70,13 +70,13 @@ const PATTERNS = [
 ];
 
 const CATEGORY_COLOR = {
-  "Distributed":   "#61c2a2",
-  "Resilience":    "#8be9c7",
-  "Event-Driven":  "#e6a900",
-  "Messaging":     "#61c2a2",
-  "API":           "#4a9eff",
-  "Streaming":     "#e6a900",
-  "Observability": "#8be9c7",
+  "Distributed":   "#7C3AED",
+  "Resilience":    "#8B5CF6",
+  "Event-Driven":  "#F59E0B",
+  "Messaging":     "#7C3AED",
+  "API":           "#A855F7",
+  "Streaming":     "#F59E0B",
+  "Observability": "#8B5CF6",
 };
 
 // ── Tech stack ────────────────────────────────────────────────────
@@ -94,12 +94,12 @@ const STACK_ITEMS = [
 ];
 
 const TYPE_COLOR = {
-  lang:      "#8be9c7",
-  framework: "#61c2a2",
-  messaging: "#e6a900",
-  data:      "#4a9eff",
-  infra:     "#61c2a2",
-  observ:    "#8be9c7",
+  lang:      "#8B5CF6",
+  framework: "#7C3AED",
+  messaging: "#F59E0B",
+  data:      "#A855F7",
+  infra:     "#7C3AED",
+  observ:    "#8B5CF6",
 };
 
 export default function SystemDashboard() {
@@ -119,7 +119,7 @@ export default function SystemDashboard() {
         transition={{ duration: 0.6 }}
         className="flex items-center gap-4 mb-2"
       >
-        <span className="w-2 h-2 rounded-full" style={{ background: "#61c2a2", boxShadow: "0 0 8px #61c2a2" }} />
+        <span className="w-2 h-2 rounded-full" style={{ background: "#7C3AED", boxShadow: "0 0 8px #7C3AED" }} />
         <p className="text-xs tracking-widest uppercase" style={{ fontFamily: "'JetBrains Mono', monospace", color: "var(--txt-muted)" }}>
           systems expertise
         </p>
@@ -192,7 +192,7 @@ export default function SystemDashboard() {
             <p className="text-sm font-semibold" style={{ color: "var(--txt-primary)" }}>Architecture Patterns</p>
             <span
               className="text-xs px-2 py-0.5 rounded-full font-mono"
-              style={{ background: "rgba(97,194,162,0.1)", color: "#61c2a2", border: "1px solid rgba(97,194,162,0.2)" }}
+              style={{ background: "rgba(124,58,237,0.1)", color: "#7C3AED", border: "1px solid rgba(124,58,237,0.2)" }}
             >
               {PATTERNS.length} applied
             </span>
@@ -227,7 +227,7 @@ export default function SystemDashboard() {
             <p className="text-sm font-semibold" style={{ color: "var(--txt-primary)" }}>Core Stack</p>
             <span
               className="text-xs px-2 py-0.5 rounded-full font-mono"
-              style={{ background: "rgba(97,194,162,0.1)", color: "#61c2a2", border: "1px solid rgba(97,194,162,0.2)" }}
+              style={{ background: "rgba(124,58,237,0.1)", color: "#7C3AED", border: "1px solid rgba(124,58,237,0.2)" }}
             >
               production
             </span>
