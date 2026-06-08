@@ -347,9 +347,9 @@ const LIGHT_GLOBE_CONFIG = {
   dark: 0,
   diffuse: 1.5,
   mapBrightness: 1.8,
-  baseColor: [0.35, 0.65, 0.55],
-  glowColor: [0.45, 0.75, 0.65],
-  markerColor: [0.3, 0.6, 0.5],
+  baseColor: [0.49, 0.23, 0.93],      // Purple primary #7C3AED
+  glowColor: [0.55, 0.36, 0.96],      // Purple secondary #8B5CF6
+  markerColor: [0.66, 0.33, 0.97],    // Purple accent #A855F7
   devicePixelRatio: 2,
   phi: 0,
   theta: 0.3,

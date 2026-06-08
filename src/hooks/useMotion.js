@@ -140,9 +140,9 @@ export function useCinematicScroll(ref) {
         const progress = 1 - (rect.top + rect.height / 2) / (vh + rect.height / 2);
         const clamped = Math.max(0, Math.min(1, progress));
 
-        // Entry phase (0 to 0.3): fade up + scale up
-        // Active phase (0.3 to 0.7): fully visible
-        // Exit phase (0.7 to 1): fade + scale down slightly
+        // Entry phase (0 to 0.2): fade up + scale up
+        // Active phase (0.2 to 1): fully visible
+        // Exit phase: removed opacity fade to prevent premature dimming
         let scale = 1, opacity = 1, blur = 0, y = 0;
 
         if (clamped < 0.2) {
@@ -150,10 +150,6 @@ export function useCinematicScroll(ref) {
           scale = 0.96 + t * 0.04;
           opacity = t;
           y = (1 - t) * 30;
-        } else if (clamped > 0.85) {
-          const t = (clamped - 0.85) / 0.15;
-          scale = 1 - t * 0.02;
-          opacity = 1 - t * 0.4;
         }
 
         setState({ scale, opacity, blur, y });
