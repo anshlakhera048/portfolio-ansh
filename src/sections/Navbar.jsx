@@ -156,7 +156,7 @@ function Navigation({ onLinkClick }) {
         <li className="nav-li" role="none">
           <a
             className="nav-link transition-colors duration-200"
-            href="https://drive.google.com/file/d/1AxaJGhQI10XZJiPptxwBdm95o62TNr1F/view?usp=sharing"
+            href="https://drive.google.com/file/d/1GNH9t3hQx3JOtj8MyEyTweaelVulkF2g/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             role="menuitem"
