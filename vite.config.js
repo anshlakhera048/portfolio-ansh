@@ -5,12 +5,17 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
 
-  // Prevent duplicate React / Three instances across chunks
+  server: {
+    host: "0.0.0.0",
+    port: 5173,
+    strictPort: true,
+    allowedHosts: true,
+  },
+
   resolve: {
     dedupe: ["react", "react-dom", "three", "@react-three/fiber"],
   },
 
-  // Pre-bundle the R3F ecosystem so Vite sees one copy at dev time too
   optimizeDeps: {
     include: [
       "react",
@@ -27,9 +32,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          // React MUST be isolated — mixing it into any other chunk causes
-          // the "Cannot read properties of undefined (reading 'useLayoutEffect')"
-          // crash in minified production builds.
           if (
             id.includes("/node_modules/react/") ||
             id.includes("/node_modules/react-dom/") ||
@@ -38,7 +40,6 @@ export default defineConfig({
             return "react-vendor";
           }
 
-          // Three.js + R3F ecosystem — isolated from React
           if (
             id.includes("/node_modules/three/") ||
             id.includes("/node_modules/@react-three/") ||
@@ -50,7 +51,6 @@ export default defineConfig({
             return "three-vendor";
           }
 
-          // Everything else from node_modules goes into a generic vendor chunk
           if (id.includes("/node_modules/")) {
             return "vendor";
           }
