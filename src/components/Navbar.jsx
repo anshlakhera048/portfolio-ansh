@@ -30,10 +30,27 @@ function EmberIcon() {
   );
 }
 
+function BloomIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
+      <ellipse cx="12" cy="6.4" rx="2.3" ry="3.2" />
+      <ellipse cx="12" cy="17.6" rx="2.3" ry="3.2" />
+      <ellipse cx="6.4" cy="12" rx="3.2" ry="2.3" />
+      <ellipse cx="17.6" cy="12" rx="3.2" ry="2.3" />
+      <ellipse cx="8" cy="8" rx="2.2" ry="3" transform="rotate(-45 8 8)" />
+      <ellipse cx="16" cy="16" rx="2.2" ry="3" transform="rotate(-45 16 16)" />
+      <ellipse cx="16" cy="8" rx="3" ry="2.2" transform="rotate(45 16 8)" />
+      <ellipse cx="8" cy="16" rx="3" ry="2.2" transform="rotate(45 8 16)" />
+      <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 const THEME_ICONS = {
   singularity: SingularityIcon,
   abyss: AbyssIcon,
   ember: EmberIcon,
+  bloom: BloomIcon,
 };
 
 function ThemeSwitcher() {

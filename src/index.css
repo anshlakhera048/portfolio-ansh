@@ -39,6 +39,24 @@
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
+[data-theme="bloom"] {
+  --bg: #150c11;
+  --bg-soft: #1e1018;
+  --panel: #221420;
+  --line: rgba(249, 168, 212, 0.12);
+  --ink: #fdf3f7;
+  --ink-dim: #d8b8c4;
+  --ink-faint: #8a6b78;
+  --accent: #f472b6;
+  --accent-deep: #db2777;
+  --accent2: #fdba74;
+  --accent-soft: rgba(244, 114, 182, 0.12);
+  --bid: #34d399;
+  --ask: #f87171;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
 [data-theme="ember"] {
   --bg: #0d0906;
   --bg-soft: #140d08;
