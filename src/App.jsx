@@ -13,6 +13,7 @@ import Experience from "./sections/Experience";
 import Terminal from "./sections/Terminal";
 import Contact from "./sections/Contact";
 import { stackMarquee } from "./content";
+import { useTheme } from "./context/useTheme";
 
 /* newUI — "measured, not simulated." */
 
@@ -21,6 +22,7 @@ import { stackMarquee } from "./content";
 const SHOW_BOOK = false;
 
 export default function App() {
+  const { theme } = useTheme();
   // cursor-tracked sheen for cards (event delegation, cheap)
   useEffect(() => {
     const onMove = (e) => {
@@ -36,6 +38,7 @@ export default function App() {
 
   return (
     <div className="grain min-h-screen" style={{ background: "var(--bg)", color: "var(--ink)" }}>
+      {theme === "light" && <div className="light-scene" aria-hidden="true" />}
       <Loader />
       <Cursor />
       <ScrollProgress />

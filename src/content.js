@@ -116,7 +116,7 @@ export const projects = [
       { k: "idempotency", v: "3-tier" },
     ],
     tags: ["Spring Boot", "Kafka", "PostgreSQL", "Redis", "FastAPI", "Prometheus", "Grafana"],
-    href: "https://github.com/anshlakhera048",
+    href: "https://github.com/anshlakhera048/Distributed-Payment-Infrastructure",
     image: "/assets/distributed_payment_infra.png",
   },
 ];
