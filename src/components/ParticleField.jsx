@@ -104,7 +104,7 @@ function DiskRing({ inner, outer, count, speed, dark }) {
 }
 
 /* ---------- the black hole ---------- */
-function BlackHole({ dark }) {
+function BlackHole({ dark, compact }) {
   const group = useRef(null);
   const ring = useRef(null);
   const rim = useRef(null);
@@ -132,7 +132,12 @@ function BlackHole({ dark }) {
   });
 
   return (
-    <group ref={group} position={[3.6, 0.7, -1.5]} rotation={[0.3, 0, 0.08]}>
+    <group
+      ref={group}
+      position={compact ? [0.3, -3.8, -2.5] : [3.6, 0.7, -1.5]}
+      rotation={[0.3, 0, 0.08]}
+      scale={compact ? 0.72 : 1}
+    >
       {/* halo glow — wide + tight for a lensing feel */}
       <sprite scale={[14, 14, 1]}>
         <spriteMaterial
@@ -242,7 +247,7 @@ function Asteroids() {
 
 /* Lazy-loaded 3D hero backdrop: starfield + black hole with accretion disk
    + drifting asteroids. Mouse-parallax camera. Mounts only when Hero asks. */
-export default function ParticleField({ dark = true }) {
+export default function ParticleField({ dark = true, compact = false }) {
   const mouse = useRef({ x: 0, y: 0 });
 
   return (
@@ -263,10 +268,10 @@ export default function ParticleField({ dark = true }) {
         <ambientLight intensity={0.65} />
         <directionalLight position={[7, 5, 4]} intensity={1.5} color="#ffe0e6" />
         <pointLight position={[3.6, 0.7, 0.5]} intensity={60} distance={24} color="#a855f7" />
-        <CameraRig mouse={mouse} />
+        <CameraRig mouse={mouse} compact={compact} />
         <Starfield dark={dark} />
-        <BlackHole dark={dark} />
-        {dark && <Asteroids />}
+        <BlackHole dark={dark} compact={compact} />
+        {dark && !compact && <Asteroids />}
       </Canvas>
       {/* legibility gradient over the 3D */}
       <div
@@ -281,13 +286,14 @@ export default function ParticleField({ dark = true }) {
   );
 }
 
-function CameraRig({ mouse }) {
+function CameraRig({ mouse, compact }) {
   useFrame(({ clock, camera }) => {
     const t = clock.getElapsedTime();
     const swayX = Math.sin(t * 0.12) * 0.5;
     camera.position.x += (mouse.current.x * 2.4 + swayX - camera.position.x) * 0.03;
     camera.position.y += (1.7 + mouse.current.y * 1.1 - camera.position.y) * 0.03;
-    camera.lookAt(1.2, 0.4, 0);
+    if (compact) camera.lookAt(0.3, -1.1, 0);
+    else camera.lookAt(1.2, 0.4, 0);
   });
   return null;
 }

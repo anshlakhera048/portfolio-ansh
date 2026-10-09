@@ -93,6 +93,10 @@ html, body {
 @media (prefers-reduced-motion: reduce) {
   .light-scene { animation: none; }
 }
+@media (max-width: 640px) {
+  .light-scene { opacity: 0.6; }
+  .light-scene::after { background-size: 24px 24px; }
+}
 
 /* film-grain overlay */
 .grain::after {

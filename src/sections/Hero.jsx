@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import CountUp from "../components/CountUp";
 import Magnetic from "../components/Magnetic";
 import Reveal from "../components/Reveal";
@@ -32,8 +32,8 @@ function NameWord({ word, baseDelay, accentDot, reduced }) {
         <motion.span
           key={i}
           className="inline-block"
-          initial={reduced ? false : { y: "115%", rotate: 4 }}
-          animate={{ y: "0%", rotate: 0 }}
+          initial={reduced ? false : { y: "115%", rotate: 4, filter: "blur(8px)" }}
+          animate={{ y: "0%", rotate: 0, filter: "blur(0px)" }}
           transition={{ duration: 1.05, ease, delay: baseDelay + i * 0.045 }}
         >
           {ch}
@@ -93,6 +93,7 @@ export default function Hero() {
   const { theme } = useTheme();
   const dark = theme !== "light";
   const [show3D, setShow3D] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const reduced =
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -105,18 +106,47 @@ export default function Hero() {
     return () => clearTimeout(t);
   }, []);
 
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 640px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  // subtle scroll parallax: content drifts up and fades as you leave the hero
+  const { scrollY } = useScroll();
+  const contentY = useTransform(scrollY, [0, 700], [0, reduced ? 0 : -90]);
+  const contentOpacity = useTransform(scrollY, [0, 550], [1, reduced ? 1 : 0.25]);
+
   return (
     <section id="top" className="relative min-h-screen flex flex-col overflow-hidden">
       {/* 3D particle wave backdrop */}
       {show3D && !reduced ? (
         <Suspense fallback={<FieldFallback />}>
-          <ParticleField dark={dark} />
+          <ParticleField dark={dark} compact={isMobile} />
         </Suspense>
       ) : (
         <FieldFallback />
       )}
 
-      <div className="relative z-10 flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full px-5 sm:px-8 pt-32 pb-16">
+      {/* mobile text-zone scrim: keeps the headline readable over the 3D */}
+      {isMobile && (
+        <div
+          className="absolute inset-0 pointer-events-none sm:hidden"
+          aria-hidden="true"
+          style={{
+            background: dark
+              ? "radial-gradient(115% 62% at 50% 0%, rgba(10,10,12,0.78), transparent 72%)"
+              : "radial-gradient(115% 62% at 50% 0%, rgba(250,248,245,0.85), transparent 72%)",
+          }}
+        />
+      )}
+
+      <motion.div
+        style={{ y: contentY, opacity: contentOpacity }}
+        className="relative z-10 flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full px-5 sm:px-8 pt-28 sm:pt-32 pb-28 sm:pb-16"
+      >
         <motion.div
           initial={reduced ? false : { opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
@@ -147,7 +177,14 @@ export default function Hero() {
           {profile.role} — {profile.focus}
         </motion.p>
 
-        <h1 className="display-xl" style={{ fontSize: "clamp(3.4rem, 12vw, 10.5rem)" }} aria-label="Ansh Lakhera">
+        <h1
+          className="display-xl"
+          style={{
+            fontSize: "clamp(3.4rem, 12vw, 10.5rem)",
+            textShadow: dark ? "0 4px 70px rgba(0,0,0,0.55)" : "0 2px 34px rgba(225,29,72,0.10)",
+          }}
+          aria-label="Ansh Lakhera"
+        >
           <NameWord word="ANSH" baseDelay={0.3} reduced={reduced} />
           <NameWord word="LAKHERA" baseDelay={0.55} accentDot reduced={reduced} />
         </h1>
@@ -225,7 +262,7 @@ export default function Hero() {
             Get in touch →
           </a>
         </motion.div>
-      </div>
+      </motion.div>
 
       <Reveal className="relative z-10 pb-8 flex flex-col items-center gap-3" delay={200}>
         <div className="font-mono2 text-[0.65rem] tracking-[0.3em] uppercase" style={{ color: "var(--ink-faint)" }}>

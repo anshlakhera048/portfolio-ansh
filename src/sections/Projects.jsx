@@ -5,13 +5,13 @@ import { projects } from "../content";
 
 function MetricRow({ metrics }) {
   return (
-    <div className="flex flex-wrap gap-x-8 gap-y-3 mt-6">
+    <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-x-4 gap-y-4 sm:gap-x-8 sm:gap-y-3 mt-5 sm:mt-6">
       {metrics.map((m) => (
         <div key={m.k}>
-          <div className="font-mono2 tick-num text-2xl font-semibold" style={{ color: "var(--accent)" }}>
+          <div className="font-mono2 tick-num text-xl sm:text-2xl font-semibold" style={{ color: "var(--accent)" }}>
             {m.v}
           </div>
-          <div className="font-mono2 text-[0.65rem] tracking-[0.2em] uppercase mt-1" style={{ color: "var(--ink-faint)" }}>
+          <div className="font-mono2 text-[0.62rem] sm:text-[0.65rem] tracking-[0.2em] uppercase mt-1" style={{ color: "var(--ink-faint)" }}>
             {m.k}
           </div>
         </div>
@@ -25,7 +25,7 @@ function ProjectCard({ p }) {
     <Tilt max={5}>
       <article
         id={`project-${p.id}`}
-        className="sheen rounded-2xl border p-7 sm:p-9 scroll-mt-28"
+        className="sheen rounded-2xl border p-5 sm:p-9 scroll-mt-28"
         style={{ borderColor: "var(--line)", background: "var(--panel)" }}
         onMouseMove={(e) => {
           const r = e.currentTarget.getBoundingClientRect();
@@ -38,19 +38,19 @@ function ProjectCard({ p }) {
             <div className="font-mono2 text-[0.68rem] tracking-[0.24em] uppercase mb-3" style={{ color: "var(--ink-faint)" }}>
               {p.period}
             </div>
-            <h3 className="display-xl" style={{ fontSize: "clamp(1.9rem, 4vw, 3rem)" }}>{p.title}</h3>
+            <h3 className="display-xl" style={{ fontSize: "clamp(1.65rem, 7.5vw, 3rem)" }}>{p.title}</h3>
             <p className="font-mono2 text-sm mt-2" style={{ color: "var(--ink-dim)" }}>{p.subtitle}</p>
-            <p className="mt-4 leading-relaxed" style={{ color: "var(--ink-dim)" }}>{p.description}</p>
+            <p className="mt-4 leading-relaxed text-[0.95rem] sm:text-base" style={{ color: "var(--ink-dim)" }}>{p.description}</p>
             <MetricRow metrics={p.metrics} />
-            <ul className="mt-6 space-y-2.5">
+            <ul className="mt-5 sm:mt-6 space-y-2 sm:space-y-2.5">
               {p.bullets.map((b, i) => (
-                <li key={i} className="flex gap-3 text-[0.95rem] leading-relaxed" style={{ color: "var(--ink-dim)" }}>
+                <li key={i} className="flex gap-3 text-sm sm:text-[0.95rem] leading-relaxed" style={{ color: "var(--ink-dim)" }}>
                   <span style={{ color: "var(--accent)" }} className="font-mono2">▸</span>
                   <span>{b}</span>
                 </li>
               ))}
             </ul>
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className="mt-5 sm:mt-6 flex flex-wrap gap-2">
               {p.tags.map((t) => (
                 <span key={t} className="font-mono2 text-[0.68rem] tracking-wider border rounded-full px-3 py-1"
                   style={{ borderColor: "var(--line)", color: "var(--ink-dim)" }}>
@@ -59,7 +59,7 @@ function ProjectCard({ p }) {
               ))}
             </div>
             <a href={p.href} target="_blank" rel="noreferrer"
-              className="u-sweep inline-block mt-6 font-mono2 text-sm tracking-[0.14em] uppercase"
+              className="u-sweep inline-block mt-5 sm:mt-6 font-mono2 text-sm tracking-[0.14em] uppercase"
               style={{ color: "var(--ink)" }}>
               Source →
             </a>
@@ -135,13 +135,13 @@ export default function Projects() {
             </div>
           </aside>
 
-          <div className="space-y-8">
+          <div className="space-y-5 sm:space-y-8">
             {/* Kairos — flagship, newest */}
             <Reveal>
               <Tilt max={4}>
                 <article
                   id="project-kairos"
-                  className="sheen rounded-2xl p-7 sm:p-10 relative overflow-hidden scroll-mt-28"
+                  className="sheen rounded-2xl p-5 sm:p-10 relative overflow-hidden scroll-mt-28"
                   style={{
                     border: "1px solid rgba(255,61,94,0.38)",
                     background:
@@ -164,21 +164,21 @@ export default function Projects() {
                       the proving ground · {kairos.period}
                     </span>
                   </div>
-                  <h3 className="display-xl" style={{ fontSize: "clamp(2.6rem, 7vw, 5.5rem)" }}>{kairos.title}</h3>
+                  <h3 className="display-xl" style={{ fontSize: "clamp(2.2rem, 12vw, 5.5rem)" }}>{kairos.title}</h3>
                   <p className="font-mono2 text-sm mt-3" style={{ color: "var(--ink-dim)" }}>{kairos.subtitle}</p>
-                  <p className="mt-5 max-w-2xl text-lg leading-relaxed" style={{ color: "var(--ink-dim)" }}>
+                  <p className="mt-5 max-w-2xl text-base sm:text-lg leading-relaxed" style={{ color: "var(--ink-dim)" }}>
                     {kairos.description}
                   </p>
                   <MetricRow metrics={kairos.metrics} />
-                  <ul className="mt-7 grid sm:grid-cols-2 gap-x-8 gap-y-3">
+                  <ul className="mt-5 sm:mt-7 grid sm:grid-cols-2 gap-x-8 gap-y-2.5 sm:gap-y-3">
                     {kairos.bullets.map((b, i) => (
-                      <li key={i} className="flex gap-3 text-[0.95rem] leading-relaxed" style={{ color: "var(--ink-dim)" }}>
+                      <li key={i} className="flex gap-3 text-sm sm:text-[0.95rem] leading-relaxed" style={{ color: "var(--ink-dim)" }}>
                         <span style={{ color: "var(--accent)" }} className="font-mono2">▸</span>
                         <span>{b}</span>
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-7 flex flex-wrap items-center gap-2">
+                  <div className="mt-5 sm:mt-7 flex flex-wrap items-center gap-2">
                     {kairos.tags.map((t) => (
                       <span key={t} className="font-mono2 text-[0.68rem] tracking-wider border rounded-full px-3 py-1"
                         style={{ borderColor: "var(--line)", color: "var(--ink-dim)" }}>
@@ -187,7 +187,7 @@ export default function Projects() {
                     ))}
                   </div>
                   <a href={kairos.href} target="_blank" rel="noreferrer"
-                    className="u-sweep inline-block mt-7 font-mono2 text-sm tracking-[0.14em] uppercase"
+                    className="u-sweep inline-block mt-5 sm:mt-7 font-mono2 text-sm tracking-[0.14em] uppercase"
                     style={{ color: "var(--ink)" }}>
                     Source →
                   </a>
