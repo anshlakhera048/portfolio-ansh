@@ -47,7 +47,13 @@ export default function Contact() {
       await emailjs.send(
         serviceId,
         templateId,
-        { from_name: form.name, reply_to: form.email, message: form.message },
+        {
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          title: `Portfolio contact from ${form.name}`,
+          time: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
+        },
         publicKey
       );
       setStatus("sent");
