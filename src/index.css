@@ -3,7 +3,7 @@
 /* newUI design system — "measured, not simulated" */
 
 :root,
-[data-theme="dark"] {
+[data-theme="singularity"] {
   --bg: #0a0a0c;
   --bg-soft: #101014;
   --panel: #121218;
@@ -21,20 +21,40 @@
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
-[data-theme="light"] {
-  --bg: #faf8f5;
-  --bg-soft: #f2ede8;
-  --panel: #ffffff;
-  --line: rgba(28, 16, 22, 0.1);
-  --ink: #1c1417;
-  --ink-dim: #5e555c;
-  --ink-faint: #978b95;
-  --accent: #e11d48;
-  --accent-deep: #be123c;
-  --accent2: #9333ea;
-  --accent-soft: rgba(225, 29, 72, 0.08);
-  --bid: #059669;
-  --ask: #dc2626;
+[data-theme="abyss"] {
+  --bg: #04121e;
+  --bg-soft: #071a2b;
+  --panel: #0a2033;
+  --line: rgba(160, 220, 255, 0.1);
+  --ink: #eef6fb;
+  --ink-dim: #a9c3d4;
+  --ink-faint: #5f7a8d;
+  --accent: #22d3ee;
+  --accent-deep: #0e7490;
+  --accent2: #2dd4bf;
+  --accent-soft: rgba(34, 211, 238, 0.12);
+  --bid: #34d399;
+  --ask: #f87171;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+[data-theme="ember"] {
+  --bg: #0d0906;
+  --bg-soft: #140d08;
+  --panel: #1a120b;
+  --line: rgba(255, 200, 150, 0.1);
+  --ink: #faf3ec;
+  --ink-dim: #c9b8a8;
+  --ink-faint: #7d6f61;
+  --accent: #f97316;
+  --accent-deep: #c2410c;
+  --accent2: #f59e0b;
+  --accent-soft: rgba(249, 115, 22, 0.12);
+  --bid: #34d399;
+  --ask: #f87171;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
 html {
@@ -63,40 +83,6 @@ html, body {
 .font-mono2 { font-family: var(--font-mono); }
 
 .grain { position: relative; z-index: 1; }
-
-/* light-mode atmosphere: drifting aurora washes + fading dot grid */
-.light-scene {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(1000px 620px at 12% 6%, rgba(225, 29, 72, 0.07), transparent 62%),
-    radial-gradient(920px 620px at 88% 88%, rgba(147, 51, 234, 0.09), transparent 62%),
-    radial-gradient(720px 520px at 72% 12%, rgba(225, 29, 72, 0.05), transparent 60%),
-    radial-gradient(600px 500px at 20% 90%, rgba(147, 51, 234, 0.05), transparent 60%);
-  animation: lightdrift 28s ease-in-out infinite alternate;
-}
-.light-scene::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(28, 16, 22, 0.07) 1px, transparent 1.4px);
-  background-size: 30px 30px;
-  -webkit-mask-image: radial-gradient(ellipse 95% 85% at 50% 18%, black 25%, transparent 78%);
-  mask-image: radial-gradient(ellipse 95% 85% at 50% 18%, black 25%, transparent 78%);
-}
-@keyframes lightdrift {
-  from { transform: translate3d(-2%, -1%, 0) scale(1); }
-  to { transform: translate3d(2%, 2%, 0) scale(1.07); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .light-scene { animation: none; }
-}
-@media (max-width: 640px) {
-  .light-scene { opacity: 0.6; }
-  .light-scene::after { background-size: 24px 24px; }
-}
 
 /* film-grain overlay */
 .grain::after {

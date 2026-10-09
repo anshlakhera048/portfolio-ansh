@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { ThemeContext } from "./theme-context";
+import { ThemeContext, THEMES, DEFAULT_THEME } from "./theme-context";
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
     try {
-      return localStorage.getItem("newui-theme") || "dark";
+      const saved = localStorage.getItem("newui-theme");
+      return THEMES.includes(saved) ? saved : DEFAULT_THEME;
     } catch {
-      return "dark";
+      return DEFAULT_THEME;
     }
   });
 
@@ -19,7 +20,9 @@ export function ThemeProvider({ children }) {
     }
   }, [theme]);
 
-  const toggle = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
-
-  return <ThemeContext.Provider value={{ theme, toggle }}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme, themes: THEMES }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 }

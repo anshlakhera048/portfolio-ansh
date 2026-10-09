@@ -1,27 +1,76 @@
 import { useEffect, useState } from "react";
 import { nav, profile } from "../content";
 import { useTheme } from "../context/useTheme";
+import { THEME_META } from "../context/theme-context";
 
-function SunIcon() {
+function SingularityIcon() {
   return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-      <circle cx="12" cy="12" r="4" />
-      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <circle cx="12" cy="12" r="4.5" fill="currentColor" stroke="none" />
+      <ellipse cx="12" cy="12" rx="10" ry="3.6" transform="rotate(-18 12 12)" />
     </svg>
   );
 }
 
-function MoonIcon() {
+function AbyssIcon() {
   return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+      <path d="M2 8c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2" />
+      <path d="M2 14c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2" />
     </svg>
+  );
+}
+
+function EmberIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2c1 4-3 5-3 9a5 5 0 0 0 10 0c0-2-1-3.5-2-5-.5 1.5-1.5 2-1.5 2C15 6 13.5 4 12 2z" />
+      <path d="M12 22a7 7 0 0 1-7-7c0-1 .2-2 .6-2.8C7 14 9 15 9 15c-1-3 1-6 3-8 2 2 4 5 3 8 0 0 2-1 3.4-2.8.4.8.6 1.8.6 2.8a7 7 0 0 1-7 7z" opacity="0.45" />
+    </svg>
+  );
+}
+
+const THEME_ICONS = {
+  singularity: SingularityIcon,
+  abyss: AbyssIcon,
+  ember: EmberIcon,
+};
+
+function ThemeSwitcher() {
+  const { theme, setTheme, themes } = useTheme();
+  return (
+    <div
+      className="flex items-center gap-1 border rounded-full p-1"
+      style={{ borderColor: "var(--line)", background: "color-mix(in srgb, var(--panel) 70%, transparent)" }}
+      role="group"
+      aria-label="Color theme"
+    >
+      {themes.map((t) => {
+        const Icon = THEME_ICONS[t];
+        const active = theme === t;
+        return (
+          <button
+            key={t}
+            onClick={() => setTheme(t)}
+            title={`${THEME_META[t].label} — ${THEME_META[t].hint}`}
+            aria-label={`${THEME_META[t].label} theme`}
+            aria-pressed={active}
+            className="rounded-full p-2 transition-all hover:scale-110"
+            style={{
+              color: active ? "var(--accent)" : "var(--ink-faint)",
+              background: active ? "var(--accent-soft)" : "transparent",
+            }}
+          >
+            <Icon />
+          </button>
+        );
+      })}
+    </div>
   );
 }
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -54,16 +103,7 @@ export default function Navbar() {
               {n.label}
             </a>
           ))}
-          <button
-            onClick={toggle}
-            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-            className="border rounded-full p-2.5 transition-all hover:scale-110"
-            style={{ borderColor: "var(--line)", color: "var(--ink-dim)" }}
-            onMouseEnter={(e) => { e.currentTarget.style.color = "var(--accent)"; e.currentTarget.style.borderColor = "var(--accent)"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.color = "var(--ink-dim)"; e.currentTarget.style.borderColor = "var(--line)"; }}
-          >
-            {theme === "dark" ? <SunIcon /> : <MoonIcon />}
-          </button>
+          <ThemeSwitcher />
           <a
             href={profile.resumeUrl}
             target="_blank"

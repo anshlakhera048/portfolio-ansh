@@ -19,11 +19,18 @@ function FieldFallback() {
       aria-hidden="true"
       style={{
         background:
-          "radial-gradient(1100px 500px at 20% 30%, rgba(255,61,94,0.14), transparent 60%), radial-gradient(900px 500px at 80% 60%, rgba(168,85,247,0.12), transparent 60%), var(--bg)",
+          "radial-gradient(1100px 500px at 20% 30%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 60%), radial-gradient(900px 500px at 80% 60%, color-mix(in srgb, var(--accent2) 12%, transparent), transparent 60%), var(--bg)",
       }}
     />
   );
 }
+
+/* rgb triplets of each theme's background, for the mobile text scrim */
+const THEME_BG_RGB = {
+  singularity: "10,10,12",
+  abyss: "4,18,30",
+  ember: "13,9,6",
+};
 
 function NameWord({ word, baseDelay, accentDot, reduced }) {
   return (
@@ -91,7 +98,6 @@ function RotatingLine({ reduced }) {
 
 export default function Hero() {
   const { theme } = useTheme();
-  const dark = theme !== "light";
   const [show3D, setShow3D] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const reduced =
@@ -121,10 +127,10 @@ export default function Hero() {
 
   return (
     <section id="top" className="relative min-h-screen flex flex-col overflow-hidden">
-      {/* 3D particle wave backdrop */}
+      {/* 3D scene backdrop — per-theme, lazy-loaded */}
       {show3D && !reduced ? (
         <Suspense fallback={<FieldFallback />}>
-          <ParticleField dark={dark} compact={isMobile} />
+          <ParticleField theme={theme} compact={isMobile} />
         </Suspense>
       ) : (
         <FieldFallback />
@@ -136,9 +142,7 @@ export default function Hero() {
           className="absolute inset-0 pointer-events-none sm:hidden"
           aria-hidden="true"
           style={{
-            background: dark
-              ? "radial-gradient(115% 62% at 50% 0%, rgba(10,10,12,0.78), transparent 72%)"
-              : "radial-gradient(115% 62% at 50% 0%, rgba(250,248,245,0.85), transparent 72%)",
+            background: `radial-gradient(115% 62% at 50% 0%, rgba(${THEME_BG_RGB[theme] || THEME_BG_RGB.singularity},0.8), transparent 72%)`,
           }}
         />
       )}
@@ -181,7 +185,7 @@ export default function Hero() {
           className="display-xl"
           style={{
             fontSize: "clamp(3.4rem, 12vw, 10.5rem)",
-            textShadow: dark ? "0 4px 70px rgba(0,0,0,0.55)" : "0 2px 34px rgba(225,29,72,0.10)",
+            textShadow: "0 4px 70px rgba(0,0,0,0.55)",
           }}
           aria-label="Ansh Lakhera"
         >
