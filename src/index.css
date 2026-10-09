@@ -142,8 +142,8 @@ html, body {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 61, 94, 0.10), transparent 65%),
-    radial-gradient(480px circle at var(--mx, 50%) var(--my, 120%), rgba(168, 85, 247, 0.07), transparent 65%);
+    radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 10%, transparent), transparent 65%),
+    radial-gradient(480px circle at var(--mx, 50%) var(--my, 120%), color-mix(in srgb, var(--accent2) 7%, transparent), transparent 65%);
   opacity: 0;
   transition: opacity 0.35s ease;
 }
@@ -182,7 +182,7 @@ html, body {
 @media (pointer: fine) {
   .cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 200; border-radius: 50%; }
   .cursor-dot { width: 6px; height: 6px; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
-  .cursor-ring { width: 34px; height: 34px; border: 1px solid rgba(255, 61, 94, 0.55); transition: width 0.25s, height 0.25s, border-color 0.25s; }
+  .cursor-ring { width: 34px; height: 34px; border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent); transition: width 0.25s, height 0.25s, border-color 0.25s; }
   .cursor-ring.is-hover { width: 56px; height: 56px; border-color: var(--accent2); }
 }
 @media (pointer: coarse) {

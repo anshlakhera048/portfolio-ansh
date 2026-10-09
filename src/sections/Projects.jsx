@@ -143,9 +143,9 @@ export default function Projects() {
                   id="project-kairos"
                   className="sheen rounded-2xl p-5 sm:p-10 relative overflow-hidden scroll-mt-28"
                   style={{
-                    border: "1px solid rgba(255,61,94,0.38)",
+                    border: "1px solid color-mix(in srgb, var(--accent) 38%, transparent)",
                     background:
-                      "linear-gradient(180deg, rgba(255,61,94,0.07), rgba(168,85,247,0.04) 55%, rgba(255,61,94,0) 100%), var(--panel)",
+                      "linear-gradient(180deg, color-mix(in srgb, var(--accent) 7%, transparent), color-mix(in srgb, var(--accent2) 4%, transparent) 55%, transparent 100%), var(--panel)",
                   }}
                   onMouseMove={(e) => {
                     const r = e.currentTarget.getBoundingClientRect();
