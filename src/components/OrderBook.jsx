@@ -154,7 +154,7 @@ export default function OrderBook({ className = "" }) {
       }
 
       // mid line + label
-      ctx.strokeStyle = "rgba(255,178,36,0.5)";
+      ctx.strokeStyle = "rgba(255,61,94,0.55)";
       ctx.setLineDash([4, 4]);
       ctx.beginPath();
       ctx.moveTo(cx, top - 14);
@@ -173,7 +173,7 @@ export default function OrderBook({ className = "" }) {
       ctx.fillStyle = "rgba(111,108,100,1)";
       const spread = TICK;
       ctx.fillText("SPREAD", 120, 22);
-      ctx.fillStyle = "#ffb224";
+      ctx.fillStyle = "#ff3d5e";
       ctx.font = "600 15px 'JetBrains Mono', monospace";
       ctx.fillText(spread.toFixed(2), 120, 42);
 

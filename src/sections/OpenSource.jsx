@@ -1,4 +1,5 @@
 import Reveal from "../components/Reveal";
+import Tilt from "../components/Tilt";
 import { openSource } from "../content";
 
 export default function OpenSource() {
@@ -18,6 +19,7 @@ export default function OpenSource() {
         <div className="mt-12 grid md:grid-cols-2 gap-6">
           {openSource.map((o, i) => (
             <Reveal key={o.repo} delay={i * 120}>
+              <Tilt max={5} className="h-full">
               <article
                 className="sheen rounded-2xl border p-7 sm:p-8 h-full"
                 style={{ borderColor: "var(--line)", background: "var(--panel)" }}
@@ -54,6 +56,7 @@ export default function OpenSource() {
                   Repository →
                 </a>
               </article>
+              </Tilt>
             </Reveal>
           ))}
         </div>

@@ -17,7 +17,7 @@ const COMMANDS = {
     `${profile.name} — ${profile.role}, ${profile.focus}.`,
     profile.tagline,
   ],
-  metrics: () => heroMetrics.map((m) => `  ${m.value} ${m.unit} — ${m.label} (${m.project})`),
+  metrics: () => heroMetrics.map((m) => `  ${m.prefix}${m.num.toLocaleString("en-US")}${m.suffix} ${m.unit} — ${m.label} (${m.project})`),
   projects: () => projects.flatMap((p) => [`▸ ${p.title} — ${p.subtitle}`, ...p.metrics.map((m) => `    ${m.k}: ${m.v}`)]),
   experience: () => experience.map((e) => `▸ ${e.role} · ${e.company} (${e.period})`),
   contact: () => [
@@ -90,7 +90,7 @@ export default function Terminal() {
           <div className="term-window" onClick={() => inputRef.current?.focus()}>
             <div className="flex items-center gap-2 px-5 py-3.5 border-b" style={{ borderColor: "var(--line)" }}>
               <span className="w-3 h-3 rounded-full" style={{ background: "#f87171" }} />
-              <span className="w-3 h-3 rounded-full" style={{ background: "#ffb224" }} />
+              <span className="w-3 h-3 rounded-full" style={{ background: "#ff3d5e" }} />
               <span className="w-3 h-3 rounded-full" style={{ background: "#34d399" }} />
               <span className="font-mono2 text-xs ml-3" style={{ color: "var(--ink-faint)" }}>
                 ansh@portfolio — zsh

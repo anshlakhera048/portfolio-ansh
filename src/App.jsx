@@ -1,37 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import Cursor from "./components/Cursor";
+import ScrollProgress from "./components/ScrollProgress";
 import Marquee from "./components/Marquee";
 import Hero from "./sections/Hero";
+import BookSection from "./sections/BookSection";
 import Projects from "./sections/Projects";
 import OpenSource from "./sections/OpenSource";
 import Experience from "./sections/Experience";
 import Terminal from "./sections/Terminal";
 import Contact from "./sections/Contact";
-import Resume from "./pages/Resume";
 import { stackMarquee } from "./content";
 
-/* newUI — "measured, not simulated."
-   Hash routing: #/resume renders the static recruiter escape hatch (no WebGL, no motion). */
+/* newUI — "measured, not simulated." */
 
-function useRoute() {
-  const [route, setRoute] = useState(() => window.location.hash);
-  useEffect(() => {
-    const onChange = () => {
-      setRoute(window.location.hash);
-      window.scrollTo(0, 0);
-    };
-    window.addEventListener("hashchange", onChange);
-    return () => window.removeEventListener("hashchange", onChange);
-  }, []);
-  return route;
-}
-
-function Site() {
-  const [ready, setReady] = useState(false);
-
+export default function App() {
   // cursor-tracked sheen for cards (event delegation, cheap)
   useEffect(() => {
     const onMove = (e) => {
@@ -47,11 +32,13 @@ function Site() {
 
   return (
     <div className="grain min-h-screen" style={{ background: "var(--bg)", color: "var(--ink)" }}>
-      <Loader onDone={() => setReady(true)} />
+      <Loader />
       <Cursor />
+      <ScrollProgress />
       <Navbar />
       <main>
         <Hero />
+        <BookSection />
         <Marquee items={stackMarquee} className="border-y py-5" style={{ borderColor: "var(--line)" }} />
         <Projects />
         <OpenSource />
@@ -60,13 +47,6 @@ function Site() {
         <Contact />
       </main>
       <Footer />
-      {!ready && <span className="sr-only">Loading…</span>}
     </div>
   );
-}
-
-export default function App() {
-  const route = useRoute();
-  if (route.startsWith("#/resume")) return <Resume />;
-  return <Site />;
 }

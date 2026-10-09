@@ -3,15 +3,17 @@
 /* newUI design system — "measured, not simulated" */
 
 :root {
-  --bg: #0a0a0b;
-  --bg-soft: #101013;
-  --panel: #121215;
+  --bg: #0a0a0c;
+  --bg-soft: #101014;
+  --panel: #121218;
   --line: rgba(255, 255, 255, 0.08);
-  --ink: #edeae2;
-  --ink-dim: #b8b4aa;
-  --ink-faint: #6f6c64;
-  --accent: #ffb224;
-  --accent-soft: rgba(255, 178, 36, 0.12);
+  --ink: #f2ecec;
+  --ink-dim: #b9b0b4;
+  --ink-faint: #736e74;
+  --accent: #ff3d5e;
+  --accent-deep: #c81e42;
+  --accent2: #a855f7;
+  --accent-soft: rgba(255, 61, 94, 0.12);
   --bid: #34d399;
   --ask: #f87171;
   --font-display: "Space Grotesk", system-ui, sans-serif;
@@ -99,7 +101,9 @@ html, body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 178, 36, 0.09), transparent 65%);
+  background:
+    radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 61, 94, 0.10), transparent 65%),
+    radial-gradient(480px circle at var(--mx, 50%) var(--my, 120%), rgba(168, 85, 247, 0.07), transparent 65%);
   opacity: 0;
   transition: opacity 0.35s ease;
 }
@@ -137,9 +141,9 @@ html, body {
 /* custom cursor (desktop only) */
 @media (pointer: fine) {
   .cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 200; border-radius: 50%; }
-  .cursor-dot { width: 6px; height: 6px; background: var(--accent); }
-  .cursor-ring { width: 34px; height: 34px; border: 1px solid rgba(255, 178, 36, 0.55); transition: width 0.25s, height 0.25s, border-color 0.25s; }
-  .cursor-ring.is-hover { width: 56px; height: 56px; border-color: var(--accent); }
+  .cursor-dot { width: 6px; height: 6px; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+  .cursor-ring { width: 34px; height: 34px; border: 1px solid rgba(255, 61, 94, 0.55); transition: width 0.25s, height 0.25s, border-color 0.25s; }
+  .cursor-ring.is-hover { width: 56px; height: 56px; border-color: var(--accent2); }
 }
 @media (pointer: coarse) {
   .cursor-dot, .cursor-ring { display: none; }

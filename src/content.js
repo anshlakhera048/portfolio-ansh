@@ -11,14 +11,14 @@ export const profile = {
   github: "https://github.com/anshlakhera048",
   linkedin: "https://www.linkedin.com/in/ansh-lakhera",
   instagram: "https://www.instagram.com/swe.ngineer",
-  resume: "/Ansh_Lakhera-2.pdf",
+  resumeUrl: "https://drive.google.com/file/d/1RjS4AjH602rZ-JCf43un53uOUseoemdn/view?usp=sharing",
 };
 
 export const heroMetrics = [
-  { value: "400K", unit: "orders/sec", label: "sustained throughput", project: "AxiomX" },
-  { value: "3µs", unit: "p50 latency", label: "order-to-trade", project: "AxiomX" },
-  { value: "~100ns", unit: "per op", label: "book operations", project: "Kairos" },
-  { value: "1,000+", unit: "TPS", label: "validated via k6", project: "Payments" },
+  { num: 400, prefix: "", suffix: "K", decimals: 0, unit: "orders/sec", label: "sustained throughput", project: "AxiomX" },
+  { num: 3, prefix: "", suffix: "µs", decimals: 0, unit: "p50 latency", label: "order-to-trade", project: "AxiomX" },
+  { num: 100, prefix: "~", suffix: "ns", decimals: 0, unit: "per op", label: "book operations", project: "Kairos" },
+  { num: 1000, prefix: "", suffix: "+", decimals: 0, unit: "TPS", label: "validated via k6", project: "Payments" },
 ];
 
 export const stackMarquee = [
@@ -31,6 +31,7 @@ export const projects = [
   {
     id: "kairos",
     flagship: true,
+    period: "Oct 2026",
     title: "Kairos",
     subtitle: "Low-latency matching engine + market-data simulator",
     description:
@@ -53,6 +54,7 @@ export const projects = [
   },
   {
     id: "axiomx",
+    period: "May 2026",
     title: "AxiomX",
     subtitle: "Ultra-low-latency deterministic exchange engine",
     description:
@@ -75,6 +77,7 @@ export const projects = [
   },
   {
     id: "quantstream",
+    period: "Apr 2026",
     title: "QuantStream",
     subtitle: "Real-time quantitative market-data pipeline",
     description:
@@ -96,6 +99,7 @@ export const projects = [
   },
   {
     id: "payments",
+    period: "Mar 2026",
     title: "Distributed Payment Infrastructure",
     subtitle: "Event-driven payments with real-time fraud detection",
     description:

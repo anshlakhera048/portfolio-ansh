@@ -8,7 +8,7 @@ export default function Experience() {
         <Reveal>
           <p className="kicker mb-5">Experience</p>
           <h2 className="display-xl" style={{ fontSize: "clamp(2.4rem, 6vw, 5rem)" }}>
-            Where I've<br />shipped<span style={{ color: "var(--accent)" }}>.</span>
+            Where I&apos;ve<br />shipped<span style={{ color: "var(--accent)" }}>.</span>
           </h2>
         </Reveal>
 
