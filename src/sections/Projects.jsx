@@ -33,7 +33,7 @@ function ProjectCard({ p }) {
           e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
         }}
       >
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col gap-8">
           <div className="flex-1">
             <div className="font-mono2 text-[0.68rem] tracking-[0.24em] uppercase mb-3" style={{ color: "var(--ink-faint)" }}>
               {p.period}
@@ -64,13 +64,6 @@ function ProjectCard({ p }) {
               Source →
             </a>
           </div>
-          {p.image && (
-            <div className="lg:w-[38%] shrink-0">
-              <div className="rounded-xl overflow-hidden border" style={{ borderColor: "var(--line)" }}>
-                <img src={p.image} alt={`${p.title} architecture`} className="w-full h-auto block" loading="lazy" />
-              </div>
-            </div>
-          )}
         </div>
       </article>
     </Tilt>

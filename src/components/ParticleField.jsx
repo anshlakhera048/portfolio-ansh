@@ -5,15 +5,15 @@ import * as THREE from "three";
 
 const COUNT = 2400;
 
-function Wave({ mouse }) {
+function Wave({ mouse, dark }) {
   const ref = useRef(null);
 
   const { positions, colors, seeds } = useMemo(() => {
     const positions = new Float32Array(COUNT * 3);
     const colors = new Float32Array(COUNT * 3);
     const seeds = new Float32Array(COUNT);
-    const cA = new THREE.Color("#ff3d5e");
-    const cB = new THREE.Color("#a855f7");
+    const cA = new THREE.Color(dark ? "#ff3d5e" : "#e11d48");
+    const cB = new THREE.Color(dark ? "#a855f7" : "#9333ea");
     const tmp = new THREE.Color();
     for (let i = 0; i < COUNT; i++) {
       positions[i * 3] = (Math.random() - 0.5) * 30;
@@ -26,7 +26,7 @@ function Wave({ mouse }) {
       seeds[i] = Math.random() * Math.PI * 2;
     }
     return { positions, colors, seeds };
-  }, []);
+  }, [dark]);
 
   useFrame(({ clock, camera }) => {
     const t = clock.getElapsedTime();
@@ -55,16 +55,16 @@ function Wave({ mouse }) {
         size={0.06}
         vertexColors
         transparent
-        opacity={0.8}
+        opacity={dark ? 0.8 : 0.5}
         sizeAttenuation
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        blending={dark ? THREE.AdditiveBlending : THREE.NormalBlending}
       />
     </points>
   );
 }
 
-function Embers() {
+function Embers({ dark }) {
   const ref = useRef(null);
   const N = 220;
   const { positions, speeds } = useMemo(() => {
@@ -98,12 +98,12 @@ function Embers() {
       </bufferGeometry>
       <pointsMaterial
         size={0.09}
-        color="#ff6b8a"
+        color={dark ? "#ff6b8a" : "#e11d48"}
         transparent
-        opacity={0.55}
+        opacity={dark ? 0.55 : 0.35}
         sizeAttenuation
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        blending={dark ? THREE.AdditiveBlending : THREE.NormalBlending}
       />
     </points>
   );
@@ -111,7 +111,7 @@ function Embers() {
 
 /* Lazy-loaded 3D hero backdrop: red→purple particle wave + rising embers,
    mouse-parallax camera. Mounts only when Hero asks for it. */
-export default function ParticleField() {
+export default function ParticleField({ dark = true }) {
   const mouse = useRef({ x: 0, y: 0 });
 
   return (
@@ -129,15 +129,16 @@ export default function ParticleField() {
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       >
-        <Wave mouse={mouse} />
-        <Embers />
+        <Wave mouse={mouse} dark={dark} />
+        <Embers dark={dark} />
       </Canvas>
       {/* legibility gradient over the 3D */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background:
-            "linear-gradient(180deg, rgba(10,10,12,0.55) 0%, rgba(10,10,12,0.25) 40%, rgba(10,10,12,0.6) 75%, var(--bg) 100%)",
+          background: dark
+            ? "linear-gradient(180deg, rgba(10,10,12,0.55) 0%, rgba(10,10,12,0.25) 40%, rgba(10,10,12,0.6) 75%, var(--bg) 100%)"
+            : "linear-gradient(180deg, rgba(250,248,245,0.6) 0%, rgba(250,248,245,0.25) 40%, rgba(250,248,245,0.65) 75%, var(--bg) 100%)",
         }}
       />
     </div>

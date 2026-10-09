@@ -1,9 +1,11 @@
 import OrderBook from "../components/OrderBook";
 import Reveal from "../components/Reveal";
+import { useTheme } from "../context/useTheme";
 
 /* "The Book" — the live order book gets its own full-width moment,
    framed like a market-data terminal widget. */
 export default function BookSection() {
+  const { theme } = useTheme();
   return (
     <section className="section-shell">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-20 sm:py-24">
@@ -27,7 +29,7 @@ export default function BookSection() {
         </Reveal>
         <Reveal delay={120}>
           <div className="ob-frame">
-            <OrderBook className="w-full h-[420px] sm:h-[480px]" />
+            <OrderBook className="w-full h-[420px] sm:h-[480px]" dark={theme !== "light"} />
           </div>
         </Reveal>
         <Reveal delay={200}>

@@ -2,7 +2,8 @@
 
 /* newUI design system — "measured, not simulated" */
 
-:root {
+:root,
+[data-theme="dark"] {
   --bg: #0a0a0c;
   --bg-soft: #101014;
   --panel: #121218;
@@ -20,6 +21,22 @@
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
+[data-theme="light"] {
+  --bg: #faf8f5;
+  --bg-soft: #f2ede8;
+  --panel: #ffffff;
+  --line: rgba(28, 16, 22, 0.1);
+  --ink: #1c1417;
+  --ink-dim: #5e555c;
+  --ink-faint: #978b95;
+  --accent: #e11d48;
+  --accent-deep: #be123c;
+  --accent2: #9333ea;
+  --accent-soft: rgba(225, 29, 72, 0.08);
+  --bid: #059669;
+  --ask: #dc2626;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -30,6 +47,7 @@ html, body {
   font-family: var(--font-display);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  transition: background-color 0.45s ease, color 0.45s ease;
 }
 
 ::selection {

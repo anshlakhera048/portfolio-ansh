@@ -16,6 +16,10 @@ import { stackMarquee } from "./content";
 
 /* newUI — "measured, not simulated." */
 
+// Feature flag: the "Live book" section is parked for now —
+// flip to true to bring it back without touching anything else.
+const SHOW_BOOK = false;
+
 export default function App() {
   // cursor-tracked sheen for cards (event delegation, cheap)
   useEffect(() => {
@@ -38,7 +42,7 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <BookSection />
+        {SHOW_BOOK && <BookSection />}
         <Marquee items={stackMarquee} className="border-y py-5" style={{ borderColor: "var(--line)" }} />
         <Projects />
         <OpenSource />

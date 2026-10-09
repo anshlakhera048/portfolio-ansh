@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 /* Live simulated limit order book — the hero's "one unforgettable sequence".
    Canvas2D, domain-true: bid/ask ladders breathe, trade tape prints, mid/spread tick.
    Pauses offscreen; renders one static frame under prefers-reduced-motion. */
-export default function OrderBook({ className = "" }) {
+export default function OrderBook({ className = "", dark = true }) {
   const wrapRef = useRef(null);
   const canvasRef = useRef(null);
 
@@ -40,6 +40,22 @@ export default function OrderBook({ className = "" }) {
     io.observe(wrap);
 
     const rand = (a, b) => a + Math.random() * (b - a);
+
+    const pal = dark
+      ? {
+          grid: "rgba(255,255,255,0.045)",
+          price: "rgba(184,180,170,0.55)",
+          size: "rgba(237,234,226,0.5)",
+          faint: "rgba(111,108,100,1)",
+          ink: "#edeae2",
+        }
+      : {
+          grid: "rgba(20,10,15,0.07)",
+          price: "rgba(90,80,86,0.7)",
+          size: "rgba(28,20,24,0.6)",
+          faint: "rgba(130,118,124,1)",
+          ink: "#1c1417",
+        };
     const LEVELS = 16;
     const TICK = 0.25;
     let mid = 428.5;
@@ -116,7 +132,7 @@ export default function OrderBook({ className = "" }) {
       ctx.textBaseline = "middle";
 
       // gridlines
-      ctx.strokeStyle = "rgba(255,255,255,0.045)";
+      ctx.strokeStyle = pal.grid;
       ctx.lineWidth = 1;
       for (let i = 0; i < LEVELS; i++) {
         const y = top + i * rowH;
@@ -140,13 +156,13 @@ export default function OrderBook({ className = "" }) {
         bar(cx, -bw, y, "rgba(52,211,153,A)", 0.32);
         bar(cx, aw, y, "rgba(248,113,113,A)", 0.32);
         // price labels
-        ctx.fillStyle = "rgba(184,180,170,0.55)";
+        ctx.fillStyle = pal.price;
         ctx.textAlign = "right";
         ctx.fillText((mid - b.d * TICK).toFixed(2), cx - barMax - 8, y);
         ctx.textAlign = "left";
         ctx.fillText((mid + a.d * TICK).toFixed(2), cx + barMax + 8, y);
         // size labels at bar tips
-        ctx.fillStyle = "rgba(237,234,226,0.5)";
+        ctx.fillStyle = pal.size;
         ctx.textAlign = "right";
         ctx.fillText(Math.round(b.s), cx - 6, y);
         ctx.textAlign = "left";
@@ -164,13 +180,13 @@ export default function OrderBook({ className = "" }) {
 
       // readouts
       ctx.textAlign = "left";
-      ctx.fillStyle = "rgba(111,108,100,1)";
+      ctx.fillStyle = pal.faint;
       ctx.fillText("MID", 16, 22);
-      ctx.fillStyle = "#edeae2";
+      ctx.fillStyle = pal.ink;
       ctx.font = "600 15px 'JetBrains Mono', monospace";
       ctx.fillText(mid.toFixed(2), 16, 42);
       ctx.font = "10px 'JetBrains Mono', monospace";
-      ctx.fillStyle = "rgba(111,108,100,1)";
+      ctx.fillStyle = pal.faint;
       const spread = TICK;
       ctx.fillText("SPREAD", 120, 22);
       ctx.fillStyle = "#ff3d5e";
@@ -180,7 +196,7 @@ export default function OrderBook({ className = "" }) {
       // trade tape (right)
       ctx.font = "10px 'JetBrains Mono', monospace";
       const tx = W - 148;
-      ctx.fillStyle = "rgba(111,108,100,1)";
+      ctx.fillStyle = pal.faint;
       ctx.textAlign = "left";
       ctx.fillText("TAPE", tx, 22);
       trades.forEach((tr, i) => {
@@ -194,7 +210,7 @@ export default function OrderBook({ className = "" }) {
       });
 
       // session tag
-      ctx.fillStyle = "rgba(111,108,100,0.9)";
+      ctx.fillStyle = pal.faint;
       ctx.textAlign = "right";
       ctx.fillText("KAIROS · SIM FEED", W - 16, H - 16);
     };
@@ -210,7 +226,7 @@ export default function OrderBook({ className = "" }) {
       window.removeEventListener("resize", resize);
       io.disconnect();
     };
-  }, []);
+  }, [dark]);
 
   return (
     <div ref={wrapRef} className={`relative ${className}`} aria-hidden="true">

@@ -2,6 +2,7 @@ import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import Magnetic from "../components/Magnetic";
 import Reveal from "../components/Reveal";
+import { GitHubIcon, LinkedInIcon, InstagramIcon } from "../components/SocialIcons";
 import { profile } from "../content";
 
 const inputStyle = {
@@ -73,29 +74,29 @@ export default function Contact() {
               Open to entry-level software engineering roles — backend, distributed systems,
               low-latency. Immediate joiner, open to relocating anywhere in India and remote worldwide.
             </p>
-            <div className="mt-8 space-y-3">
+            <div className="mt-8">
               <a href={`mailto:${profile.email}`} className="u-sweep font-mono2 text-sm block w-fit" style={{ color: "var(--ink)" }}>
                 {profile.email}
               </a>
-              <a href={`tel:${profile.phone.replace(/[^+\d]/g, "")}`} className="u-sweep font-mono2 text-sm block w-fit" style={{ color: "var(--ink-dim)" }}>
-                {profile.phone}
-              </a>
             </div>
-            <div className="mt-8 flex gap-7">
+            <div className="mt-8 flex gap-5">
               {[
-                { label: "GitHub", href: profile.github },
-                { label: "LinkedIn", href: profile.linkedin },
-                { label: "Instagram", href: profile.instagram },
-              ].map((s) => (
+                { label: "GitHub", href: profile.github, Icon: GitHubIcon },
+                { label: "LinkedIn", href: profile.linkedin, Icon: LinkedInIcon },
+                { label: "Instagram", href: profile.instagram, Icon: InstagramIcon },
+              ].map(({ label, href, Icon }) => (
                 <a
-                  key={s.label}
-                  href={s.href}
+                  key={label}
+                  href={href}
                   target="_blank"
                   rel="noreferrer"
-                  className="u-sweep font-mono2 text-[0.72rem] tracking-[0.2em] uppercase"
-                  style={{ color: "var(--ink-dim)" }}
+                  aria-label={label}
+                  className="p-3 rounded-full border transition-all hover:scale-110"
+                  style={{ borderColor: "var(--line)", color: "var(--ink-dim)" }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = "var(--accent)"; e.currentTarget.style.borderColor = "var(--accent)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = "var(--ink-dim)"; e.currentTarget.style.borderColor = "var(--line)"; }}
                 >
-                  {s.label}
+                  <Icon size={20} />
                 </a>
               ))}
             </div>
