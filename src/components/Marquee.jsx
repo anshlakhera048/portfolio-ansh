@@ -15,7 +15,7 @@ const wrap = (min, max, v) => {
 };
 
 /* Scroll-velocity marquee: base drift + speed follows scroll velocity. */
-export default function Marquee({ items, className = "" }) {
+export default function Marquee({ items, className = "", style = {} }) {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -52,7 +52,7 @@ export default function Marquee({ items, className = "" }) {
   );
 
   return (
-    <div className={`overflow-hidden ${className}`}>
+    <div className={`overflow-hidden ${className}`} style={style}>
       <motion.div style={{ x }} className="flex w-max">
         {row(false)}
         {row(true)}

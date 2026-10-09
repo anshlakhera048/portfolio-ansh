@@ -13,7 +13,7 @@ export default function OrderBook({ className = "" }) {
     const ctx = canvas.getContext("2d");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    let W = 0, H = 0, raf = 0, visible = true;
+    let W = 0, H = 0, raf = 0, visible = true, running = false;
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       W = wrap.clientWidth;
@@ -27,7 +27,16 @@ export default function OrderBook({ className = "" }) {
     resize();
     window.addEventListener("resize", resize);
 
-    const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; }, { threshold: 0.02 });
+    const io = new IntersectionObserver(([e]) => {
+      const was = visible;
+      visible = e.isIntersecting;
+      // resume the loop when scrolled back into view
+      if (visible && !was && !reduced && !running) {
+        running = true;
+        last = performance.now();
+        raf = requestAnimationFrame(step);
+      }
+    }, { threshold: 0.02 });
     io.observe(wrap);
 
     const rand = (a, b) => a + Math.random() * (b - a);
@@ -87,7 +96,12 @@ export default function OrderBook({ className = "" }) {
         }
       }
       draw();
-      if (!reduced && visible) raf = requestAnimationFrame(step);
+      if (!reduced && visible) {
+        running = true;
+        raf = requestAnimationFrame(step);
+      } else {
+        running = false;
+      }
     };
 
     const draw = () => {
@@ -186,7 +200,10 @@ export default function OrderBook({ className = "" }) {
     };
 
     draw();
-    if (!reduced) raf = requestAnimationFrame(step);
+    if (!reduced) {
+      running = true;
+      raf = requestAnimationFrame(step);
+    }
 
     return () => {
       cancelAnimationFrame(raf);

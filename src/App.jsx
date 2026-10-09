@@ -52,7 +52,7 @@ function Site() {
       <Navbar />
       <main>
         <Hero />
-        <Marquee items={stackMarquee} className="border-y py-5" />
+        <Marquee items={stackMarquee} className="border-y py-5" style={{ borderColor: "var(--line)" }} />
         <Projects />
         <OpenSource />
         <Experience />
