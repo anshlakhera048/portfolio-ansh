@@ -58,20 +58,21 @@ function DiskRing({ inner, outer, count, speed, dark }) {
   const { positions, colors } = useMemo(() => {
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
-    const hot = new THREE.Color(dark ? "#ff5c7a" : "#e11d48");
-    const mid = new THREE.Color(dark ? "#ff3d5e" : "#f43f5e");
+    const hot = new THREE.Color(dark ? "#ffd9e2" : "#fff0f3");
+    const mid = new THREE.Color(dark ? "#ff3d5e" : "#e11d48");
     const cool = new THREE.Color(dark ? "#a855f7" : "#9333ea");
     const tmp = new THREE.Color();
     for (let i = 0; i < count; i++) {
-      const r = inner + Math.random() * (outer - inner);
+      // bias particle radius inward so the disk burns brightest near the hole
+      const r = inner + (outer - inner) * Math.pow(Math.random(), 1.6);
       const a = Math.random() * Math.PI * 2;
       positions[i * 3] = Math.cos(a) * r;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 0.3 * (1 - (r - inner) / (outer - inner) / 2);
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 0.34 * (1 - ((r - inner) / (outer - inner)) * 0.6);
       positions[i * 3 + 2] = Math.sin(a) * r;
       const t = (r - inner) / (outer - inner);
-      if (t < 0.45) tmp.copy(hot).lerp(mid, t / 0.45);
-      else tmp.copy(mid).lerp(cool, (t - 0.45) / 0.55);
-      const b = 0.55 + Math.random() * 0.45;
+      if (t < 0.25) tmp.copy(hot).lerp(mid, t / 0.25);
+      else tmp.copy(mid).lerp(cool, (t - 0.25) / 0.75);
+      const b = 0.6 + Math.random() * 0.4;
       colors[i * 3] = tmp.r * b;
       colors[i * 3 + 1] = tmp.g * b;
       colors[i * 3 + 2] = tmp.b * b;
@@ -106,14 +107,15 @@ function DiskRing({ inner, outer, count, speed, dark }) {
 function BlackHole({ dark }) {
   const group = useRef(null);
   const ring = useRef(null);
+  const rim = useRef(null);
 
   const glowTex = useMemo(() => {
     const c = document.createElement("canvas");
     c.width = c.height = 256;
     const g = c.getContext("2d");
     const grad = g.createRadialGradient(128, 128, 0, 128, 128, 128);
-    grad.addColorStop(0, dark ? "rgba(255,61,94,0.5)" : "rgba(225,29,72,0.4)");
-    grad.addColorStop(0.45, dark ? "rgba(168,85,247,0.22)" : "rgba(147,51,234,0.18)");
+    grad.addColorStop(0, dark ? "rgba(255,61,94,0.55)" : "rgba(225,29,72,0.42)");
+    grad.addColorStop(0.45, dark ? "rgba(168,85,247,0.24)" : "rgba(147,51,234,0.18)");
     grad.addColorStop(1, "rgba(0,0,0,0)");
     g.fillStyle = grad;
     g.fillRect(0, 0, 256, 256);
@@ -123,15 +125,16 @@ function BlackHole({ dark }) {
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
     group.current.rotation.z = Math.sin(t * 0.18) * 0.06;
-    const s = 1 + Math.sin(t * 1.4) * 0.02;
+    const s = 1 + Math.sin(t * 1.4) * 0.025;
     ring.current.scale.set(s, s, 1);
-    ring.current.material.opacity = (dark ? 0.85 : 0.7) + Math.sin(t * 2.1) * 0.12;
+    ring.current.material.opacity = (dark ? 0.9 : 0.75) + Math.sin(t * 2.1) * 0.1;
+    rim.current.material.opacity = (dark ? 0.95 : 0.85) + Math.sin(t * 3.2) * 0.08;
   });
 
   return (
-    <group ref={group} position={[4.7, 0.9, -1.5]} rotation={[0.42, 0, 0.12]}>
-      {/* halo glow */}
-      <sprite scale={[9, 9, 1]}>
+    <group ref={group} position={[3.6, 0.7, -1.5]} rotation={[0.3, 0, 0.08]}>
+      {/* halo glow — wide + tight for a lensing feel */}
+      <sprite scale={[14, 14, 1]}>
         <spriteMaterial
           map={glowTex}
           transparent
@@ -139,26 +142,47 @@ function BlackHole({ dark }) {
           blending={dark ? THREE.AdditiveBlending : THREE.NormalBlending}
         />
       </sprite>
+      <sprite scale={[6.5, 6.5, 1]}>
+        <spriteMaterial
+          map={glowTex}
+          transparent
+          opacity={0.9}
+          depthWrite={false}
+          blending={dark ? THREE.AdditiveBlending : THREE.NormalBlending}
+        />
+      </sprite>
       {/* event horizon */}
       <mesh>
-        <sphereGeometry args={[1.15, 48, 48]} />
-        <meshBasicMaterial color={dark ? "#030304" : "#0b0b10"} />
+        <sphereGeometry args={[1.7, 48, 48]} />
+        <meshBasicMaterial color="#000000" />
       </mesh>
-      {/* photon ring */}
-      <mesh ref={ring} rotation={[Math.PI / 2.15, 0, 0]}>
-        <ringGeometry args={[1.3, 1.62, 96]} />
+      {/* blazing inner rim — the disk's hot inner edge */}
+      <mesh ref={rim} rotation={[Math.PI / 2.1, 0, 0]}>
+        <ringGeometry args={[1.82, 2.12, 96]} />
         <meshBasicMaterial
-          color={dark ? "#ff6b8a" : "#e11d48"}
+          color={dark ? "#ffd9e2" : "#fff0f3"}
           transparent
-          opacity={0.85}
+          opacity={0.95}
           side={THREE.DoubleSide}
           depthWrite={false}
           blending={dark ? THREE.AdditiveBlending : THREE.NormalBlending}
         />
       </mesh>
-      {/* accretion disk */}
-      <DiskRing inner={1.75} outer={2.9} count={950} speed={0.55} dark={dark} />
-      <DiskRing inner={2.9} outer={4.7} count={1100} speed={0.2} dark={dark} />
+      {/* photon ring */}
+      <mesh ref={ring} rotation={[Math.PI / 2.1, 0, 0]}>
+        <ringGeometry args={[2.18, 2.52, 96]} />
+        <meshBasicMaterial
+          color={dark ? "#ff6b8a" : "#e11d48"}
+          transparent
+          opacity={0.9}
+          side={THREE.DoubleSide}
+          depthWrite={false}
+          blending={dark ? THREE.AdditiveBlending : THREE.NormalBlending}
+        />
+      </mesh>
+      {/* accretion disk — dense and bright near the hole */}
+      <DiskRing inner={2.5} outer={3.8} count={1700} speed={0.6} dark={dark} />
+      <DiskRing inner={3.8} outer={5.6} count={1400} speed={0.22} dark={dark} />
     </group>
   );
 }
@@ -178,7 +202,7 @@ function Asteroids() {
         geo.computeVertexNormals();
         return {
           geo,
-          position: [(Math.random() - 0.5) * 26 - 4, (Math.random() - 0.5) * 10 + 1, (Math.random() - 0.5) * 10 - 2],
+          position: [3 + Math.random() * 9, (Math.random() - 0.5) * 9 + 1, -4 + Math.random() * 5],
           rot: [(Math.random() - 0.5) * 0.5, (Math.random() - 0.5) * 0.5, (Math.random() - 0.5) * 0.3],
           bob: Math.random() * Math.PI * 2,
           bobSpeed: 0.3 + Math.random() * 0.5,
@@ -202,7 +226,14 @@ function Asteroids() {
     <group ref={group}>
       {rocks.map((r, i) => (
         <mesh key={i} geometry={r.geo} position={r.position}>
-          <meshStandardMaterial color="#26262e" roughness={0.95} metalness={0.15} flatShading />
+          <meshStandardMaterial
+            color="#26262e"
+            roughness={0.9}
+            metalness={0.2}
+            flatShading
+            emissive="#4a0f1c"
+            emissiveIntensity={0.5}
+          />
         </mesh>
       ))}
     </group>
@@ -231,11 +262,11 @@ export default function ParticleField({ dark = true }) {
       >
         <ambientLight intensity={0.65} />
         <directionalLight position={[7, 5, 4]} intensity={1.5} color="#ffe0e6" />
-        <pointLight position={[4.7, 0.9, 0.5]} intensity={50} distance={22} color="#a855f7" />
+        <pointLight position={[3.6, 0.7, 0.5]} intensity={60} distance={24} color="#a855f7" />
         <CameraRig mouse={mouse} />
         <Starfield dark={dark} />
         <BlackHole dark={dark} />
-        <Asteroids />
+        {dark && <Asteroids />}
       </Canvas>
       {/* legibility gradient over the 3D */}
       <div
@@ -243,7 +274,7 @@ export default function ParticleField({ dark = true }) {
         style={{
           background: dark
             ? "linear-gradient(180deg, rgba(10,10,12,0.5) 0%, rgba(10,10,12,0.22) 40%, rgba(10,10,12,0.55) 75%, var(--bg) 100%)"
-            : "linear-gradient(180deg, rgba(250,248,245,0.55) 0%, rgba(250,248,245,0.2) 40%, rgba(250,248,245,0.6) 75%, var(--bg) 100%)",
+            : "linear-gradient(180deg, rgba(250,248,245,0.32) 0%, rgba(250,248,245,0.1) 40%, rgba(250,248,245,0.42) 75%, var(--bg) 100%)",
         }}
       />
     </div>

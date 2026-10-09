@@ -58,22 +58,22 @@ function RotatingLine({ reduced }) {
   const [idx, setIdx] = useState(0);
   useEffect(() => {
     if (reduced) return;
-    const t = setInterval(() => setIdx((i) => (i + 1) % rotating.length), 2600);
+    const t = setInterval(() => setIdx((i) => (i + 1) % rotating.length), 3000);
     return () => clearInterval(t);
   }, [reduced]);
 
   return (
     <span className="inline-flex items-baseline gap-3">
       <span style={{ color: "var(--ink-dim)" }}>I build</span>
-      <span className="relative inline-block overflow-hidden align-baseline" style={{ minWidth: "12ch" }}>
-        <AnimatePresence mode="wait">
+      <span className="relative inline-block overflow-hidden align-baseline" style={{ minWidth: "13ch" }}>
+        <AnimatePresence mode="popLayout">
           <motion.span
             key={idx}
             initial={{ y: 26, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -26, opacity: 0 }}
-            transition={{ duration: 0.45, ease }}
-            className="inline-block font-semibold"
+            transition={{ duration: 0.4, ease }}
+            className="inline-block font-semibold whitespace-nowrap"
             style={{
               background: "linear-gradient(92deg, var(--accent), var(--accent2))",
               WebkitBackgroundClip: "text",
@@ -115,19 +115,6 @@ export default function Hero() {
       ) : (
         <FieldFallback />
       )}
-
-      {/* ambient glow behind the name */}
-      <div
-        className="absolute left-1/2 top-[38%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-        aria-hidden="true"
-        style={{
-          width: "min(900px, 120vw)",
-          height: "min(500px, 70vw)",
-          background:
-            "radial-gradient(closest-side, rgba(255,61,94,0.16), rgba(168,85,247,0.08), transparent)",
-          filter: "blur(50px)",
-        }}
-      />
 
       <div className="relative z-10 flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full px-5 sm:px-8 pt-32 pb-16">
         <motion.div
