@@ -4,7 +4,7 @@ import { ThemeContext, THEMES, DEFAULT_THEME } from "./theme-context";
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
     try {
-      const saved = localStorage.getItem("newui-theme");
+      const saved = localStorage.getItem("newui-theme-v2");
       return THEMES.includes(saved) ? saved : DEFAULT_THEME;
     } catch {
       return DEFAULT_THEME;
@@ -14,7 +14,7 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     try {
-      localStorage.setItem("newui-theme", theme);
+      localStorage.setItem("newui-theme-v2", theme);
     } catch {
       /* ignore */
     }

@@ -116,15 +116,18 @@ export default function Navbar() {
             Résumé
           </a>
         </div>
-        <a
-          href={profile.github}
-          target="_blank"
-          rel="noreferrer"
-          className="md:hidden font-mono2 text-[0.72rem] tracking-[0.18em] uppercase"
-          style={{ color: "var(--ink-dim)" }}
-        >
-          GitHub
-        </a>
+        <div className="md:hidden flex items-center gap-4">
+          <ThemeSwitcher />
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noreferrer"
+            className="font-mono2 text-[0.72rem] tracking-[0.18em] uppercase"
+            style={{ color: "var(--ink-dim)" }}
+          >
+            GitHub
+          </a>
+        </div>
       </nav>
     </header>
   );
