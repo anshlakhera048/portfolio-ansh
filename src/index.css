@@ -394,3 +394,13 @@ html, body {
 
 /* number ticker */
 .tick-num { font-variant-numeric: tabular-nums; }
+
+/* hero scene fade-in (replays on theme switch since the scene remounts) */
+@keyframes scene-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.scene-fade { animation: scene-in 1.1s ease; }
+@media (prefers-reduced-motion: reduce) {
+  .scene-fade { animation: none; }
+}

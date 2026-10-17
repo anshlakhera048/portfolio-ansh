@@ -3,7 +3,7 @@ import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { useSceneMouse, makeGlowTexture } from "./scene-utils";
-import { SceneShell, MouseRig } from "./scene-shared";
+import { SceneShell, MouseRig, InteractiveField } from "./scene-shared";
 
 /* EMBER — a star going supernova: white-hot core, expanding shockwave
    rings, radial burst particles, drifting embers. Amber/orange on ember-black. */
@@ -174,6 +174,31 @@ function EmberDrift({ count = 220 }) {
 }
 
 /* The star's white-hot core. */
+/* Breathing lens flare wrapped around the core. */
+function CoreFlare() {
+  const ref = useRef(null);
+  const tex = useMemo(
+    () =>
+      makeGlowTexture([
+        [0, "rgba(255,255,255,0.9)"],
+        [0.25, "rgba(253,224,71,0.5)"],
+        [1, "rgba(0,0,0,0)"],
+      ]),
+    []
+  );
+  useFrame(({ clock }) => {
+    const t = clock.getElapsedTime();
+    ref.current.material.opacity = 0.45 + Math.sin(t * 1.8) * 0.28;
+    const s = 10 + Math.sin(t * 1.8) * 1.6;
+    ref.current.scale.set(s, s, 1);
+  });
+  return (
+    <sprite ref={ref}>
+      <spriteMaterial map={tex} transparent depthWrite={false} blending={THREE.AdditiveBlending} />
+    </sprite>
+  );
+}
+
 function Core({ compact }) {
   const group = useRef(null);
   const pos = compact ? [0.2, -3.4, -2.2] : [3.5, 0.7, -1.5];
@@ -209,6 +234,7 @@ function Core({ compact }) {
       </mesh>
       <Shockwaves origin={[0, 0, 0]} />
       <Burst origin={[0, 0, 0]} />
+      <CoreFlare />
     </group>
   );
 }
@@ -231,6 +257,7 @@ export default function EmberScene({ compact = false }) {
       <MouseRig mouse={mouse} lookAt={compact ? [0.2, -1, 0] : [1.1, 0.3, 0]} />
       <EmberDrift />
       <Core compact={compact} />
+      <InteractiveField mouse={mouse} colors={["#f97316", "#f59e0b"]} count={compact ? 150 : 320} />
     </SceneShell>
   );
 }

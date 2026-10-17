@@ -3,7 +3,7 @@ import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { useSceneMouse, makeGlowTexture } from "./scene-utils";
-import { SceneShell, MouseRig } from "./scene-shared";
+import { SceneShell, MouseRig, InteractiveField } from "./scene-shared";
 
 /* BLOOM — sakura dream: a breathing blossom, petals drifting on the wind,
    glowing pollen rising. Soft pink on deep rose-black. */
@@ -85,6 +85,50 @@ function Petals({ count = 110 }) {
 }
 
 /* The central blossom — layered petal rings breathing gently. */
+/* Soft background bokeh orbs — out-of-focus blossoms drifting far behind,
+   giving the scene real depth. */
+function Bokeh({ count = 7 }) {
+  const group = useRef(null);
+  const tex = useMemo(
+    () =>
+      makeGlowTexture([
+        [0, "rgba(249,168,212,0.5)"],
+        [0.5, "rgba(244,114,182,0.18)"],
+        [1, "rgba(0,0,0,0)"],
+      ]),
+    []
+  );
+  const orbs = useMemo(
+    () =>
+      Array.from({ length: count }, () => ({
+        x: (Math.random() - 0.5) * 22,
+        y: (Math.random() - 0.5) * 12,
+        z: -6 - Math.random() * 6,
+        s: 2.5 + Math.random() * 4,
+        sp: 0.1 + Math.random() * 0.25,
+        ph: Math.random() * Math.PI * 2,
+      })),
+    [count]
+  );
+  useFrame(({ clock }) => {
+    const t = clock.getElapsedTime();
+    group.current.children.forEach((m, i) => {
+      const o = orbs[i];
+      m.position.y = o.y + Math.sin(t * o.sp + o.ph) * 1.2;
+      m.position.x = o.x + Math.cos(t * o.sp * 0.7 + o.ph) * 0.8;
+    });
+  });
+  return (
+    <group ref={group}>
+      {orbs.map((o, i) => (
+        <sprite key={i} position={[o.x, o.y, o.z]} scale={[o.s, o.s, 1]}>
+          <spriteMaterial map={tex} transparent opacity={0.5} depthWrite={false} blending={THREE.AdditiveBlending} />
+        </sprite>
+      ))}
+    </group>
+  );
+}
+
 function Blossom({ compact }) {
   const group = useRef(null);
   const geo = useMemo(() => makePetalGeometry(), []);
@@ -217,9 +261,11 @@ export default function BloomScene({ compact = false }) {
       <pointLight position={[3.5, 0.7, 1]} intensity={60} distance={26} color="#f9a8d4" />
       <directionalLight position={[-4, 6, 3]} intensity={0.5} color="#fde7f1" />
       <MouseRig mouse={mouse} lookAt={compact ? [0.2, -1, 0] : [1.1, 0.3, 0]} />
+      <Bokeh />
       <Petals />
       <Pollen />
       <Blossom compact={compact} />
+      <InteractiveField mouse={mouse} colors={["#f472b6", "#fdba74"]} count={compact ? 150 : 320} />
     </SceneShell>
   );
 }

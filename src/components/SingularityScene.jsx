@@ -3,7 +3,7 @@ import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { useSceneMouse, makeGlowTexture } from "./scene-utils";
-import { SceneShell, MouseRig } from "./scene-shared";
+import { SceneShell, MouseRig, InteractiveField } from "./scene-shared";
 
 /* SINGULARITY — black hole with red/purple accretion disk, starfield, asteroids. */
 
@@ -103,6 +103,27 @@ function DiskRing({ inner, outer, count, speed }) {
   );
 }
 
+/* Photon ring — the thin shimmering halo at the event horizon. */
+function PhotonRing() {
+  const ref = useRef(null);
+  useFrame(({ clock }) => {
+    const t = clock.getElapsedTime();
+    ref.current.material.opacity = 0.55 + Math.sin(t * 2.6) * 0.3;
+  });
+  return (
+    <mesh ref={ref} rotation={[Math.PI / 2.1, 0, 0]}>
+      <torusGeometry args={[1.66, 0.03, 12, 128]} />
+      <meshBasicMaterial
+        color="#ffe9ef"
+        transparent
+        opacity={0.7}
+        blending={THREE.AdditiveBlending}
+        depthWrite={false}
+      />
+    </mesh>
+  );
+}
+
 function BlackHole({ compact }) {
   const group = useRef(null);
   const ring = useRef(null);
@@ -166,6 +187,7 @@ function BlackHole({ compact }) {
           blending={THREE.AdditiveBlending}
         />
       </mesh>
+      <PhotonRing />
       <DiskRing inner={2.5} outer={3.8} count={1700} speed={0.6} />
       <DiskRing inner={3.8} outer={5.6} count={1400} speed={0.22} />
     </group>
@@ -238,6 +260,7 @@ export default function SingularityScene({ compact = false }) {
       <Starfield />
       <BlackHole compact={compact} />
       {!compact && <Asteroids />}
+      <InteractiveField mouse={mouse} colors={["#ff3d5e", "#a855f7"]} count={compact ? 150 : 320} />
     </SceneShell>
   );
 }

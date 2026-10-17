@@ -3,7 +3,7 @@ import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { useSceneMouse, makeGlowTexture, makeRayTexture } from "./scene-utils";
-import { SceneShell, MouseRig } from "./scene-shared";
+import { SceneShell, MouseRig, InteractiveField } from "./scene-shared";
 
 /* ABYSS — deep ocean: a pulsing bioluminescent orb, marine snow,
    rising bubbles, faint god-ray cones. Cyan/teal on deep navy. */
@@ -223,6 +223,39 @@ function GodRays() {
   );
 }
 
+/* Expanding ripple rings beneath the orb — the water answers the light. */
+function Ripples({ compact }) {
+  const r1 = useRef(null);
+  const r2 = useRef(null);
+  const pos = compact ? [0.2, -4.4, -2.2] : [3.5, -1.5, -1.2];
+  useFrame(({ clock }) => {
+    const t = clock.getElapsedTime();
+    [r1, r2].forEach((r, i) => {
+      const ph = ((t * 0.22) + i * 0.5) % 1;
+      const s = 0.8 + ph * 3.4;
+      r.current.scale.set(s, s, s);
+      r.current.material.opacity = 0.35 * (1 - ph);
+    });
+  });
+  return (
+    <group position={pos}>
+      {[r1, r2].map((r, i) => (
+        <mesh key={i} ref={r} rotation={[-Math.PI / 2, 0, 0]}>
+          <ringGeometry args={[0.9, 1.0, 64]} />
+          <meshBasicMaterial
+            color="#22d3ee"
+            transparent
+            opacity={0.3}
+            side={THREE.DoubleSide}
+            depthWrite={false}
+            blending={THREE.AdditiveBlending}
+          />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
 export default function AbyssScene({ compact = false }) {
   const [mouse, handlers] = useSceneMouse();
   return (
@@ -238,6 +271,8 @@ export default function AbyssScene({ compact = false }) {
       <MarineSnow />
       <Bubbles />
       <Orb compact={compact} />
+      <Ripples compact={compact} />
+      <InteractiveField mouse={mouse} colors={["#22d3ee", "#2dd4bf"]} count={compact ? 150 : 320} />
     </SceneShell>
   );
 }
