@@ -15,7 +15,7 @@ const wrap = (min, max, v) => {
 };
 
 /* Scroll-velocity marquee: base drift + speed follows scroll velocity. */
-export default function Marquee({ items, className = "", style = {} }) {
+export default function Marquee({ items, className = "", style = {}, reverse = false, renderItem, pausable = false }) {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -23,36 +23,49 @@ export default function Marquee({ items, className = "", style = {} }) {
   const velocityFactor = useTransform(smooth, [0, 1200], [0, 4], { clamp: false });
   const x = useTransform(baseX, (v) => `${wrap(-50, 0, v)}%`);
   const dir = useRef(-1);
+  const paused = useRef(false);
   const reduced = useRef(
     typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
 
   useAnimationFrame((_, delta) => {
-    if (reduced.current) return;
+    if (reduced.current || paused.current) return;
     const vf = velocityFactor.get();
-    dir.current = vf < -0.2 ? 1 : -1;
+    const s = reverse ? -1 : 1;
+    dir.current = (vf < -0.2 ? 1 : -1) * s;
     const base = dir.current * 3 * (delta / 1000);
     baseX.set(baseX.get() + base + dir.current * Math.abs(base) * Math.min(4, Math.abs(vf)));
   });
+
+  const defaultRender = (item) => (
+    <>
+      <span
+        className="font-mono2 whitespace-nowrap px-6"
+        style={{ fontSize: "0.85rem", letterSpacing: "0.18em", color: "var(--ink-dim)" }}
+      >
+        {item.toUpperCase()}
+      </span>
+      <span style={{ color: "var(--accent)" }}>·</span>
+    </>
+  );
 
   const row = (hidden) => (
     <div className="flex shrink-0 items-center" aria-hidden={hidden}>
       {items.map((item, i) => (
         <span key={i} className="flex items-center">
-          <span
-            className="font-mono2 whitespace-nowrap px-6"
-            style={{ fontSize: "0.85rem", letterSpacing: "0.18em", color: "var(--ink-dim)" }}
-          >
-            {item.toUpperCase()}
-          </span>
-          <span style={{ color: "var(--accent)" }}>·</span>
+          {(renderItem || defaultRender)(item, i)}
         </span>
       ))}
     </div>
   );
 
   return (
-    <div className={`overflow-hidden ${className}`} style={style}>
+    <div
+      className={`overflow-hidden ${className}`}
+      style={style}
+      onMouseEnter={pausable ? () => { paused.current = true; } : undefined}
+      onMouseLeave={pausable ? () => { paused.current = false; } : undefined}
+    >
       <motion.div style={{ x }} className="flex w-max">
         {row(false)}
         {row(true)}

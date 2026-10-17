@@ -31,7 +31,6 @@ const SECTIONS = {
   work: "work",
   projects: "work",
   experience: "experience",
-  skills: "skills",
   oss: "oss",
   opensource: "oss",
   contact: "contact",
@@ -290,7 +289,7 @@ export default function Terminal() {
     <section id="terminal" className="section-shell section-themed scroll-mt-16">
       <ThemeAmbient variant="dust" />
       <div className="max-w-4xl mx-auto px-5 sm:px-8 py-24 sm:py-32">
-        <SectionHeading kicker="Operator console" index="05" size="clamp(2.4rem, 6vw, 4.5rem)">
+        <SectionHeading kicker="Operator console" index="04" size="clamp(2.4rem, 6vw, 4.5rem)">
           Ask the<br />machine<span style={{ color: "var(--accent)" }}>.</span>
         </SectionHeading>
 

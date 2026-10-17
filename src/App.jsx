@@ -4,16 +4,14 @@ import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import Cursor from "./components/Cursor";
 import ScrollProgress from "./components/ScrollProgress";
-import Marquee from "./components/Marquee";
+import SkillsBand from "./components/SkillsBand";
 import Hero from "./sections/Hero";
 import BookSection from "./sections/BookSection";
 import Projects from "./sections/Projects";
 import OpenSource from "./sections/OpenSource";
 import Experience from "./sections/Experience";
-import Skills from "./sections/Skills";
 import Terminal from "./sections/Terminal";
 import Contact from "./sections/Contact";
-import { stackMarquee } from "./content";
 
 /* newUI — "measured, not simulated." */
 
@@ -44,11 +42,10 @@ export default function App() {
       <main>
         <Hero />
         {SHOW_BOOK && <BookSection />}
-        <Marquee items={stackMarquee} className="border-y py-5" style={{ borderColor: "var(--line)" }} />
+        <SkillsBand />
         <Projects />
         <OpenSource />
         <Experience />
-        <Skills />
         <Terminal />
         <Contact />
       </main>
