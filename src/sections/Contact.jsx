@@ -76,6 +76,7 @@ export default function Contact() {
           <div>
             <SectionHeading
               kicker="Contact"
+              index="05"
               size="clamp(2.6rem, 6vw, 5rem)"
               sub="Open to entry-level software engineering roles — backend, distributed systems, low-latency. Immediate joiner, open to relocating anywhere in India and remote worldwide."
             >

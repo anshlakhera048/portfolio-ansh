@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-export const THEMES = ["ember", "abyss", "singularity", "bloom"];
+export const THEMES = ["ember", "abyss", "singularity", "bloom", "neon"];
 export const DEFAULT_THEME = "ember";
 
 export const THEME_META = {
@@ -8,6 +8,7 @@ export const THEME_META = {
   abyss: { label: "Abyss", hint: "Deep ocean · cyan/teal" },
   ember: { label: "Ember", hint: "Supernova · amber/orange" },
   bloom: { label: "Bloom", hint: "Sakura · soft pink" },
+  neon: { label: "Neon", hint: "Cyberpunk · cyan/magenta" },
 };
 
 export const ThemeContext = createContext(null);

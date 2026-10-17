@@ -63,8 +63,16 @@ export default function Terminal() {
   const [histIdx, setHistIdx] = useState(-1);
   const [quoteIdx, setQuoteIdx] = useState(0);
   const [booted, setBooted] = useState(false);
+  const [now, setNow] = useState(() => new Date());
   const bodyRef = useRef(null);
   const inputRef = useRef(null);
+
+  /* status-bar clock */
+  useEffect(() => {
+    const t = setInterval(() => setNow(new Date()), 15000);
+    return () => clearInterval(t);
+  }, []);
+  const clockStr = now.toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", hour12: false });
 
   const push = (newLines) => setLines((l) => [...l, ...newLines]);
 
@@ -97,7 +105,7 @@ export default function Terminal() {
       txt("  experience  — where i've shipped"),
       txt("  contact     — reach me"),
       txt(""),
-      txt("  theme [name]— switch site theme (ember/abyss/singularity/bloom)"),
+      txt("  theme [name]— switch site theme (ember/abyss/singularity/bloom/neon)"),
       txt("  goto <sec>  — jump to a section (top/work/experience/oss/contact)"),
       txt("  open <link> — open github/linkedin/email/resume in a new tab"),
       txt("  banner      — ascii mode"),
@@ -281,7 +289,7 @@ export default function Terminal() {
     <section id="terminal" className="section-shell section-themed scroll-mt-16">
       <ThemeAmbient variant="dust" />
       <div className="max-w-4xl mx-auto px-5 sm:px-8 py-24 sm:py-32">
-        <SectionHeading kicker="Operator console" size="clamp(2.4rem, 6vw, 4.5rem)">
+        <SectionHeading kicker="Operator console" index="04" size="clamp(2.4rem, 6vw, 4.5rem)">
           Ask the<br />machine<span style={{ color: "var(--accent)" }}>.</span>
         </SectionHeading>
 
@@ -291,8 +299,8 @@ export default function Terminal() {
               <button
                 key={c}
                 onClick={() => chipRun(c)}
-                className="font-mono2 text-xs px-3 py-1.5 rounded-full border transition-colors hover:opacity-80"
-                style={{ borderColor: "var(--line)", color: "var(--ink-dim)" }}
+                className="term-key font-mono2 text-xs px-3 py-1.5"
+                style={{ color: "var(--ink-dim)" }}
               >
                 $ {c}
               </button>
@@ -304,10 +312,13 @@ export default function Terminal() {
           <div className="term-window" onClick={() => inputRef.current?.focus()}>
             <div className="flex items-center gap-2 px-5 py-3.5 border-b" style={{ borderColor: "var(--line)" }}>
               <span className="w-3 h-3 rounded-full" style={{ background: "#f87171" }} />
-              <span className="w-3 h-3 rounded-full" style={{ background: "#ff3d5e" }} />
+              <span className="w-3 h-3 rounded-full" style={{ background: "#fbbf24" }} />
               <span className="w-3 h-3 rounded-full" style={{ background: "#34d399" }} />
               <span className="font-mono2 text-xs ml-3" style={{ color: "var(--ink-faint)" }}>
                 ansh@portfolio — zsh
+              </span>
+              <span className="font-mono2 text-[0.68rem] ml-auto" style={{ color: "var(--ink-faint)" }}>
+                80×24
               </span>
             </div>
             <div ref={bodyRef} className="h-72 overflow-y-auto px-5 py-4 font-mono2 text-[0.82rem] leading-relaxed">
@@ -343,16 +354,33 @@ export default function Terminal() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={onKey}
                   className="flex-1 bg-transparent outline-none"
-                  style={{ color: "var(--ink)" }}
+                  style={{ color: "var(--ink)", caretColor: "var(--accent)" }}
                   aria-label="Terminal input"
                   spellCheck={false}
                   autoComplete="off"
                 />
               </div>
             </div>
+            <div
+              className="term-statusbar flex items-center justify-between px-5 py-2.5 font-mono2 text-[0.68rem]"
+              style={{ color: "var(--ink-faint)" }}
+            >
+              <span className="flex items-center gap-2">
+                <span
+                  className="inline-block w-2 h-2 rounded-full"
+                  style={{ background: "var(--accent)", boxShadow: "0 0 8px var(--accent)" }}
+                />
+                ansh@portfolio
+              </span>
+              <span className="flex items-center gap-4">
+                <span style={{ color: "var(--accent)" }}>{THEME_META[themeCtx?.theme]?.label || "—"}</span>
+                <span>utf-8</span>
+                <span className="tick-num">{clockStr}</span>
+              </span>
+            </div>
           </div>
           <p className="font-mono2 text-xs mt-3" style={{ color: "var(--ink-faint)" }}>
-            tip: tab completes · ↑↓ recalls history · try &lsquo;theme bloom&rsquo; or &lsquo;goto work&rsquo;
+            tip: tab completes · ↑↓ recalls history · try &lsquo;theme neon&rsquo; or &lsquo;goto work&rsquo;
           </p>
         </Reveal>
       </div>

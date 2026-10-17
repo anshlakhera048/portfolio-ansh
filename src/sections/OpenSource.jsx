@@ -11,6 +11,7 @@ export default function OpenSource() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-24 sm:py-32">
         <SectionHeading
           kicker="Open source"
+          index="02"
           sub="Contributions that survived maintainer review and landed in main."
         >
           Merged,<br />not forked<span style={{ color: "var(--accent)" }}>.</span>
@@ -21,7 +22,7 @@ export default function OpenSource() {
             <Reveal key={o.repo} delay={i * 120}>
               <Tilt max={5} className="h-full">
               <article
-                className="sheen rounded-2xl border p-7 sm:p-8 h-full"
+                className="sheen lift rounded-2xl border p-7 sm:p-8 h-full"
                 style={{ borderColor: "var(--line)", background: "var(--panel)" }}
                 onMouseMove={(e) => {
                   const r = e.currentTarget.getBoundingClientRect();

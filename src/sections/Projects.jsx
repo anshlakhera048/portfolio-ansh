@@ -27,7 +27,7 @@ function ProjectCard({ p }) {
     <Tilt max={5}>
       <article
         id={`project-${p.id}`}
-        className="sheen rounded-2xl border p-5 sm:p-9 scroll-mt-28"
+        className="sheen lift rounded-2xl border p-5 sm:p-9 scroll-mt-28"
         style={{ borderColor: "var(--line)", background: "var(--panel)" }}
         onMouseMove={(e) => {
           const r = e.currentTarget.getBoundingClientRect();
@@ -97,7 +97,7 @@ export default function Projects() {
     <section id="work" className="section-shell section-themed scroll-mt-16">
       <ThemeAmbient variant="nebula" />
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-24 sm:py-32">
-        <SectionHeading kicker="Selected work">
+        <SectionHeading kicker="Selected work" index="01">
           Systems in<br />production<span style={{ color: "var(--accent)" }}>.</span>
         </SectionHeading>
 
@@ -141,7 +141,7 @@ export default function Projects() {
               <Tilt max={4}>
                 <article
                   id="project-kairos"
-                  className="sheen rounded-2xl p-5 sm:p-10 relative overflow-hidden scroll-mt-28"
+                  className="sheen lift flagship-glow rounded-2xl p-5 sm:p-10 relative overflow-hidden scroll-mt-28"
                   style={{
                     border: "1px solid color-mix(in srgb, var(--accent) 38%, transparent)",
                     background:

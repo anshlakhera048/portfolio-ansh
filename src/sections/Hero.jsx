@@ -31,6 +31,7 @@ const THEME_BG_RGB = {
   abyss: "4,18,30",
   ember: "13,9,6",
   bloom: "21,12,17",
+  neon: "5,6,14",
 };
 
 function NameWord({ word, baseDelay, accentDot, reduced }) {

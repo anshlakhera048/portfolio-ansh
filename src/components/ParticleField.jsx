@@ -2,6 +2,7 @@ import SingularityScene from "./SingularityScene";
 import AbyssScene from "./AbyssScene";
 import EmberScene from "./EmberScene";
 import BloomScene from "./BloomScene";
+import NeonScene from "./NeonScene";
 
 /* Lazy-loaded hero 3D backdrop — dispatches to the active theme's scene.
    Mounts only when Hero asks for it, so three.js never touches the initial bundle. */
@@ -10,6 +11,7 @@ const SCENES = {
   abyss: AbyssScene,
   ember: EmberScene,
   bloom: BloomScene,
+  neon: NeonScene,
 };
 
 export default function ParticleField({ theme = "ember", compact = false }) {

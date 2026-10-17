@@ -8,19 +8,30 @@ export default function Experience() {
     <section id="experience" className="section-shell section-themed scroll-mt-16">
       <ThemeAmbient variant="rise" />
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-24 sm:py-32">
-        <SectionHeading kicker="Experience">
+        <SectionHeading kicker="Experience" index="03">
           Where I&apos;ve<br />shipped<span style={{ color: "var(--accent)" }}>.</span>
         </SectionHeading>
 
         <div className="mt-14 relative">
-          <div className="absolute left-[7px] top-2 bottom-2 w-px" style={{ background: "var(--line)" }} aria-hidden="true" />
+          <div
+            className="absolute left-[7px] top-2 bottom-2 w-px"
+            style={{
+              background:
+                "linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent2) 55%, transparent) 55%, transparent)",
+            }}
+            aria-hidden="true"
+          />
           <div className="space-y-10">
             {experience.map((e, i) => (
               <Reveal key={e.company} delay={Math.min(i * 80, 240)}>
                 <div className="relative pl-10">
                   <div
                     className="absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full border-2"
-                    style={{ borderColor: "var(--accent)", background: "var(--bg)" }}
+                    style={{
+                      borderColor: "var(--accent)",
+                      background: "var(--bg)",
+                      boxShadow: "0 0 14px color-mix(in srgb, var(--accent) 65%, transparent)",
+                    }}
                     aria-hidden="true"
                   />
                   <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
@@ -49,7 +60,7 @@ export default function Experience() {
         <Reveal className="mt-20">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden border" style={{ borderColor: "var(--line)", background: "var(--line)" }}>
             {achievements.map((a) => (
-              <div key={a.k} className="p-6 sm:p-7" style={{ background: "var(--panel)" }}>
+              <div key={a.k} className="proof-cell p-6 sm:p-7" style={{ background: "var(--panel)" }}>
                 <div className="font-mono2 text-[0.65rem] tracking-[0.22em] uppercase" style={{ color: "var(--ink-faint)" }}>
                   {a.k}
                 </div>
