@@ -24,7 +24,7 @@ export default function Experience() {
           <div className="space-y-10">
             {experience.map((e, i) => (
               <Reveal key={e.company} delay={Math.min(i * 80, 240)}>
-                <div className="relative pl-10">
+                <div className="relative pl-10 exp-row">
                   <div
                     className="absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full border-2"
                     style={{

@@ -115,8 +115,8 @@ export default function Contact() {
           <Reveal delay={140}>
             <form
               onSubmit={onSubmit}
-              className="rounded-2xl border p-7 sm:p-8"
-              style={{ borderColor: "var(--line)", background: "var(--panel)" }}
+              className="contact-form rounded-2xl p-7 sm:p-8"
+              style={{ background: "var(--panel)" }}
               noValidate
             >
               <div className="font-mono2 text-[0.68rem] tracking-[0.24em] uppercase mb-6" style={{ color: "var(--ink-faint)" }}>

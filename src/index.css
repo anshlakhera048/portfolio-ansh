@@ -478,6 +478,113 @@ html, body {
 .proof-cell { transition: background 0.3s ease; }
 .proof-cell:hover { background: color-mix(in srgb, var(--accent) 7%, var(--panel)); }
 
+/* ---------- theme-adaptive section atmosphere ---------- */
+
+/* hover hairline on cards — lights up in the theme accent */
+.sheen::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 65%, transparent), transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.sheen:hover::after { opacity: 1; }
+
+/* per-theme ambient textures — static, GPU-cheap, painted behind the animated layer */
+.ambient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+[data-theme="ember"] .ambient::before {
+  background: repeating-linear-gradient(90deg, transparent 0 90px, color-mix(in srgb, var(--accent) 4%, transparent) 90px 92px, transparent 92px 190px);
+  -webkit-mask-image: linear-gradient(180deg, transparent, black 35%, black 65%, transparent);
+  mask-image: linear-gradient(180deg, transparent, black 35%, black 65%, transparent);
+}
+[data-theme="abyss"] .ambient::before {
+  background:
+    radial-gradient(55% 20% at 18% 10%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 70%),
+    radial-gradient(45% 18% at 82% 90%, color-mix(in srgb, var(--accent2) 6%, transparent), transparent 70%);
+}
+[data-theme="singularity"] .ambient::before {
+  background: repeating-radial-gradient(circle at 80% 16%, transparent 0 68px, color-mix(in srgb, var(--accent) 3.5%, transparent) 68px 69px, transparent 69px 138px);
+  -webkit-mask-image: linear-gradient(180deg, black, transparent 75%);
+  mask-image: linear-gradient(180deg, black, transparent 75%);
+}
+[data-theme="bloom"] .ambient::before {
+  background:
+    radial-gradient(40% 26% at 10% 82%, color-mix(in srgb, var(--accent2) 8%, transparent), transparent 70%),
+    radial-gradient(30% 22% at 88% 12%, color-mix(in srgb, var(--accent) 6%, transparent), transparent 70%);
+}
+
+/* ---------- NEON: futuristic AI / cyberpunk interface ---------- */
+
+/* blueprint grid behind every section */
+[data-theme="neon"] .ambient::before {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--accent) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 5%, transparent) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(75% 65% at 50% 42%, black, transparent 78%);
+  mask-image: radial-gradient(75% 65% at 50% 42%, black, transparent 78%);
+}
+/* HUD corner brackets on cards replace the hover hairline */
+[data-theme="neon"] .sheen::after {
+  inset: 12px;
+  height: auto;
+  opacity: 0.55;
+  background-repeat: no-repeat;
+  background-image:
+    linear-gradient(var(--accent), var(--accent)),
+    linear-gradient(var(--accent), var(--accent)),
+    linear-gradient(var(--accent2), var(--accent2)),
+    linear-gradient(var(--accent2), var(--accent2)),
+    linear-gradient(var(--accent), var(--accent)),
+    linear-gradient(var(--accent), var(--accent)),
+    linear-gradient(var(--accent2), var(--accent2)),
+    linear-gradient(var(--accent2), var(--accent2));
+  background-size:
+    20px 2px, 2px 20px,
+    20px 2px, 2px 20px,
+    20px 2px, 2px 20px,
+    20px 2px, 2px 20px;
+  background-position:
+    left top, left top,
+    right top, right top,
+    left bottom, left bottom,
+    right bottom, right bottom;
+}
+[data-theme="neon"] .sheen:hover::after { opacity: 0.95; }
+/* HUD-style kickers */
+[data-theme="neon"] .kicker { letter-spacing: 0.28em; }
+[data-theme="neon"] .kicker::before {
+  content: "// ";
+  color: color-mix(in srgb, var(--accent) 70%, transparent);
+}
+/* faint holographic glow on display titles */
+[data-theme="neon"] .display-xl {
+  text-shadow: 0 0 44px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+/* contact form — glow on focus */
+.contact-form {
+  border: 1px solid var(--line);
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+.contact-form:focus-within {
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  box-shadow: 0 0 60px -20px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+/* experience rows — subtle nudge on hover */
+.exp-row { transition: transform 0.25s ease; }
+.exp-row:hover { transform: translateX(5px); }
+
 /* hero scene fade-in (replays on theme switch since the scene remounts) */
 @keyframes scene-in {
   from { opacity: 0; }
