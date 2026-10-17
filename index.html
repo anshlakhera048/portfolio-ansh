@@ -1,5 +1,8 @@
 <!doctype html>
-<html lang="en">
+<!-- data-theme is set here (not only in React) so the correct palette applies
+     on first paint — without it the :root fallback (singularity) flashes
+     before the ThemeProvider effect runs. Keep in sync with DEFAULT_THEME. -->
+<html lang="en" data-theme="neon">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/assets/logos/threejs.svg" />
