@@ -1,20 +1,20 @@
 import Reveal from "../components/Reveal";
+import SectionHeading from "../components/SectionHeading";
+import ThemeAmbient from "../components/ThemeAmbient";
 import Tilt from "../components/Tilt";
 import { openSource } from "../content";
 
 export default function OpenSource() {
   return (
-    <section id="oss" className="section-shell scroll-mt-16">
+    <section id="oss" className="section-shell section-themed scroll-mt-16">
+      <ThemeAmbient variant="rays" />
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-24 sm:py-32">
-        <Reveal>
-          <p className="kicker mb-5">Open source</p>
-          <h2 className="display-xl" style={{ fontSize: "clamp(2.4rem, 6vw, 5rem)" }}>
-            Merged,<br />not forked<span style={{ color: "var(--accent)" }}>.</span>
-          </h2>
-          <p className="mt-5 max-w-xl leading-relaxed" style={{ color: "var(--ink-dim)" }}>
-            Contributions that survived maintainer review and landed in main.
-          </p>
-        </Reveal>
+        <SectionHeading
+          kicker="Open source"
+          sub="Contributions that survived maintainer review and landed in main."
+        >
+          Merged,<br />not forked<span style={{ color: "var(--accent)" }}>.</span>
+        </SectionHeading>
 
         <div className="mt-12 grid md:grid-cols-2 gap-6">
           {openSource.map((o, i) => (

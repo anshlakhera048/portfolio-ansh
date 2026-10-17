@@ -2,6 +2,8 @@ import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import Magnetic from "../components/Magnetic";
 import Reveal from "../components/Reveal";
+import SectionHeading from "../components/SectionHeading";
+import ThemeAmbient from "../components/ThemeAmbient";
 import { GitHubIcon, LinkedInIcon, InstagramIcon } from "../components/SocialIcons";
 import { profile } from "../content";
 
@@ -67,18 +69,19 @@ export default function Contact() {
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
   return (
-    <section id="contact" className="section-shell scroll-mt-16">
+    <section id="contact" className="section-shell section-themed scroll-mt-16">
+      <ThemeAmbient variant="horizon" />
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-28 sm:py-36">
         <div className="grid lg:grid-cols-2 gap-14 items-start">
-          <Reveal>
-            <p className="kicker mb-6">Contact</p>
-            <h2 className="display-xl" style={{ fontSize: "clamp(2.6rem, 6vw, 5rem)" }}>
+          <div>
+            <SectionHeading
+              kicker="Contact"
+              size="clamp(2.6rem, 6vw, 5rem)"
+              sub="Open to entry-level software engineering roles — backend, distributed systems, low-latency. Immediate joiner, open to relocating anywhere in India and remote worldwide."
+            >
               Let&apos;s build something that doesn&apos;t fall over<span style={{ color: "var(--accent)" }}>.</span>
-            </h2>
-            <p className="mt-6 max-w-md leading-relaxed" style={{ color: "var(--ink-dim)" }}>
-              Open to entry-level software engineering roles — backend, distributed systems,
-              low-latency. Immediate joiner, open to relocating anywhere in India and remote worldwide.
-            </p>
+            </SectionHeading>
+            <Reveal>
             <div className="mt-8">
               <a href={`mailto:${profile.email}`} className="u-sweep font-mono2 text-sm block w-fit" style={{ color: "var(--ink)" }}>
                 {profile.email}
@@ -106,6 +109,7 @@ export default function Contact() {
               ))}
             </div>
           </Reveal>
+          </div>
 
           <Reveal delay={140}>
             <form

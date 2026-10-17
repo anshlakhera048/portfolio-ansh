@@ -1,11 +1,13 @@
 import OrderBook from "../components/OrderBook";
 import Reveal from "../components/Reveal";
+import ThemeAmbient from "../components/ThemeAmbient";
 
 /* "The Book" — the live order book gets its own full-width moment,
    framed like a market-data terminal widget. */
 export default function BookSection() {
   return (
-    <section className="section-shell">
+    <section className="section-shell section-themed">
+      <ThemeAmbient variant="tide" />
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-20 sm:py-24">
         <Reveal>
           <div className="flex items-center gap-3 mb-8">

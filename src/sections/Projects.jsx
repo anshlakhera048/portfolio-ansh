@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Reveal from "../components/Reveal";
+import SectionHeading from "../components/SectionHeading";
+import ThemeAmbient from "../components/ThemeAmbient";
 import Tilt from "../components/Tilt";
 import { projects } from "../content";
 
@@ -92,14 +94,12 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="work" className="section-shell scroll-mt-16">
+    <section id="work" className="section-shell section-themed scroll-mt-16">
+      <ThemeAmbient variant="nebula" />
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-24 sm:py-32">
-        <Reveal>
-          <p className="kicker mb-5">Selected work</p>
-          <h2 className="display-xl" style={{ fontSize: "clamp(2.4rem, 6vw, 5rem)" }}>
-            Systems in<br />production<span style={{ color: "var(--accent)" }}>.</span>
-          </h2>
-        </Reveal>
+        <SectionHeading kicker="Selected work">
+          Systems in<br />production<span style={{ color: "var(--accent)" }}>.</span>
+        </SectionHeading>
 
         <div className="mt-14 grid lg:grid-cols-[240px_1fr] gap-10">
           {/* Index rail — chronological, newest first */}
