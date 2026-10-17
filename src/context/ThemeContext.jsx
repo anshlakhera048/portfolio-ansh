@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { createContext, useContext, useEffect, useState } from "react";
 
 const ThemeContext = createContext();
@@ -41,3 +42,33 @@ export const ThemeProvider = ({ children }) => {
     </ThemeContext.Provider>
   );
 };
+=======
+import { useEffect, useState } from "react";
+import { ThemeContext, THEMES, DEFAULT_THEME } from "./theme-context";
+
+export function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState(() => {
+    try {
+      const saved = localStorage.getItem("newui-theme-v2");
+      return THEMES.includes(saved) ? saved : DEFAULT_THEME;
+    } catch {
+      return DEFAULT_THEME;
+    }
+  });
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    try {
+      localStorage.setItem("newui-theme-v2", theme);
+    } catch {
+      /* ignore */
+    }
+  }, [theme]);
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme, themes: THEMES }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+>>>>>>> 9d0c45aa13deaa634b289621b65c93c965649a7a

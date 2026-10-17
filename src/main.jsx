@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
@@ -31,3 +32,24 @@ createRoot(document.getElementById('root')).render(
     </ThemeProvider>
   </StrictMode>,
 )
+=======
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
+import { ThemeProvider } from "./context/ThemeContext";
+
+// Always start at the top of the page — disable browser scroll restoration
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+window.scrollTo(0, 0);
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  </StrictMode>
+);
+>>>>>>> 9d0c45aa13deaa634b289621b65c93c965649a7a
