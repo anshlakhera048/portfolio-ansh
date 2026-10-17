@@ -10,6 +10,7 @@ import BookSection from "./sections/BookSection";
 import Projects from "./sections/Projects";
 import OpenSource from "./sections/OpenSource";
 import Experience from "./sections/Experience";
+import Skills from "./sections/Skills";
 import Terminal from "./sections/Terminal";
 import Contact from "./sections/Contact";
 import { stackMarquee } from "./content";
@@ -47,6 +48,7 @@ export default function App() {
         <Projects />
         <OpenSource />
         <Experience />
+        <Skills />
         <Terminal />
         <Contact />
       </main>

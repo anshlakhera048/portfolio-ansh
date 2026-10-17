@@ -14,7 +14,7 @@ const SCENES = {
   neon: NeonScene,
 };
 
-export default function ParticleField({ theme = "ember", compact = false }) {
+export default function ParticleField({ theme = "neon", compact = false }) {
   const Scene = SCENES[theme] || SingularityScene;
   return <Scene compact={compact} />;
 }

@@ -27,6 +27,63 @@ export const stackMarquee = [
   "Kubernetes", "Prometheus", "Grafana", "Python", "React",
 ];
 
+/* self-assessed, ordered by production hours */
+export const skillGroups = [
+  {
+    title: "Languages",
+    note: "daily drivers",
+    skills: [
+      { name: "Java 21", level: 95 },
+      { name: "Python", level: 85 },
+      { name: "C++ 20", level: 82 },
+      { name: "SQL", level: 80 },
+      { name: "TypeScript", level: 72 },
+      { name: "Go", level: 68 },
+    ],
+  },
+  {
+    title: "Backend & Distributed",
+    note: "production systems",
+    skills: [
+      { name: "Spring Boot", level: 92 },
+      { name: "Apache Kafka", level: 88 },
+      { name: "PostgreSQL", level: 82 },
+      { name: "Redis", level: 80 },
+      { name: "LMAX Disruptor", level: 75 },
+    ],
+  },
+  {
+    title: "Data & Streaming",
+    note: "pipelines at scale",
+    skills: [
+      { name: "Apache Flink", level: 78 },
+      { name: "k6 load testing", level: 72 },
+      { name: "ClickHouse", level: 70 },
+    ],
+  },
+  {
+    title: "AI & ML",
+    note: "agents & retrieval",
+    skills: [
+      { name: "Ollama / local LLMs", level: 80 },
+      { name: "FAISS", level: 78 },
+      { name: "ChromaDB", level: 75 },
+      { name: "Whisper", level: 65 },
+    ],
+  },
+  {
+    title: "Frontend & Platform",
+    note: "shipping & observing",
+    skills: [
+      { name: "Docker", level: 85 },
+      { name: "React", level: 80 },
+      { name: "Kubernetes", level: 70 },
+      { name: "Angular", level: 68 },
+      { name: "Prometheus / Grafana", level: 66 },
+    ],
+  },
+];
+
 export const projects = [
   {
     id: "kairos",
@@ -197,6 +254,7 @@ export const nav = [
   { label: "Work", href: "#work" },
   { label: "Open Source", href: "#oss" },
   { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
   { label: "Terminal", href: "#terminal" },
   { label: "Contact", href: "#contact" },
 ];
